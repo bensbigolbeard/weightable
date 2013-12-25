@@ -25,19 +25,28 @@ class User < ActiveRecord::Base
 	#   redirect_to root_path
 	# end
 
-	def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-	  user = User.where(:provider => auth.provider, :uid => auth.uid).first
-	  unless user
-	    user = User.create(name:auth.extra.raw_info.name,
-	                         provider:auth.provider,
-	                         uid:auth.uid,
-	                         email:auth.info.email,
-	                         password:Devise.friendly_token[0,20]
-	                         )
-	  end
-	  user
-	end
+	# allow email blank for first create
+	validates_format_of :email, :with => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
 
+
+	def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+	    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+		    if user
+		      return user
+		    else
+		      registered_user = User.where(:email => auth.info.email).first
+		      if registered_user
+		        return registered_user
+		      else
+		        user = User.create(name:auth.extra.raw_info.name,
+		                            provider:auth.provider,
+		                            uid:auth.uid,
+		                            email:auth.info.email,
+		                            password:Devise.friendly_token[0,20],
+		                          )
+		    end    
+	  	end
+	end
 	
 
 	private
