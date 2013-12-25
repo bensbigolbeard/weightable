@@ -53,6 +53,9 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hashie (2.0.5)
     hike (1.2.3)
     hirb (0.7.1)
@@ -151,6 +154,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   devise
+  figaro
   hirb
   jbuilder (~> 1.2)
   jquery-rails
