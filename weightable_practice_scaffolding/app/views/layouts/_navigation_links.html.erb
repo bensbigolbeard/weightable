@@ -1,1 +1,15 @@
 <%# add navigation links to this file %>
+
+<% if user_signed_in? %>
+	<%= link_to "Me", current_user%>
+	<%= link_to "Weigh-Ins" %>
+	<%= link_to "Friends" %>
+	<%= link_to "Settings", edit_user_registration_path %></li>
+	<%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
+
+<% else %>
+	<%= link_to "About" %> <br>
+	
+
+
+<% end %>

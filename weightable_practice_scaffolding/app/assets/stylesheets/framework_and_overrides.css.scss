@@ -7,8 +7,9 @@ img {
   margin: 0 auto;
   }
 // override for the 'Home' navigation link
-.navbar-brand {
-  font-size: inherit;
+navbar-brand {
+  font-size: 20px;
+  
   }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
@@ -43,3 +44,24 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+
+.navbar
+{
+    background-color: #176abb;
+    padding: 10px;
+    opacity: 0.96;
+    filter:alpha(opacity=40);
+    border-bottom: none;
+
+}
+
+.navbar-header .navbar-brand {
+  color: #fff;
+  font-size: 25px;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: #7cbeef;
+
+}

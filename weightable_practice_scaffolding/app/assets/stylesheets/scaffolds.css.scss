@@ -6,40 +6,46 @@ body {
   line-height: 18px;
 }
 
+#words{
+  padding-top: 80px;
+  padding-left: 40px;
+}
 
-/* Landscape phones and down */
+/*
+
 @media(max-width:767px){
   
-
-   #landing { 
+  #landing { 
   background: image-url('climber_phone.jpg'); 
   background-repeat: no-repeat;
   background-size: 100%;
   padding-top: 0;
+  margin-top: 0;
   height: 900px;
   min-height: 800px;
   overflow: hidden;
+  bottom-border: none;
 
   }
 }
 
-/* Landscape phone to portrait tablet */
 @media(min-width:768px){
   
-   #landing { 
+  #landing { 
   background: image-url('climber-nar.jpg'); 
   background-repeat: no-repeat;
   background-size: 100%;
   padding-top: 0;
+  margin-top: 0;
   height: 900px;
   min-height: 800px;
   overflow: hidden;
+  bottom-border: none;
 
   }
 
 }
 
-/* Portrait tablet to landscape and desktop */
   @media(min-width:992px){
 
    #landing { 
@@ -47,6 +53,7 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   padding-top: 0;
+  margin-top: 0;
   height: 900px;
   min-height: 800px;
   overflow: hidden;
@@ -56,7 +63,6 @@ body {
 
 }
 
-/* Large desktop */
 @media(min-width:1200px){
 
    #landing { 
@@ -64,6 +70,7 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   padding-top: 0;
+  margin-top: 0;
   height: 1000px;
   min-height: 800px;
   overflow: hidden;
@@ -72,7 +79,7 @@ body {
   }
 }
 
-
+*/
 
 
 
@@ -82,6 +89,10 @@ p, ol, ul, td {
   line-height: 18px;
 }
 
+.alert{
+  padding-top: 40px;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -89,13 +100,10 @@ pre {
 }
 
 a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
+  color: #7cbeef;
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #7cbeef;
+    
   }
 }
 
@@ -136,4 +144,14 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+ul.nav.navbar-nav{
+  padding: 15px 10px 0 10px;
+}
+
+
+
+ul.nav.navbar-nav a{
+  padding-left: 30px;
 }
