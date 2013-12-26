@@ -6,6 +6,76 @@ body {
   line-height: 18px;
 }
 
+
+/* Landscape phones and down */
+@media(max-width:767px){
+  
+
+   #landing { 
+  background: image-url('climber_phone.jpg'); 
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-top: 0;
+  height: 900px;
+  min-height: 800px;
+  overflow: hidden;
+
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media(min-width:768px){
+  
+   #landing { 
+  background: image-url('climber-nar.jpg'); 
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-top: 0;
+  height: 900px;
+  min-height: 800px;
+  overflow: hidden;
+
+  }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+  @media(min-width:992px){
+
+   #landing { 
+  background: image-url('climber_med.jpg'); 
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-top: 0;
+  height: 900px;
+  min-height: 800px;
+  overflow: hidden;
+  width:100%;
+
+  }
+
+}
+
+/* Large desktop */
+@media(min-width:1200px){
+
+   #landing { 
+  background: image-url('climber.jpg'); 
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-top: 0;
+  height: 1000px;
+  min-height: 800px;
+  overflow: hidden;
+  width:100%;
+
+  }
+}
+
+
+
+
+
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;

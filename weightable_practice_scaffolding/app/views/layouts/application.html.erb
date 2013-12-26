@@ -1,3 +1,5 @@
+<!-- this is a global layout -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,9 +14,18 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
+    <main role="main" id="landing">
        <%= render 'layouts/messages' %>
-       <%= yield %>
+       <!-- this adds text/content to the layout after these global elements -->
+       <div class="container" >
+	       	<div class="row">
+	       		<div class="span9">
+	       			    <%= yield %> 
+	       		</div>
+	       	</div>
+   
+       </div>
+
     </main>
   </body>
 </html>
