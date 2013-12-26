@@ -45,6 +45,6 @@ class WeighInsController < ApplicationController
 	private
 
 	def weigh_in_params
-	  params.require(:weigh_in).permit(:weight, :pic_url, :user_id, :status)
+	  params.require(:weigh_in).permit(:weight, :pic_url, :user_id, :status, :created_at)
 	end
 end
