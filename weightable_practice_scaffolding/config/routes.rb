@@ -1,6 +1,9 @@
 WeightablePracticeScaffolding::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  resources :users
+  resources :users do
+  end
+
+  resources :weigh_ins
 
   devise_scope :user do
     post "account/create" => "users/accounts#create"

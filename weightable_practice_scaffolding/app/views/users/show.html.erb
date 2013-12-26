@@ -5,5 +5,43 @@
   <%= @user.name %>
 </p>
 
+ 		 <%= @user.weigh_ins.size %> Weigh-Ins
+        <span class="spacing">XX Followers</span>
+        <span class="spacing">XX Following</span> <br>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<div id="createWeighIn" >
+	  <h1>Post a weigh-in</h1>
+	    <p>
+	    	 <%= form_for @weigh_in do |f| %>
+             <%= f.label :weight %>
+             <%= f.text_field :weight %><br />
+
+             <%= f.label :status%>
+             <%= f.text_field :status %><br />
+
+             <%= f.submit "Weigh In!" %>
+           <% end %>
+
+
+
+ 
+	    </p>
+	</div>
+
+
+	<div id="weighins">
+	    
+	</div>
+	<div class="panel left">
+	    <h1>Your WeighIns</h1>
+	    <% @user.weigh_ins.each do |weight| %>
+	            <div class="weighinWrapper">
+	                <span class="name"><%= @user.name %>
+	                <span class="time"><%= time_ago_in_words(weigh_in.created_at) %></span>
+	                <p> <%= weigh_in.content %> </p>
+	            </div>
+	    <% end %>
+	</div>

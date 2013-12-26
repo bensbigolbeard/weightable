@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224205854) do
+ActiveRecord::Schema.define(version: 20131226185156) do
 
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
@@ -42,5 +42,15 @@ ActiveRecord::Schema.define(version: 20131224205854) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "weigh_ins", force: true do |t|
+    t.integer  "weight"
+    t.string   "pic_url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "status"
+    t.datetime "date"
+  end
 
 end

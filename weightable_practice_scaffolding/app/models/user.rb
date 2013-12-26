@@ -1,29 +1,11 @@
 class User < ActiveRecord::Base
+	has_many :weigh_ins
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 	has_many :friendships
 	has_many :friends, through: :friendships
-
-
-	def show
-	  @user = User.find(params[:uid])
-	end
-
-	def show_all
-	  @user = User.all
-	end
-
-	# def new
-	#   @user = User.new
-	# end
-
-	# def create
-	#   user = User.new(user_params)
-	#   user.save
-	#   redirect_to root_path
-	# end
 
 	# allow email blank for first create
 	validates_format_of :email, :with => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
@@ -48,10 +30,5 @@ class User < ActiveRecord::Base
 	  	end
 	end
 	
-
-	private
-	def user_params
-	  params.require(:user).permit(:name, :provider, :uid)
-	end
 
 end
