@@ -8,8 +8,8 @@ img {
   }
 // override for the 'Home' navigation link
 navbar-brand {
-  font-size: 20px;
   
+  padding: 0;
   }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
@@ -48,11 +48,13 @@ section {
 
 .navbar
 {
-    background-color: #176abb;
+    background-color: #1f2f3a;
     padding: 10px;
     opacity: 0.96;
     filter:alpha(opacity=40);
     border-bottom: none;
+    height: 70px
+
 
 }
 
@@ -62,6 +64,12 @@ section {
 }
 
 .navbar-inverse .navbar-toggle {
-  border-color: #7cbeef;
+  border-color: #989491;
 
 }
+
+.navbar-brand{
+  padding: 0px;
+}
+
+

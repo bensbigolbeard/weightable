@@ -5,9 +5,9 @@
   <%= @user.name %>
 </p>
 
- 		 <%= @user.weigh_ins.size %> Weigh-Ins
-        <span class="spacing">XX Followers</span>
-        <span class="spacing">XX Following</span> <br>
+ 		 <%= @user.weigh_ins.size %> Weigh-Ins     |     
+       
+        <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br><br>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
@@ -36,11 +36,11 @@
 	    
 	</div>
 	<div class="panel left">
-	    <h1>Your WeighIns</h1>
+	    <h1>Your Weigh-Ins</h1>
 	    <% @user.weigh_ins.each do |weight| %>
 	            <div class="weighinWrapper">
 	                <span class="name"><%= @user.name %>
-	                <span class="time"><%= time_ago_in_words(weight.created_at) %></span>
+	                <span class="time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
 	                <p> <%= weight.weight %> </p>
 	                <p> <%= weight.status %> </p>
 	            </div>
