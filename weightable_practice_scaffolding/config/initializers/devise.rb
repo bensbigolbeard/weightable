@@ -44,7 +44,8 @@ Devise.setup do |config|
   
 
   require "omniauth-facebook"
-  config.omniauth :facebook, ENV["FACEBOOK_KEY"], ENV["FACEBOOK_SECRET_KEY"]
+  config.omniauth :facebook, ENV["FACEBOOK_KEY"], ENV["FACEBOOK_SECRET_KEY"],
+                  :image_size => 'large'
 
   config.case_insensitive_keys = [ :email ]
 
