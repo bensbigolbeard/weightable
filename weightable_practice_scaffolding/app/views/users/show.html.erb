@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<script src="Chart.js"></script>
 
 <p>
   <strong>Name:</strong>
@@ -6,6 +7,7 @@
   <img class="profile-pic clearfix" src=<%= @user.profile_pic %> />
 
 </p>
+<canvas id="myChart" width="400" height="400"></canvas>
 
  		 <%= @user.weigh_ins.size %> Weigh-Ins     |     
        
@@ -40,6 +42,7 @@
 	<div class="panel left">
 	    <h1>Your Weigh-Ins</h1>
 	    <% @user.weigh_ins.each do |weight| %>
+	    <% @weights.unshift(weight.weight) %>
 	            <div class="weighinWrapper">
 	                <span class="name"><%= @user.name %>
 	                <span class="time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
@@ -48,3 +51,19 @@
 	            </div>
 	    <% end %>
 	</div>
+	<script type="text/javascript">$(function() {
+  data = {
+    labels : ["April","May","June","July"],
+    datasets : [
+      {
+        fillColor : "rgba(220,220,220,0.5)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#aaa",
+        data : <%= @weights %>
+      }
+    ]
+  }
+
+  myNewChart = new Chart($("#myChart").get(0).getContext("2d")).Line(data)
+});</script>

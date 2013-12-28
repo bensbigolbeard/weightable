@@ -36,6 +36,8 @@ GEM
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     builder (3.1.4)
+    chart-js-rails (0.0.6)
+      railties (> 3.1)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -58,8 +60,6 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
-    gruff (0.5.1)
-      rmagick
     hashie (2.0.5)
     hike (1.2.3)
     hirb (0.7.1)
@@ -122,7 +122,6 @@ GEM
     rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
-    rmagick (2.13.2)
     sass (3.2.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -165,10 +164,10 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  chart-js-rails
   coffee-rails (~> 4.0.0)
   devise
   figaro
-  gruff
   hirb
   jbuilder (~> 1.2)
   jquery-rails
