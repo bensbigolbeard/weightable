@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
 	# allow email blank for first create
 	validates_format_of :email, :with => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
 
-
 	def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
 	    user = User.where(:provider => auth.provider, :uid => auth.uid).first
 		    if user
@@ -28,10 +27,8 @@ class User < ActiveRecord::Base
 		                            email:auth.info.email,
 		                            password:Devise.friendly_token[0,20],
 		                          )
-		        binding.pry
 		    end    
 	  	end
 	end
 	
-
 end
