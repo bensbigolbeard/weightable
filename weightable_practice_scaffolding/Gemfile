@@ -41,6 +41,8 @@ gem 'omniauth-facebook'
 
 # gem 'carrierwave'
 
+gem 'gruff'
+
 gem 'pry'
 
 gem 'figaro'
