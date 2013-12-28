@@ -15,17 +15,15 @@
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main" id="landing">
-       <%= render 'layouts/messages' %>
-       <!-- this adds text/content to the layout after these global elements -->
-       <div class="container" id="words" >
+      <%= render 'layouts/messages' %>
+      <!-- this adds text/content to the layout after these global elements -->
+      <div class="container" id="words" >
 	       	<div class="row">
 	       		<div class="span9">
 	       			    <%= yield %> 
 	       		</div>
 	       	</div>
-   
-       </div>
-
+      </div>
     </main>
   </body>
 </html>

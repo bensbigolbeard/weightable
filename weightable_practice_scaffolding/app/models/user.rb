@@ -1,4 +1,4 @@
-require 'pry'
+
 class User < ActiveRecord::Base
 	has_many :weigh_ins
   # Include default devise modules. Others available are:
