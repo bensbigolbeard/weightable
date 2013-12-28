@@ -1,3 +1,4 @@
+require 'pry'
 class User < ActiveRecord::Base
 	has_many :weigh_ins
   # Include default devise modules. Others available are:
@@ -23,9 +24,11 @@ class User < ActiveRecord::Base
 		        user = User.create(name:auth.extra.raw_info.name,
 		                            provider:auth.provider,
 		                            uid:auth.uid,
+		                            profile_pic:auth.info.image,
 		                            email:auth.info.email,
 		                            password:Devise.friendly_token[0,20],
 		                          )
+		        binding.pry
 		    end    
 	  	end
 	end
