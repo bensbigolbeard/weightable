@@ -1,5 +1,9 @@
 WeightablePracticeScaffolding::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  root "users#index"
+  
+  get "/users/all" => "users#all_users", as: "all_users"
+  get "/friends" => "users#friends", as: "friends"
   resources :users do
   end
 
@@ -8,10 +12,10 @@ WeightablePracticeScaffolding::Application.routes.draw do
   devise_scope :user do
     post "account/create" => "users/accounts#create"
   end
-  get "/friends" => "users#friends", as: "friends"
+  
   post "/user" => "friendships#create", as: "friendships"
 
-  root "users#index"
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

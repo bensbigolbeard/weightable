@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for user in @users do %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= link_to 'Add friend', friendships_path( friend_id: user), method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
