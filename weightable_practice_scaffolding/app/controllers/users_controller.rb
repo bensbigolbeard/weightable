@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    
-      @user = current_user
+    @user = current_user
   
   end
 
@@ -68,6 +67,10 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def friends
+    @user = current_user
   end
 
   private

@@ -8,7 +8,7 @@ WeightablePracticeScaffolding::Application.routes.draw do
   devise_scope :user do
     post "account/create" => "users/accounts#create"
   end
-
+  get "/friends" => "users#friends", as: "friends"
   post "/user" => "friendships#create", as: "friendships"
 
   root "users#index"
