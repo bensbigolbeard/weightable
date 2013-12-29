@@ -13,8 +13,10 @@
  		 <%= @user.weigh_ins.size %> Weigh-Ins     |     
        
         <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br><br>
+<span class="goal">My Target Weight: <%= @user.goal %>lbs.</span>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
 <canvas id="myChart" width="400" height="400"></canvas>
 <div id="createWeighIn" >
 	  <h1>Post a weigh-in</h1>

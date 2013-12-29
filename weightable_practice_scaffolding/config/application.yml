@@ -1,3 +1,4 @@
+
 # Add application configuration variables here, as shown below.
 #
 # PUSHER_APP_ID: "2954"
@@ -8,3 +9,4 @@
 
 FACEBOOK_KEY: 487578531361006
 FACEBOOK_SECRET_KEY: aa8de01c0ce070a032a81b91a4f4f537
+
