@@ -1,8 +1,10 @@
 class WeighInsController < ApplicationController
 
 	def show
+	  @user = current_user
 	  @weigh_in = WeighIn.find(params[:id])
 	  @weigh_ins = @user.weigh_ins
+	  @comment = Comment.new
 	end
 
 	def index

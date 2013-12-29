@@ -1,0 +1,49 @@
+<h1>Weigh-In Detail Page</h1>
+
+
+
+<div class="weighinWrapper">
+    <span class="name"><%= @user.name %>
+    <span class="time">posted <%= time_ago_in_words(@weigh_in.created_at) %> ago</span>
+    <span>image, if present</span>
+    <p> <%= @weigh_in.weight %> </p>
+    <p> <%= @weigh_in.status %> </p>
+</div>
+
+<h2>Comments section:</h2>
+
+
+
+
+	<div id="createComment" >
+		  <h3>Post a comment</h3>
+		    <p>
+		    	 <%= form_for [@user, @weigh_in, @comment] do |f| %>
+	             <%= f.label :body %>
+	             <%= f.text_area :body %><br />
+
+	             <%= f.submit "Post comment!" %>
+	           <% end %>
+		    </p>
+		</div>
+
+	
+	<div>
+
+		<div>
+
+  		<% @weigh_in.comments.each do |comment| %>
+			<div>
+  			<%= comment.body %>
+			</div>
+			<br>
+  		<% end %>
+
+
+  		</div>
+
+
+  	</div>
+  
+
+

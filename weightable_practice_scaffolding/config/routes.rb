@@ -1,13 +1,16 @@
 WeightablePracticeScaffolding::Application.routes.draw do
+  # get "comments/create"
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   root "users#index"
   
   get "/users/all" => "users#all_users", as: "all_users"
   get "/friends" => "users#friends", as: "friends"
   resources :users do
+    resources :weigh_ins do
+        resources :comments, only: [:create, :destroy]
+    end
   end
 
-  resources :weigh_ins
 
   devise_scope :user do
     post "account/create" => "users/accounts#create"

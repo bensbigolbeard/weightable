@@ -47,7 +47,7 @@
 <div id="createWeighIn" >
 	  <h1>Post a weigh-in</h1>
 	    <p>
-	    	 <%= form_for @weigh_in do |f| %>
+	    	 <%= form_for [@user, @weigh_in] do |f| %>
              <%= f.label :weight %>
              <%= f.text_field :weight %><br />
 
@@ -56,10 +56,6 @@
 
              <%= f.submit "Weigh In!" %>
            <% end %>
-
-
-
- 
 	    </p>
 	</div>
 
@@ -68,6 +64,7 @@
 	    
 	</div>
 	<div class="panel left">
+    <div>
 	    <h1>Your Weigh-Ins</h1>
 	    <% @user.weigh_ins.each do |weight| %>
 	    <% @weights.unshift(weight.weight) %>
@@ -79,6 +76,7 @@
 	                <p> <%= weight.status %> </p>
 	            </div>
 	    <% end %>
+    </div>
 	</div>
 	<script type="text/javascript">$(function() {
 	options = {
