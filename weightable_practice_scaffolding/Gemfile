@@ -41,6 +41,10 @@ gem 'omniauth-facebook'
 
 # gem 'carrierwave'
 
+# gem 'gruff'
+
+gem 'chart-js-rails'
+
 gem 'pry'
 
 gem 'figaro'

@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @weigh_in = WeighIn.new
-  
+    @weights = []
+    @dates = []
 
   end
 
