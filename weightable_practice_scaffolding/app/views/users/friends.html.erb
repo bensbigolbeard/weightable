@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if current_user %> 
+      <% @user.friendships.each do |friendship| %>
+        <tr>
+          <td><%= friendship.friend.name %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
