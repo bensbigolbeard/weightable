@@ -1,0 +1,84 @@
+// import the CSS framework
+@import "bootstrap";
+
+// make all images responsive by default
+img {
+  @extend .img-responsive;
+  margin: 0 auto;
+  }
+// override for the 'Home' navigation link
+navbar-brand {
+  
+  padding: 0;
+  }
+
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create your own classes
+// to make views framework-neutral
+.column {
+  @extend .col-md-6;
+  @extend .text-center;
+  }
+.form {
+  @extend .col-md-6;
+  }
+.form-centered {
+  @extend .col-md-6;
+  @extend .text-center;
+  }
+.submit {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-lg;
+  }
+// apply styles to HTML elements
+// to make views framework-neutral
+main {
+  @extend .container;
+  background-color: #eee;
+  padding-bottom: 80px;
+  width: 100%;
+  margin-top: 51px; // accommodate the navbar
+  }
+section {
+  @extend .row;
+  margin-top: 20px;
+  }
+
+
+.navbar
+{
+    background-color: #1f2f3a;
+    padding: 10px;
+    opacity: 0.96;
+    filter:alpha(opacity=40);
+    border-bottom: none;
+    height: 70px
+
+
+}
+
+.navbar-header .navbar-brand {
+  color: #fff;
+  font-size: 25px;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: #989491;
+
+}
+
+.navbar-brand{
+  padding: 0px;
+}
+
+.profile-pic {
+  margin-left: 0;
+}
+
+canvas#myChart {
+  display:block;
+  padding: 20px;
+}
+
+

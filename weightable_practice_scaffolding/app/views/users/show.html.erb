@@ -1,9 +1,88 @@
+<% require "date" %>
+
+
 <p id="notice"><%= notice %></p>
+<script src="Chart.js"></script>
 
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
-</p>
+  <img class="profile-pic clearfix" src=<%= @user.profile_pic %> />
 
+</p>
+ 		 <%= @user.weigh_ins.size %> Weigh-Ins     |     
+       
+        <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br><br>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+<canvas id="myChart" width="400" height="400"></canvas>
+<div id="createWeighIn" >
+	  <h1>Post a weigh-in</h1>
+	    <p>
+	    	 <%= form_for @weigh_in do |f| %>
+             <%= f.label :weight %>
+             <%= f.text_field :weight %><br />
+
+             <%= f.label :status%>
+             <%= f.text_field :status %><br />
+
+             <%= f.submit "Weigh In!" %>
+           <% end %>
+
+
+
+ 
+	    </p>
+	</div>
+
+
+	<div id="weighins">
+	    
+	</div>
+	<div class="panel left">
+	    <h1>Your Weigh-Ins</h1>
+	    <% @user.weigh_ins.each do |weight| %>
+	    <% @weights.unshift(weight.weight) %>
+	    <% @dates.unshift((weight.created_at).strftime("%a")) %>
+	            <div class="weighinWrapper">
+	                <span class="name"><%= @user.name %>
+	                <span class="time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
+	                <p> <%= weight.weight %> </p>
+	                <p> <%= weight.status %> </p>
+	            </div>
+	    <% end %>
+	</div>
+	<script type="text/javascript">$(function() {
+	options = {
+		// set to line chart instead of curve
+		//Boolean - If we want to override with a hard coded scale
+		scaleOverride : true,
+		
+		//** Required if scaleOverride is true **
+		//Number - The number of steps in a hard coded scale
+		scaleSteps : 5,
+		//Number - The value jump in the hard coded scale
+		scaleStepWidth : <%= (((@user.weigh_ins.first.weight+5)-(@user.goal-15))/5) %>,
+		//Number - The scale starting value
+		scaleStartValue : <%= @user.goal-2%>,
+		
+		
+
+
+	}
+
+  	data = {
+    labels :  <%=raw @dates.length > 7 ? @dates[-7,7] : @dates %>,
+    datasets : [
+      {
+        fillColor : "rgba(0,255,0,0.3)",
+        strokeColor : "rgba(255,93,0,.9)",
+        pointColor : "rgba(51,51,51,1)",
+        pointStrokeColor : "rgba(0,132,164,1)",
+        data : <%= @weights.length > 7 ? @weights[-7,7] : @weights %>
+      }
+    ]
+  }
+
+  myNewChart = new Chart($("#myChart").get(0).getContext("2d")).Line(data,options)
+});</script>

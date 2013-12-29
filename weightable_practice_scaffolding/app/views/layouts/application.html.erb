@@ -1,14 +1,31 @@
+<!-- this is a global layout -->
+
 <!DOCTYPE html>
 <html>
-<head>
-  <title>WeightablePracticeScaffolding</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Weightable Practice Scaffolding" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Weightable Practice Scaffolding" %>">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main" id="landing">
+       <%= render 'layouts/messages' %>
+       <!-- this adds text/content to the layout after these global elements -->
+       <div class="container" id="words" >
+	       	<div class="row">
+	       		<div class="span9">
+	       			    <%= yield %> 
+	       		</div>
+	       	</div>
+   
+       </div>
 
-<%= yield %>
-
-</body>
+    </main>
+  </body>
 </html>
