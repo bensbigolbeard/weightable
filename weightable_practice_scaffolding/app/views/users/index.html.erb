@@ -13,17 +13,22 @@
 
   <tbody>
     <% if current_user %> 
-      <% @user.friendships.each do |friendship| %>
-        <tr>
-          <td><%= friendship.friend.name %></td>
-          <% if friendship.friend.weigh_ins.count > 1 %>
-            <td>Pounds to go:<%= (friendship.friend.weigh_ins.latestpost.weight - friendship.friend.goal) %></td>
+      <% counter = 0 %>
+      <% while counter < 4 %>
+        <% @user.friendships.each do |friendship| %>
+          <% if counter < friendship.friend.weigh_ins.count %>
+            <tr>
+              <td><%= friendship.friend.name %></td>
+              <td>Pounds to go:<%= (friendship.friend.weigh_ins[counter].weight - friendship.friend.goal) %></td>
+              <% if friendship.friend.weigh_ins.count > 1 %>
+                <td>Progress since first check-in:<%= ((friendship.friend.weigh_ins[counter-1].weight.to_f / friendship.friend.weigh_ins[counter].weight.to_f) * 100 - 100).round(2) %>%</td>
+              <% end %>
+              <td>Progress toward goal:<%= ((friendship.friend.weigh_ins[counter].weight.to_f / friendship.friend.goal.to_f) * 100 - 100).round(2) %>%</td>
+              <td><%= friendship.friend.weigh_ins[counter].status %></td>
+            </tr>
           <% end %>
-          <td>Progress since first check-in:<%= ((friendship.friend.weigh_ins.secondlatestpost.weight.to_f / friendship.friend.weigh_ins.latestpost.weight.to_f) * 100 - 100).round(2) %>%</td>
-          <td>Progress toward goal:<%= ((friendship.friend.weigh_ins.latestpost.weight.to_f / friendship.friend.goal.to_f) * 100 - 100).round(2) %>%</td>
-          <td><%= friendship.friend.weigh_ins.last.status %></td>
-          
-        </tr>
+        <% end %>
+      <% counter+=1 %>
       <% end %>
     <% end %>
   </tbody>

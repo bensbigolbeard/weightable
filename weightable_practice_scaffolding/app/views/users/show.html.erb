@@ -1,7 +1,6 @@
 <% require "date" %>
 
 
-<p id="notice"><%= notice %></p>
 <script src="Chart.js"></script>
 
 <p>
@@ -27,7 +26,7 @@
         <div class="field">
 
           <%= f.label :profile_pic %><br>
-          <%= f.file_field :profile_pic %><br><br>
+          <%= f.file_field :profile_pic, :required => true %><br><br>
 
         </div>
         <div class="actions">

@@ -14,6 +14,7 @@ WeightablePracticeScaffolding::Application.routes.draw do
   end
   
   post "/user" => "friendships#create", as: "friendships"
+  delete "/user" => "friendships#destroy", as: "destroy_friendships"
 
   
 
