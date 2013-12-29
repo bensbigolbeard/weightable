@@ -16,7 +16,8 @@
         <tr>
           <td><%= friendship.friend.name %></td>
           <td>Pounds to go:<%= (friendship.friend.weigh_ins.latestpost.weight - friendship.friend.goal) %></td>
-          <td>Progress since first check-in:<%= ((friendship.friend.weigh_ins.secondlatestpost.weight.to_f / friendship.friend.weigh_ins.latestpost.weight.to_f) * 100 - 100).round(2) %></td>
+          <td>Progress since first check-in:<%= ((friendship.friend.weigh_ins.secondlatestpost.weight.to_f / friendship.friend.weigh_ins.latestpost.weight.to_f) * 100 - 100).round(2) %>%</td>
+          <td>Progress toward goal:<%= ((friendship.friend.weigh_ins.latestpost.weight.to_f / friendship.friend.goal.to_f) * 100 - 100).round(2) %>%</td>
           <td><%= friendship.friend.weigh_ins.last.status %></td>
           
         </tr>
