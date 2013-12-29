@@ -7,7 +7,7 @@
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
-  <img class="profile-pic clearfix" src=<%= @user.profile_pic %> />
+  <img class="profile-pic clearfix" src=<%= @user.profile_pic_url(:medium) %> />
 
 </p>
  		 <%= @user.weigh_ins.size %> Weigh-Ins     |     

@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	has_many :friendships
 	has_many :friends, through: :friendships
 
+	mount_uploader :profile_pic, ImageUploader
+
 	# allow email blank for first create
 	validates_format_of :email, :with => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
 
