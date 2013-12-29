@@ -11,8 +11,10 @@ class CommentsController < ApplicationController
 
   def create
   	@user = current_user
+  	@user_id = @user.id
   	@weigh_in = WeighIn.find(params[:weigh_in_id])
   	@comment = @weigh_in.comments.create(comment_params)
+  	@comment.user_id = @user_id
   	  if @comment.save
   	    redirect_to :back
   	  else

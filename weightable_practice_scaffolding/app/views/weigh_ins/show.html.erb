@@ -35,6 +35,8 @@
   		<% @weigh_in.comments.each do |comment| %>
 			<div>
   			<%= comment.body %>
+  			<img src=<%= comment.user.profile_pic_url(:thumb) %> />
+  			by: <%= comment.user.name %> 
 			</div>
 			<br>
   		<% end %>
