@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+#Use Nested forms to handle sending info from one form to multiple controllers
+gem "nested_form"
+
 # Use CarrierWave to upload images
 gem 'carrierwave'
 

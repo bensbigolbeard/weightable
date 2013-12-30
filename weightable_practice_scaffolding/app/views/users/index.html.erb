@@ -47,3 +47,11 @@ New to weightable?
 <%= link_to "Sign up", new_user_registration_path %> 
 
 <% end %>
+<% if current_user %>
+  <%= render 'initial_info_modal' %>
+<% end %>
+<script type='text/javascript'>
+  $(document).on('ready', function(e){
+    $('#myModal').modal();
+  });
+</script>
