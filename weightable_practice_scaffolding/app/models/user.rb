@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 	has_many :friendships
 	has_many :friends, through: :friendships
+	accepts_nested_attributes_for :weigh_ins
 
 	mount_uploader :profile_pic, ImageUploader
 

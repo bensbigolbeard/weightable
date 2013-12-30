@@ -12,8 +12,8 @@
           <%= f.label :goal %><br>
           <%= f.text_field :goal %><br><br>
 
-          <%= f.fields_for :weigh_ins do |weigh_in| %>
-
+          <%= f.fields_for :weigh_ins, @user.weigh_ins.build do |weigh_in| %>
+            <%= f.label :weight %><br>
             <%= weigh_in.text_field :weight %><br><br>
           <% end %>
         </div>

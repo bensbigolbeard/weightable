@@ -19,7 +19,8 @@ class WeighInsController < ApplicationController
 	end
 
 	def create
-	  @weigh_in = WeighIn.new(weigh_in_params)
+		@user= User.find(params[:id])
+	  @weigh_in = @user.weigh_ins.create(weigh_in_params)
 	  @weigh_in.user_id = current_user.id
 	  if @weigh_in.save
 	    redirect_to current_user
@@ -34,7 +35,7 @@ class WeighInsController < ApplicationController
 
 	def update
 	  @weigh_in = WeighIn.find(params[:id])
-	  @weigh_in.update(weighin_params)
+	  @weigh_in.update(weigh_in_params)
 	  redirect_to root_path
 	end
 
