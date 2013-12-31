@@ -1,3 +1,4 @@
+<% require 'pry' %>
 <h1>Weigh-In Detail Page</h1>
 
 
@@ -37,7 +38,10 @@
   			<%= comment.body %>
   			Comment ID: <%= comment.id%>
   			<img src=<%= comment.user.profile_pic_url(:thumb) %> />
+
+  			<%if (current_user == @weigh_in.user)||(comment.user == current_user) %>
   			by: <%= comment.user.name %> <%= link_to "Remove Comment", user_weigh_in_comment_path(:weigh_in_id => comment.weigh_in.id, :id => comment.id), method: :delete %>
+  			<% end %>
 			</div>
 			<br>
   		<% end %>
