@@ -17,6 +17,8 @@ gem 'carrierwave'
 # Use RMagick to manipulate images
 gem 'rmagick'
 
+#Twitter User Interface jQuery plugin
+gem 'jquery-ui-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
