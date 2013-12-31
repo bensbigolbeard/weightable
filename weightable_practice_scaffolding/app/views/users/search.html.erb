@@ -1,0 +1,15 @@
+<table>
+  <tbody>
+    <% @results.each do |user| %>
+      <tr>
+        <td><%= user.profile_pic %></td>
+        <td><%= user.name %></td>
+        <% if current_user.friends.include?(User.find(user.id)) %>
+        <td><%= link_to 'Remove friend', destroy_friendships_path( id: user.id), method: :delete %></td>
+        <% else %>
+        <td><%= link_to 'Add friend', friendships_path( friend_id: user), method: :post %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

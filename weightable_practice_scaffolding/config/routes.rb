@@ -1,5 +1,7 @@
 WeightablePracticeScaffolding::Application.routes.draw do
   # get "comments/create"
+  get "/search" => "users#search", as: "search"
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   root "users#index"
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229211145) do
+ActiveRecord::Schema.define(version: 20131230212715) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20131229211145) do
   end
 
   add_index "friendships", ["user_id"], name: "index_friendships_on_user_id"
+
+  create_table "trigrams", force: true do |t|
+    t.string  "trigram",     limit: 3
+    t.integer "score",       limit: 2
+    t.integer "owner_id"
+    t.string  "owner_type"
+    t.string  "fuzzy_field"
+  end
+
+  add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], name: "index_for_match"
+  add_index "trigrams", ["owner_id", "owner_type"], name: "index_by_owner"
 
   create_table "users", force: true do |t|
     t.string   "name"

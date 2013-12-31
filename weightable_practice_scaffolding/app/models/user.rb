@@ -8,8 +8,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 	has_many :friendships
 	has_many :friends, through: :friendships
+
+	#Nested Fields
 	accepts_nested_attributes_for :weigh_ins
 
+	#Fuzzily
+	fuzzily_searchable :name
+
+	#Carrierwave
 	mount_uploader :profile_pic, ImageUploader
 
 	# allow email blank for first create
@@ -35,4 +41,7 @@ class User < ActiveRecord::Base
 	  	end
 	end
 	
+	# def self.search(search)
+ #    @results = User.find_by_fuzzy_name(search, limit => 10)
+ #  end
 end
