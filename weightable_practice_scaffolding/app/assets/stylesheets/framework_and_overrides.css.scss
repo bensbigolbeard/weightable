@@ -37,7 +37,7 @@ main {
   background-color: #eee;
   padding-bottom: 80px;
   width: 100%;
-  margin-top: 51px; // accommodate the navbar
+  
   }
 
 section {
@@ -68,9 +68,13 @@ canvas#myChart {
   background-color: #1f2f3a;
   opacity: 0.96;
   filter:alpha(opacity=40);
-
+  margin-bottom:0;
 }
 
 form.navbar-search {
   padding-top:23px;
+}
+
+button.navbar-toggle {
+  margin-top:23px;
 }
