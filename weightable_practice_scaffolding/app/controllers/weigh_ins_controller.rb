@@ -30,13 +30,19 @@ class WeighInsController < ApplicationController
 	end
 
 	def edit
+		@user = User.find(params[:user_id])
 	  @weigh_in = WeighIn.find(params[:id])
 	end
 
 	def update
 	  @weigh_in = WeighIn.find(params[:id])
 	  @weigh_in.update(weigh_in_params)
-	  redirect_to root_path
+	  if @weigh_in.update(weigh_in_params)
+	  	flash[:notice] = "You have updated your weigh-in for today!"
+	  	redirect_to user_path(params[:user_id])
+	  else 
+	  	render 'new'
+	  end
 	end
 
 	# def destroy

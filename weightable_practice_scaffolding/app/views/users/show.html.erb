@@ -1,4 +1,6 @@
 <% require "date" %>
+<% require "pry" %>
+
 
 
 <script src="Chart.js"></script>
@@ -47,8 +49,13 @@
   <canvas id="myChart" width="400" height="400"></canvas>
 
 
+<% if @user.weigh_ins.last.created_at + 24*60*60 > Time.now %>
+
+  <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
+<% else %>
+<% binding.pry %>
 <div id="createWeighIn" >
-	<h1>Post a weigh-in</h1>
+  <h1>Post a weigh-in</h1>
     <p>
       <%= form_for [@user, @weigh_in] do |f| %>
         <%= f.label :weight %>
@@ -61,6 +68,7 @@
       <% end %>
     </p>
 </div>
+<%end%>
 
 
 	<div id="weighins">
