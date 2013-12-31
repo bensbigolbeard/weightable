@@ -1,11 +1,11 @@
 <%# add navigation links to this file %>
 
 <% if user_signed_in? %>
-        <%= link_to "Me", current_user%>
-        <%= link_to "Feed", root_path %>
-        <%= link_to "Friends", friends_path %>
-        <%= link_to "Settings", edit_user_registration_path %>
-        <%= link_to "Logout", destroy_user_session_path, method: "delete" %>
+  <%= content_tag(:li, link_to("Me", current_user)) %>
+  <%= content_tag(:li, link_to("Feed", root_path )) %>
+  <%= content_tag(:li, link_to("Friends", friends_path)) %>
+  <%= content_tag(:li, link_to("Settings", edit_user_registration_path)) %>
+  <%= content_tag(:li, link_to("Logout", destroy_user_session_path, method: "delete")) %>
 
 <% else %>
         <%= link_to "About" %> <br>

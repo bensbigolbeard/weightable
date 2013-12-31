@@ -7,9 +7,8 @@ img {
   margin: 0 auto;
   }
 // override for the 'Home' navigation link
-navbar-brand {
-  
-  padding: 0;
+.navbar-brand {
+  font-size: inherit;
   }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
@@ -40,21 +39,23 @@ main {
   width: 100%;
   margin-top: 51px; // accommodate the navbar
   }
+
 section {
   @extend .row;
   margin-top: 20px;
   }
 
+canvas#myChart {
+  display: block;
+  padding: 20px;
+}
 
-.navbar
-{
-    background-color: #1f2f3a;
-    padding: 10px;
-    opacity: 0.96;
-    filter:alpha(opacity=40);
-    border-bottom: none;
-    height: 70px
+.profile-pic {
+  margin-left: 0;
+}
 
+.navbar-inverse .navbar-toggle {
+  border-color: #989491;
 
 }
 
@@ -63,22 +64,13 @@ section {
   font-size: 25px;
 }
 
-.navbar-inverse .navbar-toggle {
-  border-color: #989491;
+.navbar {
+  background-color: #1f2f3a;
+  opacity: 0.96;
+  filter:alpha(opacity=40);
 
 }
 
-.navbar-brand{
-  padding: 0px;
+form.navbar-search {
+  padding-top:23px;
 }
-
-.profile-pic {
-  margin-left: 0;
-}
-
-canvas#myChart {
-  display:block;
-  padding: 20px;
-}
-
-

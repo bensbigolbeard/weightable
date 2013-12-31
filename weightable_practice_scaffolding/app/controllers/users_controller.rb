@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = current_user
     @weigh_in = @user.weigh_ins.new
     @weigh_ins = @user.weigh_ins
-    @users = @users.search(params[:search])
+    
   end
 
   # GET /users/1
@@ -21,9 +21,10 @@ class UsersController < ApplicationController
 
   end
 
-  # def search(search)
-  #   @results = User.find_by_fuzzy_name(search, limit => 10)
-  # end
+  def search
+    @users = User.all
+    @results = @users.search(params[:search])
+  end
 
   # GET /users/new
   def new

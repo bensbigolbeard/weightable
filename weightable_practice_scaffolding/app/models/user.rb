@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
 	  	end
 	end
 	
-	# def self.search(search)
- #    @results = User.find_by_fuzzy_name(search, limit => 10)
- #  end
+	def self.search(search)
+    User.find_by_fuzzy_name(search, :limit=> 10)
+  end
 end
