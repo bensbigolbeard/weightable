@@ -3,9 +3,9 @@
 
 
 <div class="weighinWrapper">
-    <span class="name"><%= @user.name %>
-    <span class="time">posted <%= time_ago_in_words(@weigh_in.created_at) %> ago</span>
-    <span>image, if present</span>
+    <span class="name"><%= @weigh_in.user.name %>
+    <span class="time">posted this weigh_in <%= time_ago_in_words(@weigh_in.created_at) %> ago and his id is <%= @weigh_in.user.id %> and the weigh_in_id is <%=@weigh_in.id%></span>
+    <span></span>
     <p> <%= @weigh_in.weight %> </p>
     <p> <%= @weigh_in.status %> </p>
 </div>
@@ -35,8 +35,9 @@
   		<% @weigh_in.comments.each do |comment| %>
 			<div>
   			<%= comment.body %>
+  			Comment ID: <%= comment.id%>
   			<img src=<%= comment.user.profile_pic_url(:thumb) %> />
-  			by: <%= comment.user.name %> 
+  			by: <%= comment.user.name %> <%= link_to "Remove Comment", user_weigh_in_comment_path(:weigh_in_id => comment.weigh_in.id, :id => comment.id), method: :delete %>
 			</div>
 			<br>
   		<% end %>

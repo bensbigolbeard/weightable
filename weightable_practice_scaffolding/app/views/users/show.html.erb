@@ -76,7 +76,8 @@
 	                <span class="name"><%= @user.name %>
 	                <span class="time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
 	                <p> <%= weight.weight %> </p>
-	                <p> <%= weight.status %> </p>
+                  <p> <%= weight.status %> </p>
+	                <p> <%= button_to "show WeighIn", user_weigh_in_path(@user, weight), method: :get%> </p>
 	            </div>
 	    <% end %>
     </div>
