@@ -43,21 +43,24 @@
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
-<canvas id="myChart" width="400" height="400"></canvas>
+
+  <canvas id="myChart" width="400" height="400"></canvas>
+
+
 <div id="createWeighIn" >
-	  <h1>Post a weigh-in</h1>
-	    <p>
-	    	 <%= form_for [@user, @weigh_in] do |f| %>
-             <%= f.label :weight %>
-             <%= f.text_field :weight %><br />
+	<h1>Post a weigh-in</h1>
+    <p>
+      <%= form_for [@user, @weigh_in] do |f| %>
+        <%= f.label :weight %>
+        <%= f.text_field :weight %><br />
 
-             <%= f.label :status%>
-             <%= f.text_field :status %><br />
+        <%= f.label :status%>
+        <%= f.text_field :status %><br />
 
-             <%= f.submit "Weigh In!" %>
-           <% end %>
-	    </p>
-	</div>
+        <%= f.submit "Weigh In!" %>
+      <% end %>
+    </p>
+</div>
 
 
 	<div id="weighins">
