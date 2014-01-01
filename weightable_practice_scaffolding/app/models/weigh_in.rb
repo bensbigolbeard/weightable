@@ -3,4 +3,6 @@ class WeighIn < ActiveRecord::Base
 	belongs_to :user
 	validates :weight, presence: true
 	has_many :comments
+  has_many :wi_yeehaws
+  has_many :users, :through => :wi_yeehaws
 end

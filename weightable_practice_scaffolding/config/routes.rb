@@ -1,4 +1,5 @@
 WeightablePracticeScaffolding::Application.routes.draw do
+
   # get "comments/create"
   get "/search" => "users#search", as: "search"
   
@@ -10,6 +11,7 @@ WeightablePracticeScaffolding::Application.routes.draw do
   resources :users do
     resources :weigh_ins do
         resources :comments, only: [:create, :destroy]
+        resources :wi_yeehaws, only: [:create, :destroy]
     end
   end
 
