@@ -165,7 +165,7 @@ div {
 
     }
   }
-
+  
 }
 
 
@@ -187,7 +187,13 @@ div {
   
 }
  
-
+@media(min-width:767px){
+  form.navbar-search {
+    // fixes known problem in bootstrap 3 for chrome and safari where
+    // search bar spans entire nav container
+    width: 200px;
+  }
+}
 
 
 
