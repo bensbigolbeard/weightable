@@ -18,8 +18,21 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %><br><br>
 
-    <%= f.label :goal %><br>
-    <%= f.text_field :goal %><br><br>
+    <%= f.label "Current Goal" %>:
+    <%= @user.goal %>:<br>
+      <button type="button" class="btn btn-success collapse" data-toggle="collapse"  data-target="#goal" >Set a new goal?</button><br><br>
+    <div class="collapse in" id="goal">
+      <%= f.label "New Goal" %><br>
+      <%= f.text_field :goal %><br><br>
+    </div>
+    
+    <button type="button" class="btn btn-success collapse" data-toggle="collapse"  data-target="#goal-date" >Add goal date</button>
+    <br><br>
+
+    <div class="collapse in" id="goal-date">
+      <%= f.label :goal_date %><br>
+      <%= f.text_field :goal_date, :id=>"datepicker" %><br /><br>
+    </div>
 
     <%= f.label :profile_pic %><br>
     <%= f.file_field :profile_pic %><br><br>
