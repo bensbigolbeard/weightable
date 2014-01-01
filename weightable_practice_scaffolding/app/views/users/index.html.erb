@@ -3,7 +3,10 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
 <h1 id='header'>Lose weight the <span id="handwriting">Gus Chiggins</span> way.</h1>
-</div>
+
+<!-- Underline will get weird with scaling for mobile, will need to look into this further
+ <img id='underline' src="/index/underline.png"/> -->
+
 
 <div class="gus">
   <img src="/index/gus_chiggins.jpg"/>
@@ -14,7 +17,14 @@
 <div class="login">
   <h3>Log in to get started.</h3>
     <div class="login_form">
-      <!-- Need devise sign in form here -->
+      <%= form_for("user", :url => user_session_path) do |f| %>
+        <%= f.text_field :email %>
+        <%= f.password_field :password %>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+        <%= f.submit 'Sign in' %>
+        <%= link_to "Forgot your password?", new_password_path('user') %>
+      <% end %>
     </div>
 
   <h3>New to Weightable?</h3>
