@@ -18,10 +18,15 @@
   <h3>Log in to get started.</h3>
     <div class="login_form">
       <%= form_for("user", :url => user_session_path) do |f| %>
-        <%= f.text_field :email %>
-        <%= f.password_field :password %>
+        <div><%= f.label :email %><br />
+        <%= f.text_field :email, :autofocus => true %></div>
+
+        <div><%= f.label :password %><br />
+        <%= f.password_field :password %></div>
+        
         <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <%= f.label :remember_me %><br />
+        
         <%= f.submit 'Sign in' %>
         <%= link_to "Forgot your password?", new_password_path('user') %>
       <% end %>
