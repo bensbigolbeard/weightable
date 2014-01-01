@@ -53,7 +53,6 @@
 
   <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
 <% else %>
-<% binding.pry %>
 <div id="createWeighIn" >
   <h1>Post a weigh-in</h1>
     <p>
