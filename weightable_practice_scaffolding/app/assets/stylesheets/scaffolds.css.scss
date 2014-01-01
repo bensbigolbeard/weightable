@@ -47,7 +47,7 @@ navbar-brand {
   bottom-border: none;
 
   }
-
+  
 }
 
   @media(min-width:992px){
@@ -154,7 +154,7 @@ div {
 
 
 
-@media(min-width:768px){
+@media(min-width:912px){
 
   ul.nav.navbar-nav a{
     padding: 28px;
@@ -165,16 +165,16 @@ div {
 
     }
   }
-
+  
 }
 
 
-@media(max-width:767px){
+@media(max-width:911px){
 
    ul.nav.navbar-nav a{
       float: left;
       clear: both;
-      padding: 10px;
+      padding: 28px 0 0 28px;
       &:hover {
       color: #fff; 
       text-decoration: none;
@@ -187,7 +187,13 @@ div {
   
 }
  
-
+@media(min-width:767px){
+  form.navbar-search {
+    // fixes known problem in bootstrap 3 for chrome and safari where
+    // search bar spans entire nav container
+    width: 200px;
+  }
+}
 
 
 
