@@ -73,6 +73,9 @@ canvas#myChart {
 
 form.navbar-search {
   padding-top:23px;
+  // fixes known problem in bootstrap 3 for chrome and safari where
+  // search bar spans entire nav container
+  width: 200px;
 }
 
 button.navbar-toggle {
