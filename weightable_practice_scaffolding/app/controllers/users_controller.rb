@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     @weigh_in = WeighIn.new
     @weights = []
     @dates = []
+    @goal = []
 
   end
 

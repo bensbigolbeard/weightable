@@ -53,7 +53,6 @@
 
   <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
 <% else %>
-<% binding.pry %>
 <div id="createWeighIn" >
   <h1>Post a weigh-in</h1>
     <p>
@@ -78,7 +77,8 @@
     <div>
 	    <h1>Your Weigh-Ins</h1>
 	    <% @user.weigh_ins.each do |weight| %>
-	    <% @weights.unshift(weight.weight) %>
+      <% @weights.unshift(weight.weight) %>
+	    <% @goal.unshift(@user.goal) %>
 	    <% @dates.unshift((weight.created_at).strftime("%a")) %>
 	            <div class="weighinWrapper">
 	                <span class="name"><%= @user.name %>
@@ -113,11 +113,18 @@
     labels :  <%=raw @dates.length > 7 ? @dates[-7,7] : @dates %>,
     datasets : [
       {
-        fillColor : "rgba(0,255,0,0.3)",
+        fillColor : "rgba(0,240,0,0.3)",
         strokeColor : "rgba(255,93,0,.9)",
         pointColor : "rgba(51,51,51,1)",
         pointStrokeColor : "rgba(0,132,164,1)",
         data : <%= @weights.length > 7 ? @weights[-7,7] : @weights %>
+      },
+      {
+        fillColor : "rgba(255,0,0,0.3)",
+        strokeColor : "rgba(255,93,0,.9)",
+        pointColor : "rgba(51,51,51,1)",
+        pointStrokeColor : "rgba(0,132,164,1)",
+        data : <%= @weights.length > 7 ? @goal[-7,7] : @goal %>
       }
     ]
   }
