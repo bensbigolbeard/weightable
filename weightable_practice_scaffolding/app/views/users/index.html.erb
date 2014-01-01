@@ -1,16 +1,70 @@
 <!-- .friendships[0].friend.weigh_ins[0] - snippet for future feed enhancement -->
 
-<h1>Listing users</h1>
+<div id="header"><h1>Lose weight the <span id="handwriting">Gus Chiggins</span> way.</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="gus">
+  <img src="/index/gus_chiggins.jpg"/>
+  <p>Gus Chiggins</p>
+  <p>Weightable Founder & CEO</p>
+</div>
+
+<div class="login">
+  <h3>Log in to get started.</h3>
+    <div class="login_form">
+      <!-- Need devise sign in form here -->
+    </div>
+
+  <h3>New to Weightable?</h3>
+  <!-- Sign in with Facebook -->
+  <%= link_to(image_tag("/index/fb.png", :alt => "Sign-in with Facebook"), user_omniauth_authorize_path(:facebook)) %>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <tbody>
     <% if current_user %> 
@@ -42,8 +96,6 @@ Signed in as <%= current_user.name %>. Not you?
 <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
 <% else %>
 <%= link_to "Sign in", new_user_session_path %> <br> or
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> <br><br>
-New to weightable?
 
 <%= link_to "Sign up", new_user_registration_path %> 
 
