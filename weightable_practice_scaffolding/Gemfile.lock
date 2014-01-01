@@ -64,6 +64,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     fuzzily (0.3.1)
       activerecord (>= 2.3.17)
     hashie (2.0.5)
@@ -182,6 +184,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   figaro
+  font-awesome-rails
   fuzzily
   hirb
   jbuilder (~> 1.2)
