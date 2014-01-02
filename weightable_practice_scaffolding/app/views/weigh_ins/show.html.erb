@@ -1,7 +1,5 @@
 <h1>Weigh-In Detail Page</h1>
 
-
-
 <div class="weighinWrapper">
     <span class="name"><%= @weigh_in.user.name %>
     <span class="time">posted this weigh_in <%= time_ago_in_words(@weigh_in.created_at) %> ago and his id is <%= @weigh_in.user.id %> and the weigh_in_id is <%=@weigh_in.id%></span>
@@ -14,31 +12,27 @@
   
   <%= f.submit "Yeehaw!" %>
 <% end %>
+
 <p> <%= @wi_yeehaws %> </p>
 
 <h2>Comments section:</h2>
 
+<div id="createComment" >
+  <h3>Post a comment</h3>
+    <p>
+      <%= form_for [@user, @weigh_in, @comment] do |f| %>
+        <%= f.label :body %>
+        <%= f.text_area :body %><br />
 
-
-
-	<div id="createComment" >
-		  <h3>Post a comment</h3>
-		    <p>
-		    	 <%= form_for [@user, @weigh_in, @comment] do |f| %>
-	             <%= f.label :body %>
-	             <%= f.text_area :body %><br />
-
-	             <%= f.submit "Post comment!" %>
-	           <% end %>
-		    </p>
-		</div>
+        <%= f.submit "Post comment!" %>
+      <% end %>
+    </p>
+</div>
 
 	
+<div>
 	<div>
-
-		<div>
-
-  		<% @weigh_in.comments.each do |comment| %>
+		<% @weigh_in.comments.each do |comment| %>
 			<div>
   			<%= comment.body %>
   			Comment ID: <%= comment.id%>
@@ -49,13 +43,9 @@
   			<% end %>
 			</div>
 			<br>
-  		<% end %>
+		<% end %>
+	</div>
+</div>
 
-
-  		</div>
-
-
-  	</div>
-  
 
 
