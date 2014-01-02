@@ -11,11 +11,12 @@
   <tbody>
     <% for user in @users do %>
       <tr>
-        <td><%= user.name %></td>
+        <td><%= link_to "#{user.name}", user_path(user.id) %></td>
         <% if current_user.friends.include?(User.find(user.id)) %>
-        <td><%= link_to 'Remove friend', destroy_friendships_path( id: user.id), method: :delete %></td>
+        <td><%= button_to 'Remove friend', destroy_friendships_path( id: user.id), method: :delete %></td>
         <% else %>
-        <td><%= link_to 'Add friend', friendships_path( friend_id: user), method: :post %></td>
+
+        <td><%= button_to 'Add friend', friendships_path( friend_id: user), method: :post %></td>
         <% end %>
       </tr>
     <% end %>

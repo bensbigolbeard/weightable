@@ -102,11 +102,11 @@
 Signed in as <%= current_user.name %>. Not you?
 <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
 <% end %>
-<% if current_user %>
+<% unless current_user && current_user.weigh_ins %>
   <%= render 'initial_info_modal' %>
-<% end %>
 <script type='text/javascript'>
   $(document).on('ready', function(e){
     $('#myModal').modal();
   });
 </script>
+<% end %>
