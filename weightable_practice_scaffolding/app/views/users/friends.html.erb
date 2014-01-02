@@ -12,7 +12,7 @@
     <% if current_user %> 
       <% @user.friendships.each do |friendship| %>
         <tr>
-          <td><%= friendship.friend.name %></td>
+          <td><%= link_to "#{friendship.friend.name}", user_path(friendship.friend.id) %></td>
         </tr>
       <% end %>
     <% end %>
