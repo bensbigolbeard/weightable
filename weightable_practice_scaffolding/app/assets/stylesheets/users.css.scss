@@ -14,4 +14,57 @@ td {
 .progress-container {
 	display: inline-block;
 	width: 60%;
+
+#handwriting {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2em;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2em;
+}
+
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2em;
+}
+
+.gus {
+  width: 50%;
+  text-align: center;
+}
+
+.newToWeightable {
+  display: inline;
+}
+
+
+
+.breaker {
+  clear: both;
+}
+
+.testimonial p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.testimonial {
+  width: 320px;
+  height: 227px;
+  background-color: white;
+  margin: 25px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.testimonial_picture {
+  margin-right: 10px;
+  display: block;
+  float: left;
+}
+
+.footer {
+  background-color: #283742;
+  height: 600px;
 }
