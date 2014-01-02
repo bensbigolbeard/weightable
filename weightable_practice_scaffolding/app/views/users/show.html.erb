@@ -40,8 +40,12 @@
 </p>
  		 <%= @user.weigh_ins.size %> Weigh-Ins     |     
        
-        <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br><br>
-<span class="goal">My Target Weight: <%= @user.goal %>lbs.</span>
+      <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br><br>
+<div class="progress-container">
+  <span class="recent-weight">START: <%= @user.weigh_ins.last.weight %>lbs.</span>
+  <div id="progressbar"></div>
+<span class="goal">FINISH: <%= @user.goal %>lbs.</span>
+</div>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
@@ -49,7 +53,7 @@
   <canvas id="myChart" width="400" height="400"></canvas>
 
 
-<% if @user.weigh_ins.last.created_at + 24*60*60 > Time.now %>
+<% if @user.weigh_ins.first.created_at + 24*60*60 < Time.now %>
 
   <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
 <% else %>
@@ -134,3 +138,9 @@
 
   myNewChart = new Chart($("#myChart").get(0).getContext("2d")).Line(data,options)
 });</script>
+
+<script>
+$( "#progressbar" ).progressbar({
+  value: <%=@progress%>
+});
+</script>

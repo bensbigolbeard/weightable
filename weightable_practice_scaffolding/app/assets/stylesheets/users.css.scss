@@ -5,3 +5,13 @@ td {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+#progressbar div {
+	background: green;
+	height: 29px;
+}
+
+.progress-container {
+	display: inline-block;
+	width: 60%;
+}

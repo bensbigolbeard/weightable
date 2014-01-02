@@ -19,7 +19,7 @@ class WeighInsController < ApplicationController
 	end
 
 	def create
-		@user= User.find(params[:id])
+		@user= User.find(params[:user_id])
 	  @weigh_in = @user.weigh_ins.create(weigh_in_params)
 	  @weigh_in.user_id = current_user.id
 	  if @weigh_in.save
