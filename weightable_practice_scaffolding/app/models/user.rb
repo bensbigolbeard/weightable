@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 	has_many :weigh_ins
 	has_many :comments
 	has_many :wi_yeehaws
-	# has_many :weigh_ins, :through => :wi_yeehaws
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -45,5 +44,9 @@ class User < ActiveRecord::Base
 	
 	def self.search(search)
     User.find_by_fuzzy_name(search, :limit=> 10)
+  end
+
+  def sorted_comments
+    weight.comments.sort_by &:created_at
   end
 end

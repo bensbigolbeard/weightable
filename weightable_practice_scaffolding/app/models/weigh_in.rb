@@ -4,5 +4,7 @@ class WeighIn < ActiveRecord::Base
 	validates :weight, presence: true
 	has_many :comments
   has_many :wi_yeehaws
-  # has_many :users, :through => :wi_yeehaws
+
+  # scope :recent, :limit => 25, :order => 'created_at DESC'
+
 end

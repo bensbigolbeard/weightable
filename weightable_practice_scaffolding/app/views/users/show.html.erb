@@ -3,7 +3,7 @@
 <script src="Chart.js"></script>
 
 <div class="row">
-  <div class="lg-col-4">
+  <div class="col-lg-4">
     <strong>Name:</strong>
     <%= @user.name %>
     <% if @user.profile_pic_url %>
@@ -40,8 +40,9 @@
     <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br><br>
   </div>
 </div>
+
 <div class="row">
-  <div class="lg-col-6">
+  <div class="col-lg-10">
     <div class="progress-container">
       <span class="recent-weight">START: <%= @user.weigh_ins.last.weight %>lbs.</span>
       <div id="progressbar"></div>
@@ -53,7 +54,7 @@
 </div>
 
 <div class="row">
-  <div class="lg-col-6">
+  <div class="col-sm-8 col-md-8">
     <canvas id="myChart" width="400" height="400"></canvas>
 
     <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
@@ -76,65 +77,11 @@
     <%end%>
   </div>
    
-
-	
-  <div class="lg-col-6">  
-  	<div class="panel">
-      <h1>Your Weigh-Ins</h1>
-      <% counter = 0 %>
-      <% @user.weigh_ins.each do |weight| %>
-        <% @weights.unshift(weight.weight) %>
-  	    <% @goal.unshift(@user.goal) %>
-  	    <% @dates.unshift((weight.created_at).strftime("%a")) %>
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <%= button_to "show WeighIn", user_weigh_in_path(@user, weight), method: :get, :class=>"pull-right" %>
-              <h4 class="panel-title inline">
-                <span class="name"><%= @user.name %></span>
-                <span class="time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
-              </h4>
-              <span>Weigh-In:<%= weight.weight %>lbs</span>
-              <span>Yeehaws!: <%= weight.wi_yeehaws.count %></span>
-              <span>Message:<%= weight.status %></span>
-              <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= counter %>">Click for comments</a>
-
-            </div>
-          </div>
-        </div>
-        <div id="collapse<%= counter %>" class="panel-collapse collapse">
-          <div class="panel-body">
-            <% weight.comments[0..2].each do |comment| %>
-            <div class="row">
-              <div class="lg-col-2">
-                <img class="push-left" src=<%= comment.user.profile_pic_url(:thumb) %> />
-                by: <%= comment.user.name %> 
-              </div>
-              <div class="lg-col-10">  
-                <%= comment.body %>
-                Comment ID: <%= comment.id%>
-                
-              </div>
-            </div>
-            <% end %>
-            <div id="createComment" >
-              <h3>Post a comment</h3>
-                <p>
-                  <%= form_for [@user, @weigh_in, @comment], :url=> user_weigh_in_comments_path(:user_id=> current_user.id, :weigh_in_id=> weight.id), :class=>"form-inline" do |f| %>
-                    <%= f.label :body %>
-                    <%= f.text_area :body %><br />
-
-                    <%= f.submit "Post comment!", :class=>"btn inline" %>
-                  <% end %>
-                </p>
-            </div>
-          </div>
-        </div>
-      <% counter+=1 %>
-      <% end %>
-    </div>
+  <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-4"> 
+    <%= render 'show_wi_feed' %> 
   </div>
 </div>
+
 	<script type="text/javascript">
   
 

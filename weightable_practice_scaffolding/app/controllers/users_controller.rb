@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @users = User.all
     @weigh_in = WeighIn.new
     @comment = Comment.new
     @weights = []

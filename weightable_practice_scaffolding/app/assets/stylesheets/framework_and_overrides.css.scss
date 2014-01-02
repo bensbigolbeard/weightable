@@ -82,5 +82,66 @@ button.navbar-toggle {
 
 //Rounds the left-hand corners of search bar
 .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child), .input-group .form-control:not(:first-child):not(:last-child) {
-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.profile-weigh-ins {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 2px solid #dddddd;
+  margin: 40px 0 8px 0;
+  background-color: white;
+  padding-left: 20px;
+}
+
+.yeehaws-panel {
+  background-color: #4ec67c;
+  border: 2px solid #4ca16c;
+  border-radius: 0 !important;
+  height: 65px;
+  margin-left:2px;
+  margin-right:2px;
+}
+
+.comments-panel {
+  background-color: #dbd7d6;
+  border: 2px solid #c1bcb8;
+  margin-left:2px;
+  margin-right:2px;
+}
+
+hr {
+  margin-top:7px;
+  margin-bottom:7px;
+}
+
+.panel-body.com-panel-body {
+  padding:7px 0 0 7px;
+
+}
+
+.wi_comment_btn {
+  margin-top: -10px;
+  margin-bottom: 7px;
+  text-align: center;
+  
+}
+
+.btn-success {
+    background-color: #4ec67c;
+    border-color: #4ca16c; 
+}
+
+.yeehaw-text {
+  padding: 5px;
+  margin: 0;
+  color: white;
+  &:first-child {
+    font-size:2em;
+  }
+}
+
+.fa-thumbs-up {
+  color: white;
 }
