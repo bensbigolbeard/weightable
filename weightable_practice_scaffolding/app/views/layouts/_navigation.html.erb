@@ -1,13 +1,9 @@
 <%# navigation styled for Bootstrap 3.0 %>
 <%= javascript_tag "var autocomplete_items =  #{ @autocomplete_items.to_json };" %>
 
-nav class=
-
-
-
-
-
-<nav class="navbar navbar-default" role="navigation">
+<!-- Here be dragonss -->
+<div class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default container" role="navigation">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="sr-only">Toggle navigation</span>
@@ -31,6 +27,7 @@ nav class=
       </ul>
      </div>
   </nav>
+</div>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         $('#search').autocomplete({source: autocomplete_items});
