@@ -1,99 +1,131 @@
 <% require "date" %>
-<% require "pry" %>
-
-
 
 <script src="Chart.js"></script>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-  <% if @user.profile_pic_url %>
-    <img class="profile-pic clearfix" src=<%= @user.profile_pic_url(:medium) %> />
-  <% else %>
-    <div class="no-image-wrapper">
-      <%= form_for(@user) do |f| %>
-        <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="row">
+  <div class="lg-col-4">
+    <strong>Name:</strong>
+    <%= @user.name %>
+    <% if @user.profile_pic_url %>
+      <img class="profile-pic clearfix" src=<%= @user.profile_pic_url(:medium) %> />
+    <% else %>
+      <div class="no-image-wrapper">
+        <%= form_for(@user) do |f| %>
+          <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-            <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
+              <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+
+            <%= f.label :profile_pic %><br>
+            <%= f.file_field :profile_pic, :required => true %><br><br>
+
+          </div>
+          <div class="actions">
+            <%= f.submit %>
           </div>
         <% end %>
-
-        <div class="field">
-
-          <%= f.label :profile_pic %><br>
-          <%= f.file_field :profile_pic, :required => true %><br><br>
-
-        </div>
-        <div class="actions">
-          <%= f.submit %>
-        </div>
-      <% end %>
       <% end %>
     </div>
-</p>
- 		 <%= @user.weigh_ins.size %> Weigh-Ins     |     
-       
-      <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br><br>
-<div class="progress-container">
-  <span class="recent-weight">START: <%= @user.weigh_ins.last.weight %>lbs.</span>
-  <div id="progressbar"></div>
-<span class="goal">FINISH: <%= @user.goal %>lbs.</span>
+  
+ 		<span><%= @user.weigh_ins.size %> Weigh-Ins |</span>     
+    <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br><br>
+  </div>
 </div>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
-
-  <canvas id="myChart" width="400" height="400"></canvas>
-
-
-<% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
-
-  <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
-<% else %>
-<div id="createWeighIn" >
-  <h1>Post a weigh-in</h1>
-    <p>
-      <%= form_for [@user, @weigh_in] do |f| %>
-        <%= f.label :weight %>
-        <%= f.text_field :weight %><br />
-
-        <%= f.label :status%>
-        <%= f.text_field :status %><br />
-
-        <%= f.submit "Weigh In!" %>
-      <% end %>
-    </p>
-</div>
-<%end%>
-
-
-	<div id="weighins">
-	    
-	</div>
-	<div class="panel left">
-    <div>
-	    <h1>Your Weigh-Ins</h1>
-	    <% @user.weigh_ins.each do |weight| %>
-      <% @weights.unshift(weight.weight) %>
-	    <% @goal.unshift(@user.goal) %>
-	    <% @dates.unshift((weight.created_at).strftime("%a")) %>
-	            <div class="weighinWrapper">
-	                <span class="name"><%= @user.name %>
-	                <span class="time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
-	                <p> <%= weight.weight %> </p>
-                  <p> <%= weight.status %> </p>
-	                <p> <%= button_to "show WeighIn", user_weigh_in_path(@user, weight), method: :get%> </p>
-	            </div>
-	    <% end %>
+<div class="row">
+  <div class="lg-col-6">
+    <div class="progress-container">
+      <span class="recent-weight">START: <%= @user.weigh_ins.last.weight %>lbs.</span>
+      <div id="progressbar"></div>
+      <span class="goal">FINISH: <%= @user.goal %>lbs.</span>
     </div>
-	</div>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+ </div>
+</div>
+
+<div class="row">
+  <div class="lg-col-6">
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+    <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
+      <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
+    <% else %>
+      <div id="createWeighIn" >
+        <h1>Post a weigh-in</h1>
+          <p>
+            <%= form_for [@user, @weigh_in] do |f| %>
+              <%= f.label :weight %>
+              <%= f.text_field :weight %><br />
+
+              <%= f.label :status%>
+              <%= f.text_field :status %><br />
+
+              <%= f.submit "Weigh In!" %>
+            <% end %>
+          </p>
+      </div>
+    <%end%>
+  </div>
+   
+
+	
+  <div class="lg-col-6">  
+  	<div class="panel">
+      <h1>Your Weigh-Ins</h1>
+      <% counter = 0 %>
+      <% @user.weigh_ins.each do |weight| %>
+        <% @weights.unshift(weight.weight) %>
+  	    <% @goal.unshift(@user.goal) %>
+  	    <% @dates.unshift((weight.created_at).strftime("%a")) %>
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <%= button_to "show WeighIn", user_weigh_in_path(@user, weight), method: :get, :class=>"pull-right" %>
+              <h4 class="panel-title inline">
+                <span class="name"><%= @user.name %></span>
+                <span class="time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
+              </h4>
+              <span>Weigh-In:<%= weight.weight %>lbs</span>
+              <span>Yeehaws!: <%= weight.wi_yeehaws.count %></span>
+              <span>Message:<%= weight.status %></span>
+              <a class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= counter %>">Click for comments</a>
+
+            </div>
+          </div>
+        </div>
+        <div id="collapse<%= counter %>" class="panel-collapse collapse">
+          <div class="panel-body">
+            
+
+            <% weight.comments[0..2].each do |comment| %>
+            <div class="row">
+              <div class="lg-col-2">
+                <img class="push-left" src=<%= comment.user.profile_pic_url(:thumb) %> />
+                by: <%= comment.user.name %> 
+              </div>
+              <div class="lg-col-10">  
+                <%= comment.body %>
+                Comment ID: <%= comment.id%>
+                
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <% counter+=1 %>
+      <% end %>
+    </div>
+  </div>
+</div>
 	<script type="text/javascript">
   
 
