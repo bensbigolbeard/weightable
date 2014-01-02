@@ -23,7 +23,7 @@ td {
 
 h1 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 2em;
+  font-size: 2.5em;
 }
 
 h3 {
@@ -43,6 +43,7 @@ h3 {
   margin-right: 10px;
   font-size: 1.25em;
   font-family: 'Open Sans', sans-serif;
+  margin-top: 5px;
 }
 
 .newToWeightable {
@@ -72,6 +73,10 @@ h3 {
   margin-right: 10px;
   display: block;
   float: left;
+}
+
+.testimonial_text {
+  font-size: 1.45em;
 }
 
 .footer {
