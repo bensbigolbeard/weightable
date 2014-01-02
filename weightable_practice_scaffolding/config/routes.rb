@@ -11,7 +11,6 @@ WeightablePracticeScaffolding::Application.routes.draw do
   resources :users do
     resources :weigh_ins do
         resources :comments, only: [:create, :destroy]
-        resources :wi_yeehaws, only: [:create, :destroy]
     end
   end
 
@@ -22,6 +21,9 @@ WeightablePracticeScaffolding::Application.routes.draw do
   
   post "/user" => "friendships#create", as: "friendships"
   delete "/user" => "friendships#destroy", as: "destroy_friendships"
+  
+  post "/wi_yeehaw" => "wi_yeehaws#create", as: "wi_yeehaw"
+  delete "/wi_yeehaw" => "wi_yeehaws#destroy", as: "destroy_wi_yeehaw"
 
   
 
