@@ -19,3 +19,32 @@ td {
 .newToWeightable {
   display: inline;
 }
+
+.breaker {
+  clear: both;
+}
+
+.testimonial p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+}
+
+.testimonial {
+  width: 300px;
+  height: 227px;
+  background-color: white;
+  margin: 25px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.testimonial_picture {
+  margin-right: 10px;
+  display: block;
+  float: left;
+}
+
+.footer {
+  background-color: #283742;
+  height: 600px;
+}

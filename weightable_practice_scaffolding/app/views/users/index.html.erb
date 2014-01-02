@@ -45,15 +45,30 @@
   <h3>New to Weightable?</h3>
   <!-- Sign in with Facebook -->
   <%= link_to(image_tag("/index/fb.png", :alt => "Sign-in with Facebook", :class => "newToWeightable"), user_omniauth_authorize_path(:facebook)) %>
-  <p>or</p>
+  or
   <%= link_to(image_tag("/index/register.png", :alt => "Create a Weightable Account", :class => "newToWeightable"), new_user_registration_path) %>
 </div>
 
+<div class="breaker">
+  
+</div>
 
+<h1>What Real People Are Saying</h1>
+<div class="testimonial">
+<img class="testimonial_picture" src="/index/testimonial-left.png" />
+  <p>“Gus Chiggins and his Weightable system helped keep me accountable with my New Year’s Resolution.”
+  </p>
+</div>
 
+<div class="testimonial">
+<img class="testimonial_picture" src="/index/testimonial-middle.png" />
+  <p>“As a personal trainer, Gus Chiggins’ Weightable social network is a way for me to help my clients meet their fitness goals.”</p>
+</div>
 
-
-
+<div class="testimonial">
+<img class="testimonial_picture" src="/index/testimonial-right.png" />
+  <p>“With his patent-pending Weightable social network, Gus Chiggins has revolutionized weightloss first hand.”</p>
+</div>
 
 
 
@@ -91,11 +106,6 @@
 <% if user_signed_in? %>
 Signed in as <%= current_user.name %>. Not you?
 <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
-<% else %>
-<%= link_to "Sign in", new_user_session_path %> <br> or
-
-<%= link_to "Sign up", new_user_registration_path %> 
-
 <% end %>
 <% if current_user %>
   <%= render 'initial_info_modal' %>

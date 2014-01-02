@@ -3,12 +3,12 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-#Use Nested forms to handle sending info from one form to multiple controllers
+# Use Nested forms to handle sending info from one form to multiple controllers
 gem "nested_form"
 
 gem 'seed_dump'
 
-#Use Fuzzily to create fuzzy search of users
+# Use Fuzzily to create fuzzy search of users
 gem 'fuzzily'
 
 # Use CarrierWave to upload images
@@ -17,7 +17,7 @@ gem 'carrierwave'
 # Use RMagick to manipulate images
 gem 'rmagick'
 
-#Twitter User Interface jQuery plugin
+# Twitter User Interface jQuery plugin
 gem 'jquery-ui-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -75,7 +75,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-#Used for adding FontAwesome Icons to Rails project
+# Use for adding FontAwesome Icons to Rails project
 gem 'font-awesome-rails'
 
 # Use ActiveModel has_secure_password
