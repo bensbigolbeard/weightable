@@ -11,45 +11,47 @@
 
 <div class="gus">
   <img src="/index/gus_chiggins.jpg"/>
-  <p>Gus Chiggins</p>
-  <p>Weightable Founder & CEO</p>
+  <p>Gus Chiggins<br />
+    Weightable Founder & CEO
+  </p>
+  <div class="info">
+    <h3>Weightable is:</h3>
+      <ul>
+        <li class="fa fa-check">Results Oriented</li><br />
+        <li class="fa fa-check">Socially Connected</li><br />
+        <li class="fa fa-check">Accountability Focused</li><br />
+      </ul>
+  </div>
 </div>
 
-<div class="info">
-<h3>Weightable is:</h3>
-<ul>
-  <li class="fa fa-check">Results Oriented</li><br />
-  <li class="fa fa-check">Socially Connected</li><br />
-  <li class="fa fa-check">Accountability Focused</li><br />
-</ul>
+
+<div class="user">
+  <div class="login">
+    <h3>Log in to get started.</h3>
+      <div class="login_form">
+        <%= form_for("user", :url => user_session_path) do |f| %>
+          <div><%= f.label :email %><br />
+          <%= f.text_field :email, :autofocus => true %></div>
+
+          <div><%= f.label :password %><br />
+          <%= f.password_field :password %></div>
+          
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %><br />
+
+          <%= f.submit 'Sign in', class: "sign-in-button" %>
+
+          <%= link_to "Forgot your password?", new_password_path('user') %>
+        <% end %>
+      </div>
+
+    <h3>New to Weightable?</h3>
+    <!-- Sign in with Facebook -->
+    <%= link_to(image_tag("/index/fb.png", :alt => "Sign-in with Facebook", :class => "newToWeightable"), user_omniauth_authorize_path(:facebook)) %>
+    or
+    <%= link_to(image_tag("/index/register.png", :alt => "Create a Weightable Account", :class => "newToWeightable"), new_user_registration_path) %>
+  </div>
 </div>
-
-<div class="login">
-  <h3>Log in to get started.</h3>
-    <div class="login_form">
-      <%= form_for("user", :url => user_session_path) do |f| %>
-        <div><%= f.label :email %><br />
-        <%= f.text_field :email, :autofocus => true %></div>
-
-        <div><%= f.label :password %><br />
-        <%= f.password_field :password %></div>
-        
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %><br />
-
-        <%= f.submit 'Sign in', class: "sign-in-button" %>
-
-        <%= link_to "Forgot your password?", new_password_path('user') %>
-      <% end %>
-    </div>
-
-  <h3>New to Weightable?</h3>
-  <!-- Sign in with Facebook -->
-  <%= link_to(image_tag("/index/fb.png", :alt => "Sign-in with Facebook", :class => "newToWeightable"), user_omniauth_authorize_path(:facebook)) %>
-  or
-  <%= link_to(image_tag("/index/register.png", :alt => "Create a Weightable Account", :class => "newToWeightable"), new_user_registration_path) %>
-</div>
-
 <div class="breaker">
   
 </div>
@@ -57,7 +59,7 @@
 <h1>What Real People Are Saying</h1>
 <div class="testimonial">
 <img class="testimonial_picture" src="/index/testimonial-left.png" />
-  <p>“Gus Chiggins and his Weightable system helped keep me accountable with my New Year’s Resolution.”
+  <p>“Gus Chiggins and his Weightable system helped keep me accountable to my New Year’s Resolution.”
   </p>
 </div>
 
@@ -71,32 +73,24 @@
   <p>“With his patent-pending Weightable social network, Gus Chiggins has revolutionized weightloss first hand.”</p>
 </div>
 
-
-
-
-
-
-
-
-
   <tbody>
-    <% if current_user %> 
+     <% if current_user %> 
       <% counter = 0 %>
-      <% while counter < 4 %>
-        <% @user.friendships.each do |friendship| %>
-          <% if counter < friendship.friend.weigh_ins.count %>
-            <tr>
-              <td><%= friendship.friend.name %></td>
-              <td>Pounds to go:<%= (friendship.friend.weigh_ins[counter].weight - friendship.friend.goal) %></td>
-              <% if friendship.friend.weigh_ins.count > 1 %>
-                <td>Progress since first check-in:<%= ((friendship.friend.weigh_ins[counter-1].weight.to_f / friendship.friend.weigh_ins[counter].weight.to_f) * 100 - 100).round(2) %>%</td>
-              <% end %>
-              <td>Progress toward goal:<%= ((friendship.friend.weigh_ins[counter].weight.to_f / friendship.friend.goal.to_f) * 100 - 100).round(2) %>%</td>
-              <td><%= friendship.friend.weigh_ins[counter].status %></td>
-            </tr>
+        <% while counter < 4 %>
+          <% @user.friendships.each do |friendship| %>
+            <% if counter < friendship.friend.weigh_ins.count %>
+              <tr>
+                <td><%= friendship.friend.name %></td>
+                <td>Pounds to go:<%= (friendship.friend.weigh_ins[counter].weight - friendship.friend.goal) %></td>
+                <% if friendship.friend.weigh_ins.count > 1 %>
+                  <td>Progress since first check-in:<%= ((friendship.friend.weigh_ins[counter-1].weight.to_f / friendship.friend.weigh_ins[counter].weight.to_f) * 100 - 100).round(2) %>%</td>
+                <% end %>
+                <td>Progress toward goal:<%= ((friendship.friend.weigh_ins[counter].weight.to_f / friendship.friend.goal.to_f) * 100 - 100).round(2) %>%</td>
+                <td><%= friendship.friend.weigh_ins[counter].status %></td>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      <% counter+=1 %>
+        <% counter+=1 %>
       <% end %>
     <% end %>
   </tbody>
