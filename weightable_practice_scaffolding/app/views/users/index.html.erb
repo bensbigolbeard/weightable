@@ -3,13 +3,13 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-<h1 id='header'>Lose weight the <span id="handwriting"><u>Gus Chiggins</u></span> way.</h1>
-
-<!-- Underline will get weird with scaling for mobile, will need to look into this further
+<div class="col-md-12">
+  <h1 id='header'>Lose weight the <span id="handwriting"><u>Gus Chiggins</u></span> way.</h1>
+</div>
+<!-- Underline graphic under "Gus Chiggins" will get weird with scaling for mobile, will need to look into this further
  <img id='underline' src="/index/underline.png"/> -->
 
-
-<div class="gus">
+<div class="gus col-md-5">
   <img src="/index/gus_chiggins.jpg"/>
   <p>Gus Chiggins<br />
     Weightable Founder & CEO
@@ -24,8 +24,10 @@
   </div>
 </div>
 
+<div class="col-md-2">
+</div>
 
-<div class="user">
+<div class="user col-md-5">
   <div class="login">
     <h3>Log in to get started.</h3>
       <div class="login_form">
@@ -52,23 +54,25 @@
     <%= link_to(image_tag("/index/register.png", :alt => "Create a Weightable Account", :class => "newToWeightable"), new_user_registration_path) %>
   </div>
 </div>
+
 <div class="breaker">
-  
 </div>
 
-<h1>What Real People Are Saying</h1>
-<div class="testimonial">
+<div class="col-md-12">
+  <h1>What Real People Are Saying</h1>
+</div>
+<div class="testimonial col-md-4">
 <img class="testimonial_picture" src="/index/testimonial-left.png" />
   <p>“Gus Chiggins and his Weightable system helped keep me accountable to my New Year’s Resolution.”
   </p>
 </div>
 
-<div class="testimonial">
+<div class="testimonial col-md-4">
 <img class="testimonial_picture" src="/index/testimonial-middle.png" />
   <p>“As a personal trainer, Gus Chiggins’ Weightable social network is a way for me to help my clients meet their fitness goals.”</p>
 </div>
 
-<div class="testimonial">
+<div class="testimonial col-md-4">
 <img class="testimonial_picture" src="/index/testimonial-right.png" />
   <p>“With his patent-pending Weightable social network, Gus Chiggins has revolutionized weightloss first hand.”</p>
 </div>
