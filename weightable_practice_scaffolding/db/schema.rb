@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101215737) do
+ActiveRecord::Schema.define(version: 20140101223835) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -77,5 +77,15 @@ ActiveRecord::Schema.define(version: 20140101215737) do
     t.text     "status"
     t.datetime "date"
   end
+
+  create_table "wi_yeehaws", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "weigh_in_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wi_yeehaws", ["user_id"], name: "index_wi_yeehaws_on_user_id"
+  add_index "wi_yeehaws", ["weigh_in_id"], name: "index_wi_yeehaws_on_weigh_in_id"
 
 end

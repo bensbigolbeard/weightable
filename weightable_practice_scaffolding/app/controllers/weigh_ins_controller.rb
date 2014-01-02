@@ -5,6 +5,8 @@ class WeighInsController < ApplicationController
 	  @weigh_in = WeighIn.find(params[:id])
 	  @weigh_ins = @user.weigh_ins
 	  @comment = Comment.new
+	  @wi_yeehaw = WiYeehaw.new
+	  @wi_yeehaws = WiYeehaw.find_all_by_weigh_in_id(params[:id]).count
 	end
 
 	def index

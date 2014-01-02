@@ -1,4 +1,5 @@
 WeightablePracticeScaffolding::Application.routes.draw do
+
   # get "comments/create"
   get "/search" => "users#search", as: "search"
   
@@ -20,6 +21,9 @@ WeightablePracticeScaffolding::Application.routes.draw do
   
   post "/user" => "friendships#create", as: "friendships"
   delete "/user" => "friendships#destroy", as: "destroy_friendships"
+  
+  post "/wi_yeehaw" => "wi_yeehaws#create", as: "wi_yeehaw"
+  delete "/wi_yeehaw" => "wi_yeehaws#destroy", as: "destroy_wi_yeehaw"
 
   
 
