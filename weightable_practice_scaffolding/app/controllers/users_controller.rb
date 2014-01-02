@@ -35,9 +35,17 @@ class UsersController < ApplicationController
     @dates = []
     @goal = []
     recent_weight = @user.weigh_ins.first.weight
+
     original_weight = @user.weigh_ins.last.weight
-    @progress = (recent_weight-@user.goal)/(original_weight-@user.goal).to_f*100
-    @progress < 0 ? @progress = 100 : @progress
+    @progress = (recent_weight - @user.goal)/(original_weight - @user.goal).to_f*100
+    if @progress < 0
+       @progress = 100 
+    elsif @progress > 100
+      @progress = 0
+    else
+      @progress
+    end
+
   end
 
   def search
