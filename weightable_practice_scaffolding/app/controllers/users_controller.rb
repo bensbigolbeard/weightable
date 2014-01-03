@@ -26,6 +26,29 @@ class UsersController < ApplicationController
     
   end
 
+  def feed
+    @autocomplete_items = []
+    @users = User.all
+    @users.each do |user|
+      @autocomplete_items << 
+        {
+          id:     user.name, 
+          value:  user.name,
+          label: user.name
+        }
+    end 
+
+    if current_user
+      @user = current_user
+    else 
+      @user= User.new(name:"Guest")
+    end
+
+    @weigh_in = @user.weigh_ins.new
+    @weigh_ins = @user.weigh_ins
+    
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

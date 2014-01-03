@@ -76,28 +76,7 @@
   <p class="testimonial_text">“With his patent-pending Weightable social network, Gus Chiggins has revolutionized weightloss first hand.”</p>
 </div>
 
-  <tbody>
-     <% if current_user %> 
-      <% counter = 0 %>
-        <% while counter < 4 %>
-          <% @user.friendships.each do |friendship| %>
-            <% if counter < friendship.friend.weigh_ins.count %>
-              <tr>
-                <td><%= friendship.friend.name %></td>
-                <td>Pounds to go:<%= (friendship.friend.weigh_ins[counter].weight - friendship.friend.goal) %></td>
-                <% if friendship.friend.weigh_ins.count > 1 %>
-                  <td>Progress since first check-in:<%= ((friendship.friend.weigh_ins[counter-1].weight.to_f / friendship.friend.weigh_ins[counter].weight.to_f) * 100 - 100).round(2) %>%</td>
-                <% end %>
-                <td>Progress toward goal:<%= ((friendship.friend.weigh_ins[counter].weight.to_f / friendship.friend.goal.to_f) * 100 - 100).round(2) %>%</td>
-                <td><%= friendship.friend.weigh_ins[counter].status %></td>
-              </tr>
-            <% end %>
-          <% end %>
-        <% counter+=1 %>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+  
 
 <br>
 
@@ -105,11 +84,4 @@
 Signed in as <%= current_user.name %>. Not you?
 <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
 <% end %>
-<% unless current_user && current_user.weigh_ins %>
-  <%= render 'initial_info_modal' %>
-<script type='text/javascript'>
-  $(document).on('ready', function(e){
-    $('#myModal').modal();
-  });
-</script>
-<% end %>
+
