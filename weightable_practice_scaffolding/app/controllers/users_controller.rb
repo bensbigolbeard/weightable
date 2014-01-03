@@ -83,7 +83,7 @@ class UsersController < ApplicationController
       @record_weight_status = "Normal Weight"
     when 25.0..29.9
       @record_weight_status = "Overweight"
-    when
+    when 30.0..100
       @record_weight_status = "Obese"
     else 
       @record_weight_status = "Not Valid"
