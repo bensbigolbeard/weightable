@@ -7,6 +7,7 @@ WeightablePracticeScaffolding::Application.routes.draw do
   root "users#index"
   
   get "/users/all" => "users#all_users", as: "all_users"
+  get "/feed" => "users#feed", as: "feed"
   get "/friends" => "users#friends", as: "friends"
   resources :users do
     resources :weigh_ins do
