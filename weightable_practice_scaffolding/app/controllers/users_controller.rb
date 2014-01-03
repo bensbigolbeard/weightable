@@ -72,6 +72,9 @@ class UsersController < ApplicationController
     # BMI is calculated by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
     @bmi = (@user.weigh_ins.last.weight/(((@user.height_in_feet*12)+@user.height_in_inches)**2))*703
 
+    #Calculate lowest weigh in, aka record weight
+    @record_weight = @user.weigh_ins.minimum("weight")
+
   end
 
   def search
