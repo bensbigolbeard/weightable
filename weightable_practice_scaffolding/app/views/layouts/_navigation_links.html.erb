@@ -2,14 +2,11 @@
 
 <% if user_signed_in? %>
   <%= content_tag(:li, link_to("Me", current_user)) %>
-  <%= content_tag(:li, link_to("Feed", root_path )) %>
+  <%= content_tag(:li, link_to("Feed", feed_path )) %>
   <%= content_tag(:li, link_to("Friends", friends_path)) %>
   <%= content_tag(:li, link_to("Settings", edit_user_registration_path)) %>
   <%= content_tag(:li, link_to("Logout", destroy_user_session_path, method: "delete")) %>
 
 <% else %>
-        <li><%= link_to "About" %></li> <br>
-        
-
-
+  <li class="navbar-right"><%= link_to "About" %></li> <br>      
 <% end %>

@@ -23,7 +23,7 @@ td {
 
 h1 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 2em;
+  font-size: 2.5em;
 }
 
 h3 {
@@ -36,11 +36,21 @@ h3 {
   text-align: center;
 }
 
-.newToWeightable {
-  display: inline;
+.list {
+  text-align: left;
+  width: 40%;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1.25em;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 5px;
 }
 
+.newToWeightable {
+  display: inline;
+  margin-top: 20px;
 
+}
 
 .breaker {
   clear: both;
@@ -63,6 +73,10 @@ h3 {
   margin-right: 10px;
   display: block;
   float: left;
+}
+
+.testimonial_text {
+  font-size: 1.45em;
 }
 
 .footer {
