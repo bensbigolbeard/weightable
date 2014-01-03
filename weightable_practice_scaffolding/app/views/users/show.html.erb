@@ -2,90 +2,104 @@
 
 <script src="Chart.js"></script>
 
-<div class="row">
-  <div class="lg-col-4">
-    <strong>Name:</strong>
-    <%= @user.name %>
-    <% if @user.profile_pic_url %>
-      <img class="profile-pic clearfix" src=<%= @user.profile_pic_url(:medium) %> />
-    <% else %>
-      <div class="no-image-wrapper">
-        <%= form_for(@user) do |f| %>
-          <% if @user.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-              <ul>
-              <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-              </ul>
+<div class="container"
+  <div class="row">
+    <div class="col-1 col-lg-1"> 
+    </div>
+    <div class="col-4 col-sm-4 col-md-3 col-lg-3 about-me">
+      <% if @user.profile_pic_url %>
+        <img class="profile-pic clearfix" src=<%= @user.profile_pic_url(:medium) %> />
+      <% else %>
+        <div class="no-image-wrapper">
+          <%= form_for(@user) do |f| %>
+            <% if @user.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="field">
+
+              <%= f.label :profile_pic %><br>
+              <%= f.file_field :profile_pic, :required => true %><br><br>
+
+            </div>
+            <div class="actions">
+              <%= f.submit %>
             </div>
           <% end %>
-
-          <div class="field">
-
-            <%= f.label :profile_pic %><br>
-            <%= f.file_field :profile_pic, :required => true %><br><br>
-
-          </div>
-          <div class="actions">
-            <%= f.submit %>
-          </div>
         <% end %>
-      <% end %>
+      </div>
+      <div class="col-4 col-sm-4 col-md-4 col-lg-6 about-me"> 
+      <strong>Name:</strong>
+      <%= @user.name %> <br>
+   		<span><%= @user.weigh_ins.size %> Weigh-Ins |</span> 
+      <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br>
+      <p>goal <%= @user.goal %> lbs</p>
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+      <%= link_to 'Back', users_path %>
+
+      <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
+        <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
+      <% else %>
+        <div id="createWeighIn" >
+          <h1>Post a weigh-in</h1>
+            <p>
+              <%= form_for [@user, @weigh_in] do |f| %>
+                <%= f.label :weight %>
+                <%= f.text_field :weight %><br />
+
+                <%= f.label :status%>
+                <%= f.text_field :status %><br />
+
+                <%= f.submit "Weigh In!" %>
+              <% end %>
+            </p>
+        </div>
+      <%end%>
     </div>
-  
- 		<span><%= @user.weigh_ins.size %> Weigh-Ins |</span>     
-    <span class="spacing"><%= @user.friends.size %> Fat Friends</span> <br><br>
+    <div class="col-lg-1"> 
+    </div>
   </div>
 </div>
+
+<!-- END OF ROW 1 -->
 <div class="row">
-  <div class="lg-col-6">
+  <div class="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10">
     <div class="progress-container">
-      <span class="recent-weight">START: <%= @user.weigh_ins.last.weight %>lbs.</span>
-      <div id="progressbar"></div>
-      <span class="goal">FINISH: <%= @user.goal %>lbs.</span>
+      <div id="progressbar">
+      </div>
+        <p id="progress-label"><%=@progress%>% to goal! </p>
     </div>
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', users_path %>
- </div>
+  </div>
+  <div class="col-2 col-xs-2 col-sm-2 col-lg-2">
+    <p><%= @user.goal %> lbs</p>
+    <p><%= @user.goal_date %></p>
+  </div>
 </div>
 
 <div class="row">
-  <div class="lg-col-6">
+  <div class="col-md-6">
     <canvas id="myChart" width="400" height="400"></canvas>
-
-    <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
-      <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
-    <% else %>
-      <div id="createWeighIn" >
-        <h1>Post a weigh-in</h1>
-          <p>
-            <%= form_for [@user, @weigh_in] do |f| %>
-              <%= f.label :weight %>
-              <%= f.text_field :weight %><br />
-
-              <%= f.label :status%>
-              <%= f.text_field :status %><br />
-
-              <%= f.submit "Weigh In!" %>
-            <% end %>
-          </p>
-      </div>
-    <%end%>
   </div>
    
 
 	
-  <div class="lg-col-6">  
+  <div class="col-md-6">  
   	<div class="panel">
       <h1>Your Weigh-Ins</h1>
       <% counter = 0 %>
       <% @user.weigh_ins.each do |weight| %>
         <% @weights.unshift(weight.weight) %>
   	    <% @goal.unshift(@user.goal) %>
-  	    <% @dates.unshift((weight.created_at).strftime("%a")) %>
+  	    <% @dates.unshift((weight.created_at).strftime("%a").upcase) %>
         <div class="panel-group" id="accordion">
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -108,11 +122,11 @@
 
             <% weight.comments[0..2].each do |comment| %>
             <div class="row">
-              <div class="lg-col-2">
+              <div class="col-md-2">
                 <img class="push-left" src=<%= comment.user.profile_pic_url(:thumb) %> />
                 by: <%= comment.user.name %> 
               </div>
-              <div class="lg-col-10">  
+              <div class="col-md-10">  
                 <%= comment.body %>
                 Comment ID: <%= comment.id%>
                 
@@ -126,6 +140,28 @@
     </div>
   </div>
 </div>
+
+
+<ul class="cbp_tmtimeline">
+    <li>
+        <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
+        <div class="cbp_tmicon cbp_tmicon-phone"></div>
+        <div class="cbp_tmlabel">
+            <h2>Ricebean black-eyed pea</h2>
+            <p>Winter purslane...</p>
+        </div>
+    </li>
+    <li>
+        <time class="cbp_tmtime" datetime="2013-04-11T12:04"><span>4/11/13</span> <span>12:04</span></time>
+        <div class="cbp_tmicon cbp_tmicon-screen"></div>
+        <div class="cbp_tmlabel">
+            <h2>Greens radish arugula</h2>
+            <p>Caulie dandelion maize...</p>
+        </div>
+    </li>
+  </ul>
+
+
 	<script type="text/javascript">
   
 
@@ -143,6 +179,10 @@
 		//Number - The scale starting value
 		scaleStartValue : <%= @user.goal-2%>,
 		
+    pointDotRadius : 6,
+    datasetStrokeWidth : 6,
+    scaleFontFamily : 'Open Sans',
+    scaleGridLineColor : "rgba(112,160,172,.5)",
 		
 
 
@@ -151,19 +191,37 @@
   	data = {
     labels :  <%=raw @dates.length > 7 ? @dates[-7,7] : @dates %>,
     datasets : [
-      {
-        fillColor : "rgba(0,240,0,0.3)",
-        strokeColor : "rgba(255,93,0,.9)",
-        pointColor : "rgba(51,51,51,1)",
-        pointStrokeColor : "rgba(0,132,164,1)",
+       {
+        strokeColor : "rgba(38,104,120,0)",
+        pointColor : "rgba(38,104,120,0)",
+        pointStrokeColor : "rgba(61,185,209,0)",
+        fillColor : "rgba(75,177,199,0.7)",
         data : <%= @weights.length > 7 ? @weights[-7,7] : @weights %>
       },
-      {
-        fillColor : "rgba(255,0,0,0.3)",
-        strokeColor : "rgba(255,93,0,.9)",
-        pointColor : "rgba(51,51,51,1)",
-        pointStrokeColor : "rgba(0,132,164,1)",
+  
+
+       {
+        strokeColor : "rgba(231,87,53,0)",
+        pointColor : "rgba(51,51,51,0)",
+        pointStrokeColor : "rgba(0,132,164,0)",
+        fillColor : "rgba(105,207,144,0.8)",
         data : <%= @weights.length > 7 ? @goal[-7,7] : @goal %>
+      },
+   
+       {
+         strokeColor : "rgba(231,87,53,.9)",
+         pointColor : "rgba(51,51,51,0)",
+         pointStrokeColor : "rgba(0,132,164,0)",
+         fillColor : "rgba(105,207,144,0)",
+         data : <%= @weights.length > 7 ? @goal[-7,7] : @goal %>
+       },
+
+      {
+        strokeColor : "rgba(38,104,120,.8)",
+        pointColor : "rgba(38,104,120,1)",
+        pointStrokeColor : "rgba(61,185,209,1)",
+        fillColor : "rgba(75,177,199,0)",
+        data : <%= @weights.length > 7 ? @weights[-7,7] : @weights %>
       }
     ]
   }
