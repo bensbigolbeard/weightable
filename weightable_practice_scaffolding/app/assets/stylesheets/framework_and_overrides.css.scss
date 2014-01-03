@@ -187,7 +187,7 @@ hr {
   top: 125px;
 }
 
-.feed-timeline-caboose-3, .feed-timeline-caboose-2 {
+.feed-timeline-caboose-1, .feed-timeline-caboose-2, .feed-timeline-caboose-3 {
   width: 6px;
   background: #266877;
   position: absolute;
@@ -198,9 +198,15 @@ hr {
   height: 310px;
   top: -242px;
 }
+
 .feed-timeline-caboose-2 {
   height: 400px;
   top: -106px;
+}
+
+.feed-timeline-caboose-1 {
+  height: 400px;
+  top: 106px;
 }
 
 .footer {
