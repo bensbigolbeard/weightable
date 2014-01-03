@@ -75,9 +75,10 @@
       </div>
     <%end%>
   </div>
-   
 
-	
+<!-- Displays user's BMI from users_controller and rounds to nearest two digit decimal place -->
+<h1>Your BMI is: <%= @bmi.round(2) %></h1>
+
   <div class="lg-col-6">  
   	<div class="panel">
       <h1>Your Weigh-Ins</h1>
