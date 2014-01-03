@@ -14,7 +14,7 @@
     <%= link_to image_tag("weightable_logo.png", :alt=>"Weightable Logo"), root_path, class: 'navbar-brand navbar-left' %>
   </div>
   <div class="collapse navbar-collapse">
-    <%= form_tag search_path, :method => :get, :class=> "navbar-search navbar-left", :role=> "search" do %>
+    <%= form_tag search_path, :method => :get, :class=> "navbar-search navbar-right", :role=> "search" do %>
     <div class="input-group">
       <%= text_field_tag :search, params[:search], {:placeholder => "Search", :class=> "form-control"} %>
       <span class="input-group-btn">

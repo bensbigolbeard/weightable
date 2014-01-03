@@ -63,6 +63,8 @@ canvas#myChart {
 .navbar-header .navbar-brand {
   color: #fff;
   font-size: 25px;
+  /*Aligns 'w' in logo with left of page container*/
+  margin-left: -19px !important;
 }
 
 .navbar {
@@ -70,6 +72,8 @@ canvas#myChart {
   opacity: 0.96;
   filter:alpha(opacity=40);
   margin-bottom:0;
+  /**/
+  border-color: #1f2f3a;
 }
 
 form.navbar-search {
