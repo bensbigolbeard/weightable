@@ -1,90 +1,102 @@
 <div class="">
   <h1>Your Weigh-Ins</h1>
   <% counter = 0 %>
-  <% @user.weigh_ins.each do |weight| %>
+  <% @user.weigh_ins.first(4).each do |weight| %>
     <% @weights.unshift(weight.weight) %>
     <% @goal.unshift(@user.goal) %>
     <% @dates.unshift((weight.created_at).strftime("%a")) %>
 
   <!-- Weigh-in stats -->
 
-    <div class="profile-weigh-ins"> 
-      <h3 class=""><%= link_to "#{weight.weight} lbs", user_weigh_in_path(@user, weight), method: :get %></h3>
-      <p></small>
-        <span class="text-muted time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
-      </small></p>
-      <h5><%= weight.status %></h5>
-    </div>
+    <div class="row">
+      <div class="col-sm-3">
 
-  <!-- Yeehaws -->
-
-    <div class="panel-group" id="accordion">
-      <div class="panel panel-default yeehaws-panel">
-        <div class="weigh-in-feed-comments" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= counter %>">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-xs-2" href="/friends">
-                <%= fa_icon "thumbs-up 3x" %>
-              </div>
-              <div class="col-xs-10">
-                <p class="yeehaw-text"><strong><%= weight.wi_yeehaws.count %> Yeehaws!</strong></p>
-                <% if weight.wi_yeehaws.count>0 %>
-                  <span class="yeehaw-text"><small>from <%= link_to "#{@users.find(weight.wi_yeehaws[0].user_id).name}", user_path(@users.find(weight.wi_yeehaws[0].user_id)) %>
-                  <% if weight.wi_yeehaws.count>1%>
-                   and <%= weight.wi_yeehaws.count-1 %> other(s)</small></p>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
-          </div>
+        <div class="feed-circle"></div>
+        <div class="feed-timeline-caboose-<%= counter %>"></div>
+      </div>
+      <div class="col-sm-9">
+        <div class="profile-weigh-ins"> 
+          <h3 class=""><%= link_to "#{weight.weight} lbs", user_weigh_in_path(@user, weight), method: :get %></h3>
+          <p></small>
+            <span class="text-muted time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
+          </small></p>
+          <h5><%= weight.status %></h5>
         </div>
       </div>
     </div>
 
-  <!-- Comments -->
-
-    <div id="collapse<%= counter %>" class="panel-collapse collapse comments-panel">
-      <div class="com-panel-body panel-body">
-        <% weight.comments.each do |comment| %>
-          <div class="row">
-            <div class="col-xs-3 col-md-3">
-              <img src=<%= comment.user.profile_pic_url(:sq_thumb) %> />
-            </div>
-            <div class="col-lg-9">  
-              <span><strong><%= link_to "#{comment.user.name}", user_path(comment.user.id) %></strong></span>
-              <span><%= comment.body %></span>
+  <!-- Yeehaws -->
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3">
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default yeehaws-panel">
+            <div class="weigh-in-feed-comments" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= counter %>">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-2" href="/friends">
+                    <%= fa_icon "thumbs-up 3x" %>
+                  </div>
+                  <div class="col-xs-10">
+                    <p class="yeehaw-text"><strong><%= weight.wi_yeehaws.count %> Yeehaws!</strong></p>
+                    <% if weight.wi_yeehaws.count>0 %>
+                      <span class="yeehaw-text"><small>from <%= link_to "#{@users.find(weight.wi_yeehaws[0].user_id).name}", user_path(@users.find(weight.wi_yeehaws[0].user_id)) %>
+                      <% if weight.wi_yeehaws.count>1%>
+                       and <%= weight.wi_yeehaws.count-1 %> other(s)</small></p>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <hr>
+        </div>
+
+      <!-- Comments -->
+
+        <div id="collapse<%= counter %>" class="panel-collapse collapse comments-panel">
+          <div class="com-panel-body panel-body">
+            <% weight.comments.each do |comment| %>
+              <div class="row">
+                <div class="col-xs-3 col-md-3">
+                  <img src=<%= comment.user.profile_pic_url(:sq_thumb) %> />
+                </div>
+                <div class="col-lg-9">  
+                  <span><strong><%= link_to "#{comment.user.name}", user_path(comment.user.id) %></strong></span>
+                  <span><%= comment.body %></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <hr>
+                </div>
+              </div>
+            <% end %>
+
+      <!-- Form for comments -->
+
+
+            <div id="createComment" >
+              <%= form_for [@user, @weigh_in, @comment], :url=> user_weigh_in_comments_path(:user_id=> current_user.id, :weigh_in_id=> weight.id) do |f| %>
+                <div class="row">
+                  <div class="col-xs-3">
+                     <img src=<%= current_user.profile_pic_url(:sq_thumb) %> />
+                  </div>
+                  <div class="col-xs-8">
+                    <%= f.text_area :body, :class=>"form-control ", :required => true %><br />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6 ">
+                    <%= f.submit "Comment!", :class=>"btn btn-info wi_comment_btn pull-right" %>
+                  </div>
+              <% end %>
+                  <div class="col-xs-6">
+                    <%= button_to "Yeehaw!", wi_yeehaw_path(:user_id=> current_user.id, :weigh_in_id=> weight.id ), :class=>"btn btn-success wi_comment_btn pull-left" %>
+
+                  </div>
+                </div>
             </div>
           </div>
-        <% end %>
-
-  <!-- Form for comments -->
-
-
-        <div id="createComment" >
-          <%= form_for [@user, @weigh_in, @comment], :url=> user_weigh_in_comments_path(:user_id=> current_user.id, :weigh_in_id=> weight.id) do |f| %>
-            <div class="row">
-              <div class="col-xs-3">
-                 <img src=<%= current_user.profile_pic_url(:sq_thumb) %> />
-              </div>
-              <div class="col-xs-8">
-                <%= f.text_area :body, :class=>"form-control ", :required => true %><br />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6 ">
-                <%= f.submit "Comment!", :class=>"btn btn-info wi_comment_btn pull-right" %>
-              </div>
-          <% end %>
-              <div class="col-xs-6">
-                <%= button_to "Yeehaw!", wi_yeehaw_path(:user_id=> current_user.id, :weigh_in_id=> weight.id ), :class=>"btn btn-success wi_comment_btn pull-left" %>
-
-              </div>
-            </div>
         </div>
       </div>
     </div>
