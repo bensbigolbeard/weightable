@@ -1,5 +1,5 @@
 <div class="">
-  <h1>Your Weigh-Ins</h1>
+  <h1 class="your-weigh-ins">Your Weigh-Ins</h1>
   <% counter = 0 %>
   <% @user.weigh_ins.first(4).each do |weight| %>
     <% @weights.unshift(weight.weight) %>
@@ -55,10 +55,10 @@
 
         <div id="collapse<%= counter %>" class="panel-collapse collapse comments-panel">
           <div class="com-panel-body panel-body">
-            <% weight.comments.each do |comment| %>
+            <% weight.comments.last(3).each do |comment| %>
               <div class="row">
                 <div class="col-xs-3 col-md-3">
-                  <img src=<%= comment.user.profile_pic_url(:sq_thumb) %> />
+                  <%= link_to image_tag(comment.user.profile_pic_url(:sq_thumb)), user_path(comment.user.id) %> 
                 </div>
                 <div class="col-lg-9">  
                   <span><strong><%= link_to "#{comment.user.name}", user_path(comment.user.id) %></strong></span>

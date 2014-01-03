@@ -55,32 +55,45 @@
 
 <div class="row">
   <div class="col-sm-7 col-md-7">
-    <canvas id="myChart" width="400" height="400"></canvas>
+    <div class="row">
+      <div class="col-xs-12">
+        <canvas id="myChart" width="400" height="400"></canvas>
 
-    <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
-      <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
-    <% else %>
-      <div id="createWeighIn" >
-        <h1>Post a weigh-in</h1>
-          <p>
-            <%= form_for [@user, @weigh_in] do |f| %>
-              <%= f.label :weight %>
-              <%= f.text_field :weight %><br />
+        <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
+          <%= button_to "Update Today's WeighIn", edit_user_weigh_in_path(@user, :id => @user.weigh_ins.last.id), method: :get%> 
+        <% else %>
+          <div id="createWeighIn" >
+            <h1>Post a weigh-in</h1>
+              <p>
+                <%= form_for [@user, @weigh_in] do |f| %>
+                  <%= f.label :weight %>
+                  <%= f.text_field :weight %><br />
 
-              <%= f.label :status%>
-              <%= f.text_field :status %><br />
+                  <%= f.label :status%>
+                  <%= f.text_field :status %><br />
 
-              <%= f.submit "Weigh In!" %>
-            <% end %>
-          </p>
+                  <%= f.submit "Weigh In!" %>
+                <% end %>
+              </p>
+          </div>
+        <%end%>
       </div>
-    <%end%>
-  </div>
-   
-  <div class="col-xs-8 col-xs-offset-2 col-sm-5 col-sm-offset-0 col-md-5">
-        <div class="feed-timeline hidden-xs"></div>
+    </div>
 
-    <%= render 'show_wi_feed' %> 
+
+<!-- Displays user's BMI from users_controller and rounds to nearest two digit decimal place -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Your BMI is: <%= @bmi.round(2) %></h1>
+      </div>
+    </div>
+  </div>
+
+<!-- Renders User timeline -->
+  <div class="col-xs-8 col-xs-offset-2 col-sm-5 col-sm-offset-0 col-md-5">
+    <div class="feed-timeline hidden-xs"></div>
+      <%= render 'show_wi_feed' %> 
+    </div>
   </div>
 </div>
 

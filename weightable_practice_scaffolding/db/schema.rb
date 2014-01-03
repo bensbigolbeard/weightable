@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101223835) do
+ActiveRecord::Schema.define(version: 20140103041122) do
+
+  create_table "Users", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "profile_pic"
+    t.integer  "goal"
+    t.date     "goal_date"
+    t.float    "height_in_feet"
+    t.float    "height_in_inches"
+  end
+
+  add_index "Users", ["email"], name: "index_users_on_email", unique: true
+  add_index "Users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -43,30 +69,6 @@ ActiveRecord::Schema.define(version: 20140101223835) do
 
   add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], name: "index_for_match"
   add_index "trigrams", ["owner_id", "owner_type"], name: "index_by_owner"
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "profile_pic"
-    t.integer  "goal"
-    t.date     "goal_date"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "weigh_ins", force: true do |t|
     t.integer  "weight"

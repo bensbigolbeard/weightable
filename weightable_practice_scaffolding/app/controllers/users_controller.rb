@@ -71,6 +71,9 @@ class UsersController < ApplicationController
       @progress
     end
 
+    # BMI is calculated by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
+    @bmi = (@user.weigh_ins.last.weight/(((@user.height_in_feet*12)+@user.height_in_inches)**2))*703
+
   end
 
   def search
@@ -148,7 +151,7 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
 
   def user_params
-    params.require(:user).permit(:name, :provider, :uid, :profile_pic, :goal, :goal_date, weigh_ins_attributes: [:id, :weight])
+    params.require(:user).permit(:name, :provider, :uid, :profile_pic, :goal, :goal_date,  :height_in_feet, :height_in_inches, weigh_ins_attributes: [:id, :weight])
   end
 end
 
