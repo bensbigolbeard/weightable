@@ -84,7 +84,11 @@
 <!-- Displays user's BMI from users_controller and rounds to nearest two digit decimal place -->
     <div class="row">
       <div class="col-xs-12">
-        <h1>Your BMI is: <%= @bmi.round(2) %></h1>
+        <h1>Body Mass Index (BMI): <%= @bmi %></h1>
+        <!-- The user's lowest weigh in -->
+        <h1>Record Weight: <%= @record_weight %></h1>
+        <!-- User's BMI description -->
+        <h3> <%= @record_weight_status %></h3>
       </div>
     </div>
   </div>

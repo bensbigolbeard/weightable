@@ -72,7 +72,34 @@ class UsersController < ApplicationController
     end
 
     # BMI is calculated by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
-    @bmi = (@user.weigh_ins.last.weight/(((@user.height_in_feet*12)+@user.height_in_inches)**2))*703
+    @bmi = ((@user.weigh_ins.last.weight/(((@user.height_in_feet*12)+@user.height_in_inches)**2))*703).round(2)
+
+    #Calculate lowest weigh in, aka record weight
+    @record_weight = @user.weigh_ins.minimum("weight").round(2).to_i
+
+    #Compare BMI to Underweight, Normal Weight, Overweight or Obese categories
+    case @bmi
+    when 0.0..18.4
+      @record_weight_status = "Underweight"
+    when 18.5..24.9
+      @record_weight_status = "Normal Weight"
+    when 25.0..29.9
+      @record_weight_status = "Overweight"
+    when 30.0..100
+      @record_weight_status = "Obese"
+    else 
+      @record_weight_status = "Not Valid"
+    end      
+  
+    # if @record_weight <= 18.49
+    #   @record_weight_status = "Underweight"
+    # elsif @record_weight >= 18.5 && @record_weight <= 24.99
+    #   @record_weight_status = "Normal Weight"
+    # elsif @record_weight >= 25 && @record_weight <= 29.99
+    #   @record_weight_status = "Normal Weight"
+    # else
+    #   @record_weight_status = "Obese"
+    # end
 
   end
 
