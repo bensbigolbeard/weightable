@@ -1,5 +1,20 @@
 class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
+before_action :get_user_list
+
+
+def get_user_list
+  @autocomplete_items = []
+  @users = User.all
+  @users.each do |user|
+    @autocomplete_items << 
+      {
+        id:     user.name, 
+        value:  user.name,
+        label: user.name
+      }
+  end 
+end
 
 protected
 

@@ -4,16 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @autocomplete_items = []
     @users = User.all
-    @users.each do |user|
-      @autocomplete_items << 
-        {
-          id:     user.name, 
-          value:  user.name,
-          label: user.name
-        }
-    end 
 
     if current_user
       @user = current_user
@@ -27,17 +18,7 @@ class UsersController < ApplicationController
   end
 
   def feed
-    @autocomplete_items = []
     @users = User.all
-    @users.each do |user|
-      @autocomplete_items << 
-        {
-          id:     user.name, 
-          value:  user.name,
-          label: user.name
-        }
-    end 
-
     if current_user
       @user = current_user
     else 
