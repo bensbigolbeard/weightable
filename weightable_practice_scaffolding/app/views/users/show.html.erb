@@ -85,16 +85,19 @@
   </div>
 </div>
 
+<!-- END OF ROW 2 -->
+
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-7 col-sm-7 col-lg-7">
+    <h1>your stats</h1>
     <canvas id="myChart" width="400" height="400"></canvas>
   </div>
    
 
 	
-  <div class="col-md-6">  
+  <div class="col-5 col-sm-5 col-lg-5">  
   	<div class="panel">
-      <h1>Your Weigh-Ins</h1>
+      <h1>your weigh-ins</h1>
       <% counter = 0 %>
       <% @user.weigh_ins.each do |weight| %>
         <% @weights.unshift(weight.weight) %>
@@ -137,29 +140,29 @@
         </div>
       <% counter+=1 %>
       <% end %>
+      <ul class="cbp_tmtimeline">
+          <li>
+              <div class="cbp_tmicon cbp_tmicon-phone"></div>
+              <div class="cbp_tmlabel">
+                  <h2>Ricebean black-eyed pea</h2>
+                  <p>Winter purslane...</p>
+              </div>
+          </li>
+          <li>
+              <div class="cbp_tmicon cbp_tmicon-screen"></div>
+              <div class="cbp_tmlabel">
+                  <h2>Greens radish arugula</h2>
+                  <p>Caulie dandelion maize...</p>
+              </div>
+          </li>
+        </ul>
+
+      
     </div>
   </div>
 </div>
 
 
-<ul class="cbp_tmtimeline">
-    <li>
-        <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
-        <div class="cbp_tmicon cbp_tmicon-phone"></div>
-        <div class="cbp_tmlabel">
-            <h2>Ricebean black-eyed pea</h2>
-            <p>Winter purslane...</p>
-        </div>
-    </li>
-    <li>
-        <time class="cbp_tmtime" datetime="2013-04-11T12:04"><span>4/11/13</span> <span>12:04</span></time>
-        <div class="cbp_tmicon cbp_tmicon-screen"></div>
-        <div class="cbp_tmlabel">
-            <h2>Greens radish arugula</h2>
-            <p>Caulie dandelion maize...</p>
-        </div>
-    </li>
-  </ul>
 
 
 	<script type="text/javascript">
