@@ -85,6 +85,8 @@ button.navbar-toggle {
   border-radius: 4px 0 0 4px;
 }
 
+/* Weigh-in speech bubble*/
+
 .profile-weigh-ins {
   width: 100%;
   margin: 0 auto;
@@ -108,6 +110,8 @@ button.navbar-toggle {
   }
 }
 
+/* Yeehaw box on Profile */
+
 .yeehaws-panel {
   background-color: #4ec67c;
   border: 2px solid #4ca16c;
@@ -116,6 +120,28 @@ button.navbar-toggle {
   margin-left:2px;
   margin-right:2px;
 }
+
+
+.yeehaw-text {
+  padding: 5px;
+  margin: 0;
+  color: white;
+  &:first-child {
+    font-size:2em;
+  }
+}
+
+
+.fa-thumbs-up {
+  color: white;
+}
+
+.btn-success {
+    background-color: #4ec67c;
+    border-color: #4ca16c; 
+}
+
+/* Comments on Profile */
 
 .comments-panel {
   background-color: #dbd7d6;
@@ -142,22 +168,15 @@ hr {
   
 }
 
-.btn-success {
-    background-color: #4ec67c;
-    border-color: #4ca16c; 
-}
+/* Timeline on Profile */
 
-.yeehaw-text {
-  padding: 5px;
-  margin: 0;
-  color: white;
-  &:first-child {
-    font-size:2em;
-  }
-}
-
-.fa-thumbs-up {
-  color: white;
+.feed-timeline {
+  width: 6px;
+  height: 48%;
+  background: #266877;
+  position: absolute;
+  left: 21.1%;
+  top: 125px;
 }
 
 .feed-circle {
@@ -178,14 +197,6 @@ hr {
   z-index: 1;
 }
 
-.feed-timeline {
-  width: 6px;
-  height: 48%;
-  background: #266877;
-  position: absolute;
-  left: 21.1%;
-  top: 125px;
-}
 
 .feed-timeline-caboose-1, .feed-timeline-caboose-2, .feed-timeline-caboose-3 {
   width: 6px;
@@ -194,9 +205,9 @@ hr {
   left: 84.3%;
 }
 
-.feed-timeline-caboose-3 {
-  height: 310px;
-  top: -242px;
+.feed-timeline-caboose-1 {
+  height: 400px;
+  top: 106px;
 }
 
 .feed-timeline-caboose-2 {
@@ -204,9 +215,9 @@ hr {
   top: -106px;
 }
 
-.feed-timeline-caboose-1 {
-  height: 400px;
-  top: 106px;
+.feed-timeline-caboose-3 {
+  height: 310px;
+  top: -242px;
 }
 
 .footer {
