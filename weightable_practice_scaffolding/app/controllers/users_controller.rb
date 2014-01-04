@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy] 
 
+  after_action :convert_goal_date_to_datetime, only: [:update]
+
   # GET /users
   # GET /users.json
   def index
@@ -180,5 +182,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :provider, :uid, :profile_pic, :goal, :goal_date,  :height_in_feet, :height_in_inches, weigh_ins_attributes: [:id, :weight])
   end
-end
 
+  def convert_goal_date_to_datetime
+      goal_date = params[:user][:goal_date]
+      current_user.goal_date = Date.strptime("#{goal_date}", "%m/%d/%Y")
+      current_user.save
+    
+  end
+end

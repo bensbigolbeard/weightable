@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xs-6 col-sm-12 col-md-10 col-lg-8">
+    <div class="panel-group" id="accordion-wi">
+      <div class="wi-btn" data-toggle="collapse" data-parent="#accordion-wi" href="#wi">
+        <div class="panel-heading">
+          <strong><p>Post a New Weigh-in</p></strong>
+        </div>
+      </div>
+    </div>
+
+    <div id="wi" class="panel-collapse collapse">
+      <div class="wi-panel panel-body"> 
+        <%= form_for [@user, @weigh_in] do |f| %>
+          <div class="row">
+           <div class="col-xs-12">
+             <%= f.label :weight, :class=>"sr-only" %>
+             <%= f.text_field :weight, :class=>"form-control", :placeholder=>"Weight", :required=>true %><br />
+
+             <%= f.label :status, :class=>"sr-only" %>
+             <%= f.text_field :status, :class=>"form-control", :placeholder=>"Status" %><br />
+           </div>
+         </div>
+         <div >
+         <div class="row">
+            <div class="col-xs-3"> 
+            </div> 
+            <div class="col-xs-6">  
+              <%= f.submit "Weigh In!", :class=>"btn btn-info btn-center"  %>
+            </div>
+            <div class="col-xs-3">  
+            </div>
+         </div>
+        <% end %>
+      </div>
+    </div>  
+  </div>
+</div>

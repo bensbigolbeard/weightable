@@ -6,18 +6,10 @@ td {
   padding-left: 15px;
 }
 
-#progressbar div {
-	background: green;
-	height: 29px;
-}
 
 .progress-container {
-	display: inline-block;
-	width: 100%;
-}
-
-#progress-label{
-    text-align: center;
+  display: inline-block;
+  width: 100%;
 }
 
 #handwriting {
@@ -83,119 +75,122 @@ h3 {
   font-size: 1.45em;
 }
 
-.footer {
-  background-color: #283742;
-  height: 600px;
-}
-
 .profile-pic {
 
     height: 200px;
     width: 200px;
-    border-radius: 100px;
+    border-radius: 50%;
     border: 8px solid #fff;
     box-shadow: 0 0 0 1px #beb9b5; 
 }
 
+.profile-pad {
+  padding-top: 40px;
+}
+
+.no-horiz-pad {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.neg-margin {
+  margin-left: 0px;
+}
+
+.username {
+  margin:-10px 0;
+}
+
+.inline-text {
+  display: inline;
+}
+
+.edit-goal-pad {
+  padding-left: 20px;
+}
+
+.weighin-friend-text {
+  padding-top: 20px;
+  color: #228295;
+  span {
+    font-size:1.3em;
+  }
+}
 .about-me{
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 30px;
     padding-bottom: 30px;
 }
-  
 
+.wi-btn{
+  background: #e75735;
+  height:38px;
+  line-height: 38px;
+  text-align: center;
+  p {
+  color: white;
+  }
+}
 
+.wi-panel {
+  background-color: #dbd7d6;
+  border: 2px solid #c1bcb8;
+}
 
+.btn-center {
+  margin-left: 7px;
+}
 
+#progressbar div {
+	background: green;
+	height: 29px;
+}
 
-@font-face {
-    font-family: 'ecoico';
-    src:url('../fonts/timelineicons/ecoico.eot');
-    src:url('../fonts/timelineicons/ecoico.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/timelineicons/ecoico.woff') format('woff'),
-        url('../fonts/timelineicons/ecoico.ttf') format('truetype'),
-        url('../fonts/timelineicons/ecoico.svg#ecoico') format('svg');
-    font-weight: normal;
-    font-style: normal;
-} /* Made with http://icomoon.io/ */
- 
-.cbp_tmtimeline {
-    margin: 30px 0 0 0;
-    padding: 0;
-    list-style: none;
-    position: relative;
-} 
- 
-/* The line */
-.cbp_tmtimeline:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 5px;
-    background: #afdcf8;
-    left: 25px;
-    margin-top: 10px;
-    margin-left: -10px;
+.prog-bar-con {
+  margin-top: 20px;
 }
- 
-.cbp_tmtimeline > li {
-    position: relative;
+.prog-bar-base{
+  width: 100%;
+  height:50px;
+  background-color: #dbd7d6;
+  border: 2px solid #c1bcb8;
 }
- 
-/* The date/time */
-.cbp_tmtimeline > li .cbp_tmtime {
-    display: block;
-    width: 25%;
-    padding-right: 100px;
-    position: absolute;
+
+.prog-bar-overlay{
+  position: absolute;
+  height:50px;
+  margin-top: -50px;
+  background-color: #4ec67c;
+  border: 2px solid #4ca16c;
 }
- 
-.cbp_tmtimeline > li .cbp_tmtime span {
-    display: block;
-    text-align: right;
+
+#progress-label{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 1.6em;
+    color: #4ec67c;
 }
- 
-.cbp_tmtimeline > li .cbp_tmtime span:first-child {
-    font-size: 0.9em;
-    color: #bdd0db;
-}
- 
-.cbp_tmtimeline > li .cbp_tmtime span:last-child {
-    font-size: 2.9em;
-    color: #3594cb;
-}
- 
-.cbp_tmtimeline > li:nth-child(odd) .cbp_tmtime span:last-child {
-    color: #6cbfee;
+
+.goal-date-con {
+  margin-top: 27px;
+  margin-left: -17px;
+
 }
  
 /* Right content */
-.cbp_tmtimeline > li .cbp_tmlabel {
-    margin: 0 0 25px 15%;
-    background: #3594cb;
-    color: #fff;
-    padding: 2em;
-    font-size: 1.2em;
-    font-weight: 300;
-    line-height: 1.4;
-    position: relative;
-    border-radius: 5px;
-}
- 
-.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel {
-    background: #6cbfee;
-}
- 
-.cbp_tmtimeline > li .cbp_tmlabel h2 { 
-    margin-top: 0px;
-    padding: 0 0 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.4);
-}
- 
-/* The triangle */
-.cbp_tmtimeline > li .cbp_tmlabel:after {
+
+/* Weigh-in speech bubble*/
+
+.profile-weigh-ins {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 2px solid #dddddd;
+  margin: 40px 0 8px 0;
+  background-color: white;
+  padding-left: 20px;
+  &:before {
     right: 100%;
     border: solid transparent;
     content: " ";
@@ -203,83 +198,141 @@ h3 {
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-right-color: #3594cb;
+    border-right-color: #dddddd;
     border-width: 10px;
     top: 10px;
-}
- 
-.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
-    border-right-color: #6cbfee;
-}
- 
-/* The icons */
-.cbp_tmtimeline > li .cbp_tmicon {
-    width: 15px;
-    height: 15px;
-    line-height: 40px;
-    -webkit-font-smoothing: antialiased;
+    margin: 45px -15px 0 0
+  }
+  &:after {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
     position: absolute;
-    color: #fff;
-    background: #46a4da;
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px #afdcf8;
-    text-align: center;
-    left: 30px;
-    top: 0;
-    margin: 10px 0 0 -20px;
+    pointer-events: none;
+    border-right-color: white;
+    border-width: 10px;
+    top: 10px;
+    margin: 45px -18px 0 0
+  }
 }
- 
- 
-/* Example Media Queries 
-@media screen and (max-width: 65.375em) {
- 
-    .cbp_tmtimeline > li .cbp_tmtime span:last-child {
-        font-size: 1.5em;
-    }
+
+/* Yeehaw box on Profile */
+
+.yeehaws-panel {
+  background-color: #4ec67c;
+  border: 2px solid #4ca16c;
+  border-radius: 0 !important;
+  height: 65px;
+  margin-left:2px;
+  margin-right:2px;
+  cursor: pointer;
 }
- 
-@media screen and (max-width: 47.2em) {
-    .cbp_tmtimeline:before {
-        display: none;
-    }
- 
-    .cbp_tmtimeline > li .cbp_tmtime {
-        width: 100%;
-        position: relative;
-        padding: 0 0 20px 0;
-    }
- 
-    .cbp_tmtimeline > li .cbp_tmtime span {
-        text-align: left;
-    }
- 
-    .cbp_tmtimeline > li .cbp_tmlabel {
-        margin: 0 0 30px 0;
-        padding: 1em;
-        font-weight: 400;
-        font-size: 95%;
-    }
- 
-    .cbp_tmtimeline > li .cbp_tmlabel:after {
-        right: auto;
-        left: 20px;
-        border-right-color: transparent;
-        border-bottom-color: #3594cb;
-        top: -20px;
-    }
- 
-    .cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
-        border-right-color: transparent;
-        border-bottom-color: #6cbfee;
-    }
- 
-    .cbp_tmtimeline > li .cbp_tmicon {
-        position: relative;
-        float: right;
-        left: auto;
-        margin: -55px 5px 0 0px;
-    }   
-}
-*/
 
 
+.yeehaw-text {
+  margin: 0;
+  color: white;
+  &:first-child {
+    font-size:1.3em;
+    padding: 5px 5px 0 5px;
+  }
+  &:last-child {
+    padding-left: 5px;
+  }
+}
+
+
+.fa-thumbs-up {
+  padding-top: 6px;  
+  color: white;
+}
+
+.btn-success {
+    background-color: #4ec67c;
+    border-color: #4ca16c; 
+}
+
+/* Comments on Profile */
+
+.comments-panel {
+  background-color: #dbd7d6;
+  border: 2px solid #c1bcb8;
+  margin-left:2px;
+  margin-right:2px;
+  
+}
+
+hr {
+  margin-top:7px;
+  margin-bottom:7px;
+}
+
+.panel-body.com-panel-body {
+  padding:7px 0 0 7px;
+
+}
+
+.wi_comment_btn {
+  margin-top: -10px;
+  margin-bottom: 7px;
+  text-align: center;
+  
+}
+
+/* Timeline on Profile */
+
+h1.your-weigh-ins {
+  padding-left: 20%;
+}
+
+.feed-timeline {
+  width: 6px;
+  height: 48%;
+  background: #228396;
+  position: absolute;
+  left: 21.1%;
+  top: 125px;
+}
+
+.feed-circle {
+  width: 10px;
+  height: 10px;
+  text-transform: none;
+  font-size: 1.4em;
+  line-height: 40px;
+  position: absolute;
+  color: #fff;
+  background: #266877;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #42b8d1;
+  text-align: center;
+  left: 83%;
+  top: 0;
+  margin: 60px 0 0 0; 
+  z-index: 1;
+}
+
+
+.feed-timeline-caboose-1, .feed-timeline-caboose-2, .feed-timeline-caboose-3 {
+  width: 6px;
+  background: #228396;
+  position: absolute;
+  left: 84.3%;
+}
+
+.feed-timeline-caboose-1 {
+  height: 400px;
+  top: 106px;
+}
+
+.feed-timeline-caboose-2 {
+  height: 400px;
+  top: -106px;
+}
+
+.feed-timeline-caboose-3 {
+  height: 310px;
+  top: -242px;
+}

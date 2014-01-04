@@ -34,15 +34,19 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-xs-2" href="/friends">
-                    <%= fa_icon "thumbs-up 3x" %>
+                    <%= fa_icon "thumbs-up 2x" %>
                   </div>
                   <div class="col-xs-10">
-                    <p class="yeehaw-text"><strong><%= weight.wi_yeehaws.count %> Yeehaws!</strong></p>
+                    <p class="yeehaw-text"><strong><%= weight.wi_yeehaws.count %> YEEHAWS!</strong></p>
                     <% if weight.wi_yeehaws.count>0 %>
                       <span class="yeehaw-text"><small>from <%= link_to "#{@users.find(weight.wi_yeehaws[0].user_id).name}", user_path(@users.find(weight.wi_yeehaws[0].user_id)) %>
                       <% if weight.wi_yeehaws.count>1%>
                        and <%= weight.wi_yeehaws.count-1 %> other(s)</small></p>
                       <% end %>
+                    <% elsif weight.wi_yeehaws.count==0 && @user!=current_user%>
+                      <span class="yeehaw-text"><small>click to leave a yeehaw!</small></span>
+                    <% else %>
+                        
                     <% end %>
                   </div>
                 </div>
