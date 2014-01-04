@@ -4,8 +4,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Weightable Practice Scaffolding" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Weightable Practice Scaffolding" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Weightable App" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Weightable App" %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
@@ -14,8 +14,8 @@
     <header>
         <%= render 'layouts/navigation' %>
     </header>
+    <%= render 'layouts/messages' %>
     <main role="main" id="landing">
-      <%= render 'layouts/messages' %>
       <!-- this adds text/content to the layout after these global elements -->
       <div class="container" id="words" >
 		    <%= yield %>
