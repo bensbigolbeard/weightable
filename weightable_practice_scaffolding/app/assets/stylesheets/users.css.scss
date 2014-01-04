@@ -183,7 +183,21 @@ h3 {
   margin-left: 10px;
 
 }
+
+
+/* Stat Graph */
+
+.stat-graph {
+  background-color: white;
+  border: 2px solid #dbd7d6;
+  height: auto;
+}
  
+canvas{
+    width: 100% !important;
+    max-width: 600px;
+    height: auto !important;
+}
 /* Right content */
 
 /* Weigh-in speech bubble*/

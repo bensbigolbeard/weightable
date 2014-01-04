@@ -10,9 +10,22 @@
 
     <div class="row">
       <div class="col-sm-3">
-
+        <% if @user.weigh_ins.count < 2 %>
+          <div class="feed-circle-base1 hidden-xs"></div>
+          <div class="feed-circle-base2 hidden-xs"></div>
+          <div class="feed-circle-base3 hidden-xs"></div>
+          <div class="feed-timeline extra hidden-xs"></div>
+        <% elsif @user.weigh_ins.count < 3 %>
+          <div class="feed-circle-base2 hidden-xs"></div>
+          <div class="feed-circle-base3 hidden-xs"></div>
+        <% elsif @user.weigh_ins.count == 3 %>
+          <div class="feed-circle-base3 hidden-xs"></div>
+        <% end %>
         <div class="feed-circle hidden-xs"></div>
         <div class="feed-timeline-caboose-<%= counter %> hidden-xs"></div>
+
+see if you can specify that rails do something on the last iteration
+
       </div>
       <div class="col-sm-9">
         <div class="profile-weigh-ins"> 

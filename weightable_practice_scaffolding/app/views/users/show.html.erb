@@ -1,46 +1,52 @@
 <% require "date" %>
-
 <script src="Chart.js"></script>
 
-<div class="row profile-pad">
-<!-- Profile Pic Section --!>
-  <div class="col-xs-11 col-xs-offset-1 col-sm-4 col-sm-offset-1 col-md-3 no-horiz-pad">
-    <% if @user.profile_pic_url %>
-      <img class="profile-pic clearfix" src=<%= @user.profile_pic_url(:sq_medium) %> />
-    <% else %>
-      <%= render "form_set_profile_pic" %>
-    <% end %>
+<div class="row-fluid profile-pad">
+  <div class="col-xs-11 col-xs-offset-1 col-sm-5 col-md-2 no-horiz-pad">
+    <div class="row-fluid">
+      <div class="col-xs-12 col-xs-offset-2  col-md-offset-0 no-horiz-pad">
+        <% if @user.profile_pic_url %>
+          <img class="profile-pic clearfix" src=<%= @user.profile_pic_url(:sq_medium) %> />
+        <% else %>
+          <%= render "form_set_profile_pic" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
 <!-- About Me Section -->
-  <div class="col-xs-10 col-xs-offset-4 col-sm-4 neg-margin about-me"> 
-    <h1 class="username"><%= @user.name.capitalize %></h1> <br>
-    <h3 class="inline-text">goal <strong><%= @user.goal %> lbs</strong></h3>
-    <a href="<%= edit_user_path(@user)%>" class="edit-goal-pad small text-muted"><%= fa_icon "pencil 2x" %> EDIT GOAL</a> <br>
-    <div class="weighin-friend-text">
-      <span><%= @user.weigh_ins.size %> weigh-ins |</span> 
-      <span class="spacing"> <%= @user.friends.size %> friends</span> 
-    </div><br>
+  <div class="col-xs-12 col-xs-offset-1 col-sm-5 1 col-md-5 col-lg-4 about-me">
+    <div class="row-fluid">
+      <div class="col-xs-10 col-xs-offset-1 col-sm-12 "> 
+        <h1 class="username"><%= @user.name.capitalize %></h1> <br>
+        <h3 class="inline-text">goal <strong><%= @user.goal %> lbs</strong></h3>
+        <a href="<%= edit_user_path(@user)%>" class="edit-goal-pad small text-muted"><%= fa_icon "pencil 2x" %> EDIT GOAL</a> <br>
+        <div class="weighin-friend-text">
+          <span><%= @user.weigh_ins.size %> weigh-ins |</span> 
+          <span class="spacing"> <%= @user.friends.size %> friends</span> 
+        </div><br>
 
-    <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
-      <%= render "form_edit_weigh_in" %>
-    <% else %>
-      <%= render "form_create_weigh_in" %>
-    <%end%>
+        <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
+          <%= render "form_edit_weigh_in" %>
+        <% else %>
+          <%= render "form_create_weigh_in" %>
+        <%end%>
+      </div>
+    </div>
   </div>
 </div>
 
 
 <!-- END OF ROW 1 -->
-<div class="row">
+<div class="row-fluid">
   <div class="col-xs-12">
     
-    <div class="row">
-      <div class="col-xs-9 col-xs-offset-1 prog-bar-con">
+    <div class="row-fluid">
+      <div class="col-xs-10 col-sm-8 col-sm-offset-1 prog-bar-con">
         <div class="prog-bar-base"></div>
         <div class="prog-bar-overlay" style="width:<%= @progress %>%"></div>
       </div>
-      <div class="col-sm-2">
+      <div class="col-xs-2">
         <div class="goal-date-con">
           <h4 class="no-horiz-pad inline-text text-muted"><strong><%= @user.goal %></strong> <small>lbs</small></h4>
           <% if @user.goal_date != nil %>
@@ -50,24 +56,26 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-4">
+      <div class="col-xs-3">
       </div>  
-      <div class="col-xs-4">
+      <div class="col-xs-6">
         <p id="progress-label"><strong><%=@progress.round(2)%>%</strong> to goal! </p>
       </div>  
-      <div class="col-xs-4">
+      <div class="col-xs-3">
       </div>  
   </div>
 </div>
 
 <!-- END OF ROW 2 -->
 
-<div class="row">
-  <div class="col-7 col-sm-7 col-lg-7">
-    <div class="row">
+<div class="row-fluid">
+  <div class="col-xs-10 col-xs-offset-1 col-lg-6">
+    <div class="row-fluid">
       <div class="col-xs-12">
         <h1>your stats</h1>
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <div class="stat-graph">
+          <canvas id="myChart" width="600" height="400"></canvas>
+        </div>
       </div>
     </div>
 
@@ -87,17 +95,7 @@
 <!-- Renders User timeline -->
   <div class="col-xs-8 col-xs-offset-2 col-sm-5 col-sm-offset-0 col-md-5">
     <div class="feed-timeline hidden-xs"></div>
-    <% if @user.weigh_ins.count < 2 %>
-      <div class="feed-circle-base1 hidden-xs"></div>
-      <div class="feed-circle-base2 hidden-xs"></div>
-      <div class="feed-circle-base3 hidden-xs"></div>
-      <div class="feed-timeline extra hidden-xs"></div>
-    <% elsif @user.weigh_ins.count < 3 %>
-      <div class="feed-circle-base2 hidden-xs"></div>
-      <div class="feed-circle-base3 hidden-xs"></div>
-    <% elsif @user.weigh_ins.count == 3 %>
-      <div class="feed-circle-base3 hidden-xs"></div>
-    <% end %>
+    
       <%= render 'show_wi_feed' %>  
     </div>
   </div>
