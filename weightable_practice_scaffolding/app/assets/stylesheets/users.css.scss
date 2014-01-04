@@ -349,6 +349,7 @@ h1.your-weigh-ins {
   background-color: white;
   margin: 25px;
   padding: 10px;
+  display: inline-block;
 }
 
 .friend_page_pic {
@@ -361,9 +362,31 @@ h1.your-weigh-ins {
 }
 
 .add_more_friends {
+  text-decoration: none;
   background-color: #df5b35;
   width: 325px;
   height: 100px; 
   font-color: white;
   margin-top: 250px;
+  padding: auto;
+  display: inline-block;
+  font-size: 1em;
+}
+
+.friend_goal_info {
+  font-family: "Open Sans";
+  font-size: 1.25em;
+  font-color: #293742;
+  text-align: center;
+}
+
+.friend_profile_info {
+  font-family: "Open Sans";
+  font-size: 1em;
+  font-color: #293742;
+  text-align: center;
+}
+
+.friend_name {
+  text-align: center;
 }
