@@ -2,9 +2,9 @@
 <script src="Chart.js"></script>
 
 <div class="row-fluid profile-pad">
-  <div class="col-xs-11 col-xs-offset-1 col-sm-5 col-md-2 no-horiz-pad">
+  <div class="col-xs-11 col-xs-offset-1 col-sm-offset-1 col-sm-5 col-md-3 no-horiz-pad">
     <div class="row-fluid">
-      <div class="col-xs-12 col-xs-offset-2  col-md-offset-0 no-horiz-pad">
+      <div class="col-xs-12 col-xs-offset-1 col-sm-offset-0  col-md-offset-0 no-horiz-pad">
         <% if @user.profile_pic_url %>
           <img class="profile-pic clearfix" src=<%= @user.profile_pic_url(:sq_medium) %> />
         <% else %>
@@ -15,9 +15,9 @@
   </div>
 
 <!-- About Me Section -->
-  <div class="col-xs-12 col-xs-offset-1 col-sm-5 1 col-md-5 col-lg-4 about-me">
+  <div class="col-xs-12 col-xs-offset-1 col-sm-5 col-sm-offset-0 col-md-5 col-lg-4 about-me">
     <div class="row-fluid">
-      <div class="col-xs-10 col-xs-offset-1 col-sm-12 "> 
+      <div class="col-xs-12 col-xs-offset-1 col-sm-offset-0 col-sm-12 "> 
         <h1 class="username"><%= @user.name.capitalize %></h1> <br>
         <h3 class="inline-text">goal <strong><%= @user.goal %> lbs</strong></h3>
         <a href="<%= edit_user_path(@user)%>" class="edit-goal-pad small text-muted"><%= fa_icon "pencil 2x" %> EDIT GOAL</a> <br>
@@ -69,7 +69,7 @@
 <!-- END OF ROW 2 -->
 
 <div class="row-fluid">
-  <div class="col-xs-10 col-xs-offset-1 col-lg-6">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-6">
     <div class="row-fluid">
       <div class="col-xs-12">
         <h1>your stats</h1>

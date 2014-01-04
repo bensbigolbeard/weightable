@@ -1,4 +1,5 @@
 class WeighInsController < ApplicationController
+	
 
 	def show
 	  @user = current_user
@@ -58,4 +59,5 @@ class WeighInsController < ApplicationController
 	def weigh_in_params
 	  params.require(:weigh_in).permit(:weight, :pic_url, :user_id, :status, :id, :created_at)
 	end
+
 end

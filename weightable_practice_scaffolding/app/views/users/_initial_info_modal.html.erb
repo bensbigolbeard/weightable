@@ -15,6 +15,9 @@
           <%= f.fields_for :weigh_ins, @user.weigh_ins.build do |weigh_in| %>
             <%= f.label :weight %><br>
             <%= weigh_in.text_field :weight %><br><br>
+
+            <%= weigh_in.hidden_field :status, :value=>"My first weigh in. Yeehaw!" %>
+
           <%= f.label :height_in_feet %>
           <%= f.select :height_in_feet, options_for_select(%w[3 4 5 6 7]) %>
           <%= f.label :height_in_inches %>

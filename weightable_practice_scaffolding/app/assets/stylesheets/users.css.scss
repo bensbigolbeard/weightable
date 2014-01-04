@@ -307,24 +307,33 @@ h1.your-weigh-ins {
   padding-left: 20%;
 }
 
+@media(max-width: 991px){
+  h1.your-weigh-ins {
+  font-size: 2.4em;
+}
+}
+
 .feed-timeline {
   width: 6px;
-  height: 400px;
+  height: 50%;
   background: #228396;
   position: absolute;
   left: 21.1%;
   top: 125px;
 }
 
-.feed-timeline.extra{
-  top:410px;
-}
 
-.feed-timeline-caboose-1, .feed-timeline-caboose-2, .feed-timeline-caboose-3 {
+
+.feed-timeline-caboose-0, .feed-timeline-caboose-1, .feed-timeline-caboose-2, .feed-timeline-caboose-3 {
   width: 6px;
   background: #228396;
   position: absolute;
   left: 84.3%;
+}
+
+.feed-timeline-caboose-0 {
+  height: 645px;
+  top: 102px;
 }
 
 .feed-timeline-caboose-1 {
@@ -333,16 +342,16 @@ h1.your-weigh-ins {
 }
 
 .feed-timeline-caboose-2 {
-  height: 403px;
-  top: -106px;
+  height: 408px;
+  top: -130px;
 }
 
 .feed-timeline-caboose-3 {
-  height: 310px;
-  top: -242px;
+  height: 330px;
+  top: -262px;
 }
 
-.feed-circle, .feed-circle-base1, .feed-circle-base2, .feed-circle-base3 {
+.feed-circle, .feed-circle-base-1, .feed-circle-base-2, .feed-circle-base-3 {
   width: 10px;
   height: 10px;
   text-transform: none;
@@ -360,19 +369,19 @@ h1.your-weigh-ins {
 
 .feed-circle {
   margin: 60px 0 0 0;
-  left: 83%;
+  left: 82.5%;
 }
-.feed-circle-base1{
-  margin: 354px 0 0 0; 
-  left: 20.7%;
+.feed-circle-base-1{
+  margin: 500px 0 0 0; 
+  left: 82.5%;
 }
 
-.feed-circle-base2 {
-  margin: 582px 0 0 0; 
-  left: 20.7%;
+.feed-circle-base-2 {
+  margin: 739px 0 0 0; 
+  left: 82.5%;
 }
-.feed-circle-base3 {
-  margin: 810px 0 0 0; 
-  left: 20.7%;
+.feed-circle-base-3 {
+  margin: 276px 0 0 0; 
+  left:82.5%;
 }
 
