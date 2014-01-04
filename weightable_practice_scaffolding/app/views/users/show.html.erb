@@ -26,10 +26,12 @@
           <span class="spacing"> <%= @user.friends.size %> friends</span> 
         </div><br>
 
-        <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
-          <%= render "form_edit_weigh_in" %>
-        <% else %>
-          <%= render "form_create_weigh_in" %>
+        <% if current_user == @user %>
+          <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
+            <%= render "form_edit_weigh_in" %>
+          <% else %>
+            <%= render "form_create_weigh_in" %>
+          <%end%>
         <%end%>
       </div>
     </div>
