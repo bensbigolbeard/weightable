@@ -14,7 +14,7 @@
 
 <!-- About Me Section -->
   <div class="col-xs-10 col-xs-offset-4 col-sm-4 neg-margin about-me"> 
-    <h1 class="username"><%= @user.name.capitalize %></h1> <br>
+    <h1 class="username"><%= @user.name.split.map(&:capitalize).join(' ') %></h1> <br>
     <h3 class="inline-text">goal <strong><%= @user.goal %> lbs</strong></h3>
     <a href="<%= edit_user_path(@user)%>" class="edit-goal-pad small text-muted"><%= fa_icon "pencil 2x" %> EDIT GOAL</a> <br>
     <div class="weighin-friend-text">
