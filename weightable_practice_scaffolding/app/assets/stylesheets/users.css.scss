@@ -133,6 +133,7 @@ h3 {
   height:38px;
   line-height: 38px;
   text-align: center;
+  z-index: 1
   p {
   color: white;
   }
@@ -179,7 +180,7 @@ h3 {
 
 .goal-date-con {
   margin-top: 27px;
-  margin-left: -17px;
+  margin-left: 10px;
 
 }
  
@@ -294,14 +295,40 @@ h1.your-weigh-ins {
 
 .feed-timeline {
   width: 6px;
-  height: 48%;
+  height: 400px;
   background: #228396;
   position: absolute;
   left: 21.1%;
   top: 125px;
 }
 
-.feed-circle {
+.feed-timeline.extra{
+  top:410px;
+}
+
+.feed-timeline-caboose-1, .feed-timeline-caboose-2, .feed-timeline-caboose-3 {
+  width: 6px;
+  background: #228396;
+  position: absolute;
+  left: 84.3%;
+}
+
+.feed-timeline-caboose-1 {
+  height: 400px;
+  top: 102px;
+}
+
+.feed-timeline-caboose-2 {
+  height: 403px;
+  top: -106px;
+}
+
+.feed-timeline-caboose-3 {
+  height: 310px;
+  top: -242px;
+}
+
+.feed-circle, .feed-circle-base1, .feed-circle-base2, .feed-circle-base3 {
   width: 10px;
   height: 10px;
   text-transform: none;
@@ -313,31 +340,25 @@ h1.your-weigh-ins {
   border-radius: 50%;
   box-shadow: 0 0 0 2px #42b8d1;
   text-align: center;
-  left: 83%;
   top: 0;
-  margin: 60px 0 0 0; 
   z-index: 1;
 }
 
-
-.feed-timeline-caboose-1, .feed-timeline-caboose-2, .feed-timeline-caboose-3 {
-  width: 6px;
-  background: #228396;
-  position: absolute;
-  left: 84.3%;
+.feed-circle {
+  margin: 60px 0 0 0;
+  left: 83%;
+}
+.feed-circle-base1{
+  margin: 354px 0 0 0; 
+  left: 20.7%;
 }
 
-.feed-timeline-caboose-1 {
-  height: 400px;
-  top: 106px;
+.feed-circle-base2 {
+  margin: 582px 0 0 0; 
+  left: 20.7%;
+}
+.feed-circle-base3 {
+  margin: 810px 0 0 0; 
+  left: 20.7%;
 }
 
-.feed-timeline-caboose-2 {
-  height: 400px;
-  top: -106px;
-}
-
-.feed-timeline-caboose-3 {
-  height: 310px;
-  top: -242px;
-}
