@@ -1,6 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy] 
 
+def progressbar(user)
+  recent_weight = @user.weigh_ins.first.weight
+
+  original_weight = @user.weigh_ins.last.weight
+  @progress = 100 - ((recent_weight - @user.goal)/(original_weight - @user.goal).to_f*100)
+  if @progress >= 100
+     @progress = 100 
+  elsif @progress <= 0
+    @progress = 0
+  else
+    @progress
+  end
+end
+
 
   # GET /users
   # GET /users.json
@@ -41,18 +55,8 @@ class UsersController < ApplicationController
     @weights = []
     @dates = []
     @goal = []
-    recent_weight = @user.weigh_ins.first.weight
 
-    original_weight = @user.weigh_ins.last.weight
-    @progress = (recent_weight - @user.goal)/(original_weight - @user.goal).to_f*100
-    if @progress < 0
-       @progress = 100 
-    elsif @progress > 100
-      @progress = 0
-    else
-      @progress
-    end
-
+    progressbar(@user) 
     # BMI is calculated by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
     @bmi = ((@user.weigh_ins.last.weight/(((@user.height_in_feet*12)+@user.height_in_inches)**2))*703).round(2)
 
@@ -133,13 +137,13 @@ class UsersController < ApplicationController
 
   def friends
     @user = current_user
-
-
+    progressbar(@user)
   end
 
   def all_users
     @users = User.all
     @user = current_user
+    progressbar(@user)
   end
 
   private

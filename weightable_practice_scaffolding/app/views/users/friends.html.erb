@@ -24,13 +24,12 @@
           <div class="friend_progress_bar_offwhite"></div>
             <!-- Shows progress toward friend's weigh loss goal -->
 
-<!-- THIS THROWS ERROR, NEED TO CORRECT -->
-
             <p class="friend_progress_text"><strong>5%</strong> to goal!</p>  
             <div class="friend_progress_bar_white_bar"></div>
 
-            <!-- <div class="prog-bar-overlay" style="width:<%= @progress %>%"></div>
-              </div> -->
+            <div class="prog-bar-overlay" style="width:<%= @progress %>%"></div>
+              <%= @progress %>
+              </div>
                <!--  <div class="goal-date-con">
                   <h4 class="no-horiz-pad inline-text text-muted"><strong><%= @user.goal %></strong> <small>lbs</small></h4>
                       <% if current_user.goal_date %>
