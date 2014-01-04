@@ -2,6 +2,9 @@
 <%= javascript_tag "var autocomplete_items =  #{ @autocomplete_items.to_json };" %>
 
 <nav class="navbar navbar-default" role="navigation">
+<!-- Here be dragons -->
+<div class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default container" role="navigation">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="sr-only">Toggle navigation</span>
@@ -12,7 +15,7 @@
     <%= link_to image_tag("weightable_logo.png", :alt=>"Weightable Logo"), root_path, class: 'navbar-brand navbar-left' %>
   </div>
   <div class="collapse navbar-collapse">
-    <%= form_tag search_path, :method => :get, :class=> "navbar-search navbar-left", :role=> "search" do %>
+    <%= form_tag search_path, :method => :get, :class=> "navbar-search navbar-right", :role=> "search" do %>
     <div class="input-group">
       <%= text_field_tag :search, params[:search], {:placeholder => "Search", :class=> "form-control"} %>
       <span class="input-group-btn">
@@ -25,6 +28,7 @@
       </ul>
      </div>
   </nav>
+</div>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         $('#search').autocomplete({source: autocomplete_items});
