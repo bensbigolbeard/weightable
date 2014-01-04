@@ -5,38 +5,46 @@
 
     <!-- Creates bootstrap column -->
     <div class="friend_card col-md-3">
-
-      <!-- Generates friend's profile image -->
-      <img class="friend_page_pic" src=<%= friendship.friend.profile_pic_url %> />
-    
-      <!-- Creates link to friend's show page and capitalizes each letter in multiple names -->
-      <h1 class="friend_name"><%= link_to "#{friendship.friend.name.split.map(&:capitalize).join(' ')}", user_path(friendship.friend.id) %></h1>
-
-      <!-- Shows friend's goal weight -->
-      <p class="friend_goal_info">goal <strong><%= friendship.friend.goal %> lbs</strong></p>
-
-      <!-- Shows number of friend's friends -->
-      <p class="friend_profile_info"><%= friendship.friend.friendships.count %> friends | <%= friendship.friend.weigh_ins.count %> weigh-ins </p>
       
-      <!-- Shows number of friend's weigh ins -->
-
-      <!-- Shows progress toward friend's weigh loss goal -->
+      <div class="friend_card_inner_border">
+        <!-- Generates friend's profile image -->
+        <img class="friend_page_pic" src=<%= friendship.friend.profile_pic_url %> />
       
-<!--         <div class="prog-bar-base"></div>
-          <div class="prog-bar-overlay" style="width:<%= @progress %>%"></div>
-            </div>
-              <div class="goal-date-con">
-                <h4 class="no-horiz-pad inline-text text-muted"><strong><%= @user.goal %></strong> <small>lbs</small></h4>
-                    <% if current_user.goal_date %>
-                      <p class='text-muted'><%= @user.goal_date.to_formatted_s(:short) %></p>
-                    <% end %>
-                  <p id="progress-label"><strong><%=@progress%>%</strong> to goal! </p>
-                </div>  
-              </div>  
-            </div>
-          </div>-->
-          <!-- Closes bootstrap column -->
-        </div> 
+        <!-- Creates link to friend's show page and capitalizes each letter in multiple names -->
+        <h1 class="friend_name"><%= link_to "#{friendship.friend.name.split.map(&:capitalize).join(' ')}", user_path(friendship.friend.id) %></h1>
+
+        <!-- Shows friend's goal weight -->
+        <p class="friend_goal_info">goal <strong><%= friendship.friend.goal %> lbs</strong></p>
+
+        <!-- Shows number of friend's friends and number of friend's weigh ins -->
+        <p class="friend_profile_info"><strong><%= friendship.friend.friendships.count %></strong> friends | <strong><%= friendship.friend.weigh_ins.count %></strong> weigh-ins </p>
+
+        <!-- Shows progress toward friend's weigh loss goal -->
+        <div class="friend_progress_bar_base"></div>
+          <div class="friend_progress_bar_offwhite"></div>
+            <p class="friend_progress_text"><strong>5%</strong> to goal!</p>  
+            <div class="friend_progress_bar_white_bar"></div>
+
+
+
+
+
+            <!-- <div class="prog-bar-overlay" style="width:<%= @progress %>%"></div>
+              </div> -->
+               <!--  <div class="goal-date-con">
+                  <h4 class="no-horiz-pad inline-text text-muted"><strong><%= @user.goal %></strong> <small>lbs</small></h4>
+                      <% if current_user.goal_date %>
+                        <p class='text-muted'><%= @user.goal_date.to_formatted_s(:short) %></p>
+                      <% end %>
+                    <p id="progress-label"><strong><%=@progress%>%</strong> to goal! </p>
+                  </div>  
+                </div>   -->
+              <!-- </div> -->
+          <!-- </div> -->
+       
+        </div>  
+    <!-- Closes bootstrap column -->
+    </div> 
   <% end %>
 <% end %>
 

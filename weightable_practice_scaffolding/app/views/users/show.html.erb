@@ -43,7 +43,7 @@
       <div class="col-sm-2">
         <div class="goal-date-con">
           <h4 class="no-horiz-pad inline-text text-muted"><strong><%= @user.goal %></strong> <small>lbs</small></h4>
-          <% if current_user.goal_date %>
+          <% if @user.goal_date != nil %>
             <p class='text-muted'><%= @user.goal_date.to_formatted_s(:short) %></p>
           <% end %>
         </div>
@@ -87,6 +87,17 @@
 <!-- Renders User timeline -->
   <div class="col-xs-8 col-xs-offset-2 col-sm-5 col-sm-offset-0 col-md-5">
     <div class="feed-timeline hidden-xs"></div>
+    <% if @user.weigh_ins.count < 2 %>
+      <div class="feed-circle-base1 hidden-xs"></div>
+      <div class="feed-circle-base2 hidden-xs"></div>
+      <div class="feed-circle-base3 hidden-xs"></div>
+      <div class="feed-timeline extra hidden-xs"></div>
+    <% elsif @user.weigh_ins.count < 3 %>
+      <div class="feed-circle-base2 hidden-xs"></div>
+      <div class="feed-circle-base3 hidden-xs"></div>
+    <% elsif @user.weigh_ins.count == 3 %>
+      <div class="feed-circle-base3 hidden-xs"></div>
+    <% end %>
       <%= render 'show_wi_feed' %>  
     </div>
   </div>
