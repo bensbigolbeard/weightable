@@ -19,15 +19,15 @@
         <!-- Shows number of friend's friends and number of friend's weigh ins -->
         <p class="friend_profile_info"><strong><%= friendship.friend.friendships.count %></strong> friends | <strong><%= friendship.friend.weigh_ins.count %></strong> weigh-ins </p>
 
-        <!-- Shows progress toward friend's weigh loss goal -->
+        <!-- Green progress bar section -->
         <div class="friend_progress_bar_base"></div>
           <div class="friend_progress_bar_offwhite"></div>
-            <p class="friend_progress_text"><strong>5%</strong> to goal!</p>  
+            <!-- Shows progress toward friend's weigh loss goal -->
+
+<!-- THIS THROWS ERROR, NEED TO CORRECT -->
+
+            <p class="friend_progress_text"><strong><%= ((friendship.friend.weigh_ins.last).to_f/((friendship.friend.goal).to_f) * 100 - 100).round(2) %>%</strong> to goal!</p>  
             <div class="friend_progress_bar_white_bar"></div>
-
-
-
-
 
             <!-- <div class="prog-bar-overlay" style="width:<%= @progress %>%"></div>
               </div> -->
