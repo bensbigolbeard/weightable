@@ -319,7 +319,6 @@ h1.your-weigh-ins {
   z-index: 1;
 }
 
-
 .feed-timeline-caboose-1, .feed-timeline-caboose-2, .feed-timeline-caboose-3 {
   width: 6px;
   background: #228396;
@@ -340,4 +339,31 @@ h1.your-weigh-ins {
 .feed-timeline-caboose-3 {
   height: 310px;
   top: -242px;
+}
+
+/* Friends page*/
+
+.friend_card {
+  width: 325px;
+  height: 400px;
+  background-color: white;
+  margin: 25px;
+  padding: 10px;
+}
+
+.friend_page_pic {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 8px solid #fff;
+  box-shadow: 0 0 0 1px #beb9b5;
+  margin-top: 15px;
+}
+
+.add_more_friends {
+  background-color: #df5b35;
+  width: 325px;
+  height: 100px; 
+  font-color: white;
+  margin-top: 250px;
 }

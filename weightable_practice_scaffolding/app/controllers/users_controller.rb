@@ -73,17 +73,6 @@ class UsersController < ApplicationController
     else 
       @record_weight_status = "Not Valid"
     end      
-  
-    # if @record_weight <= 18.49
-    #   @record_weight_status = "Underweight"
-    # elsif @record_weight >= 18.5 && @record_weight <= 24.99
-    #   @record_weight_status = "Normal Weight"
-    # elsif @record_weight >= 25 && @record_weight <= 29.99
-    #   @record_weight_status = "Normal Weight"
-    # else
-    #   @record_weight_status = "Obese"
-    # end
-
   end
 
   def search
@@ -145,6 +134,8 @@ class UsersController < ApplicationController
 
   def friends
     @user = current_user
+
+
   end
 
   def all_users

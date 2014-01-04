@@ -1,20 +1,18 @@
-<%= link_to "Add more friends", all_users_path %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if current_user %> 
-      <% @user.friendships.each do |friendship| %>
-        <tr>
-          <td><%= link_to "#{friendship.friend.name}", user_path(friendship.friend.id) %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+<h1 class="friends_header"><%= @user.friendships.count %> friends</h1>
+
+<div class="friend_card col-md-3">
+  <img class="friend_page_pic clearfix" src=<%= @user.profile_pic_url(:sq_medium) %>
+</div>
+
+
+<%= link_to(all_users_path) do %>
+  <div class="add_more_friends">Find More Friends</div>
+<% end %>
+
+
+
+
+
+
+
+
