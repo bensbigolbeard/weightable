@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
-before_action :get_user_list
+before_action :get_user_list, :check_feed_notification
 
 
 def get_user_list
@@ -15,6 +15,22 @@ def get_user_list
       }
   end 
 end
+
+def check_feed_notification
+  @user = current_user
+    if @user
+    @recent_weigh_ins = []
+    @user.friends.each do |friend|
+      friend.weigh_ins.each do |weigh|
+        if weigh.created_at > @user.last_sign_in_at
+          @recent_weigh_ins << weigh
+        end
+      end
+    end
+    @notifications = @recent_weigh_ins.count
+  end
+end
+
 
 protected
 
