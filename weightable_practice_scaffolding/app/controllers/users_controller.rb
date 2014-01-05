@@ -55,6 +55,14 @@ end
     @weights = []
     @dates = []
     @goal = []
+    @day_initials = []
+
+    @user.weigh_ins.last(10).each do |weight|
+      @weights.unshift(weight.weight) 
+      @goal.unshift(@user.goal) 
+      @dates.unshift((weight.created_at).strftime("%a"))
+      @day_initials.unshift((weight.created_at).strftime("%a"))
+    end
 
     progressbar(@user) 
     # BMI is calculated by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.

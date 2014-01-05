@@ -182,7 +182,25 @@ h3 {
   margin-left: 10px;
 
 }
- 
+/* Left Content */
+
+/* Stats */
+.chart-container {
+  background-color: white;
+  padding: 10px;
+  margin-top: 50px;
+  border: 1px solid #dddddd;
+}
+/* Green Dashboard */
+.green-dashboard {
+  background-color: #4ec67c;
+  width: 100%;
+  margin-top: -20px;
+  border: 1px solid #4ca16c;
+  padding: 20px;
+  color: white;
+}
+
 /* Right content */
 
 /* Weigh-in speech bubble*/
@@ -283,13 +301,17 @@ hr {
   margin-top: -10px;
   margin-bottom: 7px;
   text-align: center;
-  
 }
 
 /* Timeline on Profile */
 
 h1.your-weigh-ins {
+  text-align: center;
   padding-left: 20%;
+}
+
+h1.stats-header {
+  text-align: center;
 }
 
 .feed-timeline {

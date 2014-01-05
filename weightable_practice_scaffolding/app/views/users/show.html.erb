@@ -66,8 +66,10 @@
   <div class="col-7 col-sm-7 col-lg-7">
     <div class="row">
       <div class="col-xs-12">
-        <h1>your stats</h1>
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <h1 class="stats-header">your stats</h1>
+        <div class ="chart-container">
+        <canvas id="myChart" width="800" height="500"></canvas>
+        </div>
       </div>
     </div>
 
@@ -75,13 +77,28 @@
 <!-- Displays user's BMI from users_controller and rounds to nearest two digit decimal place -->
     <div class="row">
       <div class="col-xs-12">
-        <h1>Body Mass Index (BMI): <%= @bmi %></h1>
-        <!-- The user's lowest weigh in -->
-        <h1>Record Weight: <%= @record_weight %></h1>
-        <!-- User's BMI description -->
-        <h3> <%= @record_weight_status %></h3>
+        <div class="green-dashboard">
+          <div class="row">
+            <div class="col-xs-6">
+              <canvas id="dashboardChart" height="200" width="300"></canvas>
+            </div>
+            <div class="col-xs-6">
+              <h1>Upper Right</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <h1><h1>Body Mass Index (BMI): <%= @bmi %></h1>
+              <%= @record_weight_status %></h1>
+            </div>
+            <div class="col-xs-6">
+              <h1>Record Weight: <%= @record_weight %></h1>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+      
   </div>
 
 <!-- Renders User timeline -->
@@ -169,6 +186,77 @@
   }
 
   myNewChart = new Chart($("#myChart").get(0).getContext("2d")).Line(data,options)
+});</script>
+
+<script type="text/javascript">
+  
+
+
+  $(function() {
+  options = {
+    //Boolean - If we show the scale above the chart data     
+    scaleOverlay : false,
+
+    // set to line chart instead of curve
+    //Boolean - If we want to override with a hard coded scale
+    scaleOverride : true,
+    
+    //String - Colour of the scale line 
+    scaleLineColor : "rgba(78,198,124,0)",
+    
+    //Boolean - Whether to show labels on the scale 
+    scaleShowLabels : false,
+    
+    //Boolean - Whether grid lines are shown across the chart
+    scaleShowGridLines : false,
+    
+    //Boolean - If there is a stroke on each bar  
+      barShowStroke : true,
+
+    //String - Colour of the grid lines
+    scaleGridLineColor : "rgba(255,255,255,0)",
+
+    //Number - Width of the grid lines
+    scaleGridLineWidth : .001, 
+
+    //String - Scale label font declaration for the scale label
+    scaleFontFamily : "'Open Sans'",
+
+    //String - Scale label font colour
+    scaleFontColor : "#FFFFFF",  
+
+    //Number - Scale label font size in pixels  
+    scaleFontSize : 20,
+
+    //** Required if scaleOverride is true **
+    //Number - The number of steps in a hard coded scale
+    scaleSteps : 5,
+    //Number - The value jump in the hard coded scale
+    scaleStepWidth : <%= (((@user.weigh_ins.first.weight+5)-(@user.goal-15))/5) %>,
+    //Number - The scale starting value
+    scaleStartValue : <%= @user.goal-2%>,
+    
+    pointDotRadius : 6,
+    datasetStrokeWidth : 6,
+    scaleFontFamily : 'Open Sans',
+    scaleGridLineColor : "rgba(112,160,172,.5)",
+    
+
+
+  }
+
+    data = {
+    labels :  <%=raw @day_initials.length > 10 ? @day_initials[-10,10] : @day_initials %>,
+    datasets : [
+       {
+        fillColor : "rgba(255,255,255,1)",
+        strokeColor : "rgba(255,255,255,1)",
+        data : <%= @weights.length > 10 ? @weights[-10,10] : @weights %>
+      }      
+    ]
+  }
+
+  myNewChart = new Chart($("#dashboardChart").get(0).getContext("2d")).Bar(data,options)
 });</script>
 
 <script>

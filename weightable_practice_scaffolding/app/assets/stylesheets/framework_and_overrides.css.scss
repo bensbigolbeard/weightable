@@ -49,7 +49,10 @@ section {
 canvas#myChart {
   display: block;
   padding: 20px;
-}
+  width: 100% !important;
+  max-width: 800px;
+  height: auto !important;
+  }
 
 .profile-pic {
   margin-left: 0;
