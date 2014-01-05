@@ -75,46 +75,50 @@
 
 
 <!-- Displays user's BMI from users_controller and rounds to nearest two digit decimal place -->
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="green-dashboard">
-          <div class="row">
-            <div class="col-xs-6">
-              <h4 class="green-box-headers">10-DAY PROGRESS</h4>
-              <canvas id="dashboardChart" height="160" width="400"></canvas>
-            </div>
-            <div class="col-xs-6">
-              <h4 class="green-box-headers">GOAL PROJECTION</h4>
-              <div class="dashboard-data-container">
-                <span class="dashboard-data goal-projection">
-                  <span id="goal-projection-status-text"><%=@goal_projection_status%></span>
-                  <span id="goal-projection-status-icon"><%=@on_track_icon%></span>
-                </span>
-                <div class="data-subheader">finish on: <%=@finish_date.strftime("%b %-d")%></div>
-              </div>
+    <div class="row green-dashboard">
+      <div class="col-xs-12 col-sm-6">
+
+        <div class="row dash-element">
+          <div class="col-xs-12">
+            <h4 class="green-box-headers">10-DAY PROGRESS</h4>
+            <canvas id="dashboardChart" height="160" width="400"></canvas>
+          </div>
+        </div>
+
+        <div class="row ">
+          <div class="col-xs-12">
+            <h4 class="green-box-headers">BODY MASS INDEX (BMI)</h4>
+            <div class="dashboard-data-container">
+            <span class="dashboard-data"><%= @bmi %></span>
+              <div class="data-subheader"><%= @record_weight_status %></div>
+            </div> 
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <div class="row dash-element">
+          <div class="col-xs-12">
+            <h4 class="green-box-headers">GOAL PROJECTION</h4>
+            <div class="dashboard-data-container">
+              <span class="dashboard-data goal-projection-status"><%=@goal_projection_status%></span>
+              <div class="data-subheader">finish on: <%=@finish_date.strftime("%b %-d")%></div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <h4 class="green-box-headers">BODY MASS INDEX (BMI)</h4>
-              <div class="dashboard-data-container">
-              <span class="dashboard-data"><%= @bmi %></span>
-                <div class="data-subheader"><%= @record_weight_status %></div>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <h4 class="green-box-headers">RECORD WEIGHT</h4>
-              <div class="dashboard-data-container">
-                <i class="fa fa-trophy record-weight-trophy"></i>
-                <span class="dashboard-data"><%= @record_weight %></span>
-                <span class="record-weight">lbs</span>
-              </div>
+        </div>
+
+        <div class="row"> 
+          <div class="col-xs-12">
+            <h4 class="green-box-headers">RECORD WEIGHT</h4>
+            <div class="dashboard-data-container">
+              <i class="fa fa-trophy record-weight-trophy"></i>
+              <span class="dashboard-data"><%= @record_weight %></span>
+              <span class="record-weight">lbs</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-      
   </div>
 
 <!-- Renders User timeline -->
@@ -227,7 +231,7 @@
     scaleShowGridLines : false,
     
     //Boolean - If there is a stroke on each bar  
-      barShowStroke : true,
+    barShowStroke : true,
 
     //String - Colour of the grid lines
     scaleGridLineColor : "rgba(255,255,255,0)",

@@ -195,7 +195,7 @@ h3 {
 .green-dashboard {
   background-color: #4ec67c;
   width: 100%;
-  margin-top: -20px;
+  margin: 0 auto;
   border: 1px solid #4ca16c;
   padding: 20px;
   color: white;
@@ -233,6 +233,15 @@ h3 {
 .dashboard-data {
   font-weight: 300;
   font-size: 50px;
+}
+
+.dash-element {
+  height: 200px;
+
+}
+
+.goal-projection-status {
+  margin-top: 40px;
 }
 /* Right content */
 
