@@ -208,14 +208,22 @@ h3 {
 }
 
 .record-weight {
-  font-size: .5em;
+  font-size: 30px;
   font-weight: 100;
+  opacity: .6;
+}
+
+.data-subheader{
+  font-size: 16px;
+  font-weight: 100px;
+  opacity: .6;
 }
 
 .record-weight-trophy {
-  font-size: .8em;
+  font-size: 30px;
   display: block;
   opacity: .6;
+  letter-spacing: 5px;
 }
 
 .dashboard-data-container {
@@ -223,8 +231,8 @@ h3 {
 }
 
 .dashboard-data {
-  font-weight: 400;
-  font-size: 30px;
+  font-weight: 300;
+  font-size: 50px;
 }
 /* Right content */
 

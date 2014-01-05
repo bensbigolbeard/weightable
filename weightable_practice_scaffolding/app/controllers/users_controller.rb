@@ -83,7 +83,14 @@ end
       @record_weight_status = "obese"
     else 
       @record_weight_status = "n/a"
-    end      
+    end
+
+    #Variable for if on track or not on track with goal and deadline
+    @on_track_icon = (@weights.reduce(:+) / @weights.length) 
+
+    @weights.each do |weight|
+    
+    end
   end
 
   def search

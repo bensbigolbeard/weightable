@@ -150,6 +150,12 @@ div {
   }
 }
 
+<% if @on_track_icon %> 
+@media(min-width:912px){
+  .goal-projection span:after { content: <%= @on_track_icon %> }
+}
+<% end %>
+
 @media(min-width:912px){
 
   ul.nav.navbar-nav a{
