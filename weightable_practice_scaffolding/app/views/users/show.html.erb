@@ -86,8 +86,8 @@
             <div class="col-xs-6">
               <h4 class="green-box-headers">GOAL PROJECTION</h4>
               <div class="dashboard-data-container">
-                <span class="dashboard-data goal-projection">ON&nbsp;TRACK</span>
-                <div class="data-subheader">finish estimate:</div>
+                <span class="dashboard-data goal-projection"> <%=@goal_projection_status%> </span>
+                <div class="data-subheader">finish on: <%=@finish_date.strftime("%b %-d")%></div>
               </div>
             </div>
           </div>

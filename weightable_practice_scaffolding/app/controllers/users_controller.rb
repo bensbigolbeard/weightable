@@ -95,13 +95,18 @@ end
     # This should return a negative number
     @pounds_to_go = (@user.goal - @user.weigh_ins.last.weight)
 
-    @days_remaining_to_goal = (@user.goal_date - Time.now) / (24*60*60)
+    @days_remaining_to_goal = ((@user.goal_date - DateTime.now).to_i)
 
-    if ((@days_remaining_to_goal < @pounds_to_go) / @avg_difference)
+    if (@days_remaining_to_goal < (@pounds_to_go / @avg_difference))
       @on_track_icon = "X"
+      @goal_projection_status = "OFF&nbsp;TRACK".html_safe;
     else  
       @on_track_icon = ":)"
+      @goal_projection_status = "ON&nbsp;TRACK".html_safe
     end
+
+    @finish_date = ((DateTime.now+(@pounds_to_go/@avg_difference).to_i))
+    @finish_estimate = ((@finish_date - DateTime.now).to_i)
   end
 
   def search
