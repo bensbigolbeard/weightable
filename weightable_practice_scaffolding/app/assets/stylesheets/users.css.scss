@@ -56,10 +56,6 @@ h3 {
   clear: both;
 }
 
-.testimonial p {
-  font-family: 'Open Sans', sans-serif;
-}
-
 .testimonial {
   width: 320px;
   height: 227px;
@@ -67,6 +63,9 @@ h3 {
   margin: 25px;
   display: inline-block;
   padding: 10px;
+  p {
+  font-family: 'Open Sans', sans-serif;
+  }
 }
 
 .testimonial_picture {
@@ -385,3 +384,89 @@ h1.your-weigh-ins {
   left:82.5%;
 }
 
+/* Friends page */
+
+.friends_header {
+  margin-top:35px;
+}
+.friend_card {
+  width: 325px;
+  height: 433px;
+  background-color: white;
+  margin: 25px;
+  margin-top: 25px;
+  padding: 10px;
+  display: block;
+  border: 1px solid #b0b0b0;
+  overflow:auto;
+}
+
+.friend_card_inner_border {
+  border: 1px solid #e3e3e3;
+  height: 375;
+}
+
+.friend_page_pic {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 8px solid #f3f3f3;
+  box-shadow: 0 0 0 1px #beb9b5;
+  margin-top: 15px;
+}
+
+.add_more_friends {
+  text-decoration: none;
+  background-color: #df5b35;
+  width: 325px;
+  height: 75px; 
+  font-color: white;
+  margin-top: 250px;
+  padding: auto;
+  display: inline-block;
+  font-size: 1em;
+}
+
+.friend_goal_info {
+  font-family: "Open Sans";
+  font-size: 1.25em;
+  font-color: #293742;
+  text-align: center;
+}
+
+.friend_profile_info {
+  font-family: "Open Sans";
+  font-size: 1em;
+  font-color: #293742;
+  text-align: center;
+}
+
+.friend_name {
+  text-align: center;
+}
+
+.friend_progress_bar_base{
+  height: 75px;
+  background-color: #46bc72;
+  border: 2px solid #5e9870;
+  margin-top: 18px;
+  width: 325px;
+  margin-left: -12px;
+}
+
+.friend_progress_bar_offwhite {
+  height:15px;
+  width: 100%;
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: -30px;
+  background-color: #a5dbb9;
+  border: 2px solid #a5dbb9;
+}
+
+p.friend_progress_text {
+  font-color: white;
+  font-family: "Open Sans";
+  text-align: center;
+  margin-top: -40px;
+}
