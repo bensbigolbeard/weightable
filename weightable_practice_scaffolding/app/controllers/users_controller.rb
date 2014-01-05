@@ -86,10 +86,21 @@ end
     end
 
     #Variable for if on track or not on track with goal and deadline
-    @on_track_icon = (@weights.reduce(:+) / @weights.length) 
-
-    @weights.each do |weight|
     
+    #sets array for array of differences
+    @array_of_differences = @weights.each_cons(2).map { |a,b| b-a }
+  
+    @avg_difference = ((@array_of_differences.reduce(:+) / @array_of_differences.length))
+
+    # This should return a negative number
+    @pounds_to_go = (@user.goal - @user.weigh_ins.last.weight)
+
+    @days_remaining_to_goal = (@user.goal_date - Time.now) / (24*60*60)
+
+    if ((@days_remaining_to_goal < @pounds_to_go) / @avg_difference)
+      @on_track_icon = "X"
+    else  
+      @on_track_icon = ":)"
     end
   end
 
