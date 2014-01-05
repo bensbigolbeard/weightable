@@ -1,77 +1,45 @@
 <h1 class="friends_header"><%= @user.friendships.count %> friends</h1>
 
 <% if current_user %> 
-  <% @user.friendships.each do |friendship| %>
+  <% @users.each do |user| %>
+    <% @user_id_loop = user.id %>
     <!-- Creates bootstrap column -->
-    <div class="friend_card_inner_border">
-      <!-- Add friend button -->
-      <div class="friend_card col-md-3">
+    <div class="friend_card col-md-3">
+      
+      <div class="friend_card_inner_border">
         <!-- Generates friend's profile image -->
-           <% if current_user.friends.include?(friendship.friend) %>
-            <%= button_to 'Remove friend', destroy_friendships_path( id: friendship.friend.id), method: :delete %>
-            <% else %>
-          <%= button_to 'Add friend', friendships_path( friend_id: user), method: :post %>
-            <% end %>
-                 
-        <img class="friend_page_pic" src=<%= friendship.friend.profile_pic_url %> />
+        <img class="friend_page_pic" src=<%= user.profile_pic_url(:sq_medium) %> />
       
         <!-- Creates link to friend's show page and capitalizes each letter in multiple names -->
-        <h1 class="friend_name"><%= link_to "#{friendship.friend.name.split.map(&:capitalize).join(' ')}", user_path(friendship.friend.id) %></h1>
-  
+        <h1 class="friend_name"><%= link_to "#{user.name.split.map(&:capitalize).join(' ')}", user_path(user.id) %></h1>
+
         <!-- Shows friend's goal weight -->
-        <p class="friend_goal_info">goal <strong><%= friendship.friend.goal %> lbs</strong></p>
+        <p class="friend_goal_info">goal <strong><%= user.goal %> lbs</strong></p>
 
         <!-- Shows number of friend's friends and number of friend's weigh ins -->
-        <p class="friend_profile_info"><strong><%= friendship.friend.friendships.count %></strong> friends | <strong><%= friendship.friend.weigh_ins.count %></strong> weigh-ins </p>
-        
+        <p class="friend_profile_info"><strong><%= user.friendships.count %></strong> friends | <strong><%= user.weigh_ins.count %></strong> weigh-ins </p>
+
+        <div class="center-div">
+          <% if current_user.friends.include?(User.find(user.id)) %>
+          <td><%= button_to 'Remove friend', destroy_friendships_path( id: user.id), method: :delete, :class=>"btn btn-orange" %></td>
+          <% else %>
+
+          <td><%= button_to "Add friend", friendships_path( friend_id: user), method: :post, :class=>"btn btn-blue" %></td>
+          <% end %>
+        </div>
+
         <!-- Green progress bar section -->
         <div class="friend_progress_bar_base"></div>
-          <div class="friend_progress_bar_offwhite"></div>
-            <!-- Shows progress toward friend's weigh loss goal -->
-            
-            <p class="friend_progress_text"><strong>5%</strong> to goal!</p>  
-            <div class="friend_progress_bar_white_bar"></div>
-            
-            <div class="prog-bar-overlay" style="width:<%= @progress %>%"></div>
-              </div>
-                <div class="goal-date-con">
-                  <h4 class="no-horiz-pad inline-text text-muted"><strong><%= @user.goal %></strong> <small>lbs</small></h4>
-                      <% if current_user.goal_date %>
-                        <p class='text-muted'><%= @user.goal_date.to_formatted_s(:short) %></p>
-                      <% end %>
-                    <p id="progress-label"><strong><%= @progress %>%</strong> to goal! </p>
-                  </div>  
-                </div>  
-              <!-- </div> -->
-          <!-- </div> -->
+          <p class="friend_progress_text"><strong><%= friend_progress(@user_id_loop).round %>%</strong> to goal!</p>  
+          
+          <!-- Shows progress toward friend's weigh loss goal -->
+          <div class="friend_progress_bar_white_bar"></div>
+          <div class="prog-bar-base-small"></div>
+          <div class="prog-bar-overlay-small" style="width:<%= friend_progress(@user_id_loop) %>%"></div>
        
         </div>  
     <!-- Closes bootstrap column -->
     </div> 
   <% end %>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% for user in @users do %>
-      <tr>
-        <td><%= link_to "#{user.name}", user_path(user.id) %></td>
-        <% if current_user.friends.include?(User.find(user.id)) %>
-        <td><%= button_to 'Remove friend', destroy_friendships_path( id: user.id), method: :delete %></td>
-        <% else %>
-
-        <td><%= button_to 'Add friend', friendships_path( friend_id: user), method: :post %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>

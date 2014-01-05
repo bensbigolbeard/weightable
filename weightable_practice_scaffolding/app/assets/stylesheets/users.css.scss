@@ -474,12 +474,27 @@ h1.stats-header {
   border-bottom:none;
 }
 
-.btn-warning{
+.btn-orange {
   background-color: #e75735;
-  border-color: #e4441e;
+  border-color: #e4441e !important;
+  border-radius: 0;
+  color:white;
   &:hover {
     background-color: #e4441e;
     border-color: #e4441e;
+    color:white;
+  }
+}
+
+.btn-blue{
+  background-color: #384b5a;
+  border-color: #293742;
+  color:white;
+  border-radius: 0;
+  &:hover {
+    background-color: #293742;
+    border-color: #293742;
+    color:white;
   }
 }
 
