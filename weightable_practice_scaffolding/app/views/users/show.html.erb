@@ -84,16 +84,17 @@
             <canvas id="dashboardChart" height="160" width="400"></canvas>
           </div>
         </div>
-
+        <hr class="visible-xs">
         <div class="row ">
-          <div class="col-xs-12">
+          <div class="col-xs-12 bmi-height">
             <h4 class="green-box-headers">BODY MASS INDEX (BMI)</h4>
             <div class="dashboard-data-container">
-            <span class="dashboard-data"><%= @bmi %></span>
-              <div class="data-subheader"><%= @record_weight_status %></div>
+            <div class="dashboard-data bmi-index"><strong><%= @bmi %></strong></div>
+              <div class="data-subheader"><strong><%= @record_weight_status %></strong></div>
             </div> 
           </div>
         </div>
+        <hr class="visible-xs">
       </div>
 
       <div class="col-xs-12 col-sm-6">
@@ -101,19 +102,22 @@
           <div class="col-xs-12">
             <h4 class="green-box-headers">GOAL PROJECTION</h4>
             <div class="dashboard-data-container">
-              <span class="dashboard-data goal-projection-status"><%=@goal_projection_status%></span>
+              <div class="dashboard-data goal-projection-status"><strong><%=@goal_projection_status%></strong></div>
               <div class="data-subheader">finish on: <%=@finish_date.strftime("%b %-d")%></div>
             </div>
           </div>
         </div>
 
+        <hr class="visible-xs">
         <div class="row"> 
           <div class="col-xs-12">
             <h4 class="green-box-headers">RECORD WEIGHT</h4>
             <div class="dashboard-data-container">
-              <i class="fa fa-trophy record-weight-trophy"></i>
-              <span class="dashboard-data"><%= @record_weight %></span>
-              <span class="record-weight">lbs</span>
+              <div class="goal-projection-status">
+                <i class="fa fa-trophy record-weight-trophy"></i>
+                <span class="dashboard-data"><strong><%= @record_weight %></strong></span>
+                <span class="record-weight">lbs</span>
+              </div>
             </div>
           </div>
         </div>

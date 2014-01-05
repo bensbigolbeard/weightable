@@ -51,4 +51,6 @@ class User < ActiveRecord::Base
   def sorted_comments
     weight.comments.sort_by &:created_at
   end
+
+  
 end

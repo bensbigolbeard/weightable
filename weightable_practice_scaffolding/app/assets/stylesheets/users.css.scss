@@ -155,11 +155,20 @@ h3 {
 .prog-bar-con {
   margin-top: 20px;
 }
+
 .prog-bar-base{
   width: 100%;
   height:50px;
   background-color: #dbd7d6;
   border: 2px solid #c1bcb8;
+}
+
+.prog-bar-base-small {
+  position: absolute;
+  width: 93%;
+  height:20px;
+  background-color: white;
+  margin-top: -50px;
 }
 
 .prog-bar-overlay{
@@ -168,6 +177,14 @@ h3 {
   margin-top: -50px;
   background-color: #4ec67c;
   border: 2px solid #4ca16c;
+}
+
+.prog-bar-overlay-small {
+  position: absolute;
+  height:20px;
+  margin-top: -50px;
+  background-color: #4ec67c;
+  opacity: .5;
 }
 
 #progress-label{
@@ -233,6 +250,13 @@ h3 {
 .dashboard-data {
   font-weight: 300;
   font-size: 50px;
+  
+}
+
+.dashboard-data.goal-projection-status {
+  margin: 45px 0 20px 0;
+  font-size: 40px;
+  letter-spacing: .9
 }
 
 .dash-element {
@@ -240,8 +264,9 @@ h3 {
 
 }
 
-.goal-projection-status {
-  margin-top: 40px;
+.goal-projection-status,.bmi-index {
+  margin: 45px 0 20px 0;
+  letter-spacing: .9
 }
 /* Right content */
 
@@ -432,19 +457,35 @@ h1.stats-header {
 }
 .friend_card {
   width: 325px;
-  height: 433px;
+  height: 100%;
   background-color: white;
   margin: 25px;
   margin-top: 25px;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   display: block;
   border: 1px solid #b0b0b0;
-  overflow:auto;
+  border-bottom: none;
+  overflow:hidden;
 }
 
 .friend_card_inner_border {
   border: 1px solid #e3e3e3;
   height: 375;
+  border-bottom:none;
+}
+
+.btn-warning{
+  background-color: #e75735;
+  border-color: #e4441e;
+  &:hover {
+    background-color: #e4441e;
+    border-color: #e4441e;
+  }
+}
+
+.center-div {
+  text-align: center
+
 }
 
 .friend_page_pic {
@@ -459,13 +500,18 @@ h1.stats-header {
 .add_more_friends {
   text-decoration: none;
   background-color: #df5b35;
-  width: 325px;
+  width: 450px;
   height: 75px; 
-  font-color: white;
-  margin-top: 250px;
+  color: white;
   padding: auto;
   display: inline-block;
   font-size: 1em;
+  text-align: center;
+  margin: 110px 0 70px -15px;
+  h4{
+    margin:0;
+    line-height:75px;
+  }
 }
 
 .friend_goal_info {
@@ -506,8 +552,10 @@ h1.stats-header {
 }
 
 p.friend_progress_text {
-  font-color: white;
+  padding-top: 5px;
+  color: white;
   font-family: "Open Sans";
   text-align: center;
-  margin-top: -40px;
+  margin-top: -33px;
+
 }

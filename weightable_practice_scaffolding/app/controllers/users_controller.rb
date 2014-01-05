@@ -1,20 +1,26 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy] 
 
-def progressbar(user)
-  recent_weight = @user.weigh_ins.first.weight
+  helper_method :friend_progress
 
-  original_weight = @user.weigh_ins.last.weight
-  @progress = 100 - ((recent_weight - @user.goal)/(original_weight - @user.goal).to_f*100)
-  if @progress >= 100
-     @progress = 100 
-  elsif @progress <= 0
-    @progress = 0
-  else
-    @progress
+  def progressbar(user)
+  recent_weight = user.weigh_ins.first.weight
+
+  original_weight = user.weigh_ins.last.weight
+    @progress = 100 - ((recent_weight - user.goal)/(original_weight - user.goal).to_f*100)
+    if @progress >= 100
+      @progress = 100 
+    elsif @progress <= 0
+      @progress = 0
+    else
+      @progress
+    end
   end
-end
 
+  def friend_progress(id)
+    @f = User.find(id)
+    progressbar(@f)
+  end
 
   # GET /users
   # GET /users.json
@@ -168,7 +174,6 @@ end
 
   def friends
     @user = current_user
-    progressbar(@user)
   end
 
   def all_users
