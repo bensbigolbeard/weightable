@@ -80,19 +80,32 @@
         <div class="green-dashboard">
           <div class="row">
             <div class="col-xs-6">
-              <canvas id="dashboardChart" height="200" width="300"></canvas>
+              <h4 class="green-box-headers">10-DAY PROGRESS</h4>
+              <canvas id="dashboardChart" height="160" width="400"></canvas>
             </div>
             <div class="col-xs-6">
-              <h1>Upper Right</h1>
+              <h4 class="green-box-headers">GOAL PROJECTION</h4>
+              <div class="dashboard-data-container">
+                <span class="dashboard-data">ON TRACK</span>
+                <div class="data-subheader">finish estimate:</div>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-6">
-              <h1><h1>Body Mass Index (BMI): <%= @bmi %></h1>
-              <%= @record_weight_status %></h1>
+              <h4 class="green-box-headers">BODY MASS INDEX (BMI)</h4>
+              <div class="dashboard-data-container">
+              <span class="dashboard-data"><%= @bmi %></span>
+                <div class="data-subheader"><%= @record_weight_status %></div>
+              </div>
             </div>
             <div class="col-xs-6">
-              <h1>Record Weight: <%= @record_weight %></h1>
+              <h4 class="green-box-headers">RECORD WEIGHT</h4>
+              <div class="dashboard-data-container">
+                <i class="fa fa-trophy record-weight-trophy"></i>
+                <span class="dashboard-data"><%= @record_weight %></span>
+                <span class="record-weight">lbs</span>
+              </div>
             </div>
           </div>
         </div>

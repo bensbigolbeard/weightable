@@ -54,6 +54,13 @@ canvas#myChart {
   height: auto !important;
   }
 
+canvas#dashboardChart {
+  display: block;
+  width: 100% !important;
+  max-width: 350px;
+  height: auto !important;
+}
+
 .profile-pic {
   margin-left: 0;
 }

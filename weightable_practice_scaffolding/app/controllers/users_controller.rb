@@ -61,7 +61,7 @@ end
       @weights.unshift(weight.weight) 
       @goal.unshift(@user.goal) 
       @dates.unshift((weight.created_at).strftime("%a"))
-      @day_initials.unshift((weight.created_at).strftime("%a"))
+      @day_initials.unshift((weight.created_at).strftime("%a")[0])
     end
 
     progressbar(@user) 
@@ -74,15 +74,15 @@ end
     #Compare BMI to Underweight, Normal Weight, Overweight or Obese categories
     case @bmi
     when 0.0..18.4
-      @record_weight_status = "Underweight"
+      @record_weight_status = "underweight"
     when 18.5..24.9
-      @record_weight_status = "Normal Weight"
+      @record_weight_status = "normal weight"
     when 25.0..29.9
-      @record_weight_status = "Overweight"
+      @record_weight_status = "overweight"
     when 30.0..100
-      @record_weight_status = "Obese"
+      @record_weight_status = "obese"
     else 
-      @record_weight_status = "Not Valid"
+      @record_weight_status = "n/a"
     end      
   end
 
