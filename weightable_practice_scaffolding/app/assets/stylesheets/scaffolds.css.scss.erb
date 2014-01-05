@@ -150,11 +150,6 @@ div {
   }
 }
 
-<% if @on_track_icon %> 
-@media(min-width:912px){
-  .goal-projection span:after { content: <%= @on_track_icon %> }
-}
-<% end %>
 
 @media(min-width:912px){
 
@@ -167,7 +162,14 @@ div {
 
     }
   }
-  
+
+  /*#goal-projection-status-text {
+    display: none;
+  }*/
+
+ /* #goal-projection-status-icon {
+    display: inline;
+  }*/
 }
 
 @media(max-width:911px){
@@ -183,7 +185,12 @@ div {
       width: 100%;
 
     }
-
+  }
+  /*#goal-projection-status-text {
+    display: none;
+  }*/
+  #goal-projection-status-icon {
+    display: none;
   }
   
 }
@@ -194,8 +201,10 @@ div {
     // search bar spans entire nav container
     width: 200px;
   }
+  /*#goal-projection-status-text {
+    display: none;
+  }*/
 }
-
 
 
 
