@@ -49,6 +49,16 @@ section {
 canvas#myChart {
   display: block;
   padding: 20px;
+  width: 100% !important;
+  max-width: 800px;
+  height: auto !important;
+  }
+
+canvas#dashboardChart {
+  display: block;
+  width: 100% !important;
+  max-width: 350px;
+  height: auto !important;
 }
 
 .profile-pic {

@@ -55,6 +55,14 @@ end
     @weights = []
     @dates = []
     @goal = []
+    @day_initials = []
+
+    @user.weigh_ins.last(10).each do |weight|
+      @weights.unshift(weight.weight) 
+      @goal.unshift(@user.goal) 
+      @dates.unshift((weight.created_at).strftime("%a"))
+      @day_initials.unshift((weight.created_at).strftime("%a")[0])
+    end
 
     progressbar(@user) 
     # BMI is calculated by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
@@ -66,16 +74,39 @@ end
     #Compare BMI to Underweight, Normal Weight, Overweight or Obese categories
     case @bmi
     when 0.0..18.4
-      @record_weight_status = "Underweight"
+      @record_weight_status = "underweight"
     when 18.5..24.9
-      @record_weight_status = "Normal Weight"
+      @record_weight_status = "normal weight"
     when 25.0..29.9
-      @record_weight_status = "Overweight"
+      @record_weight_status = "overweight"
     when 30.0..100
-      @record_weight_status = "Obese"
+      @record_weight_status = "obese"
     else 
-      @record_weight_status = "Not Valid"
-    end      
+      @record_weight_status = "n/a"
+    end
+
+    #Variable for if on track or not on track with goal and deadline
+    
+    #sets array for array of differences
+    @array_of_differences = @weights.each_cons(2).map { |a,b| b-a }
+  
+    @avg_difference = ((@array_of_differences.reduce(:+) / @array_of_differences.length))
+
+    # This should return a negative number
+    @pounds_to_go = (@user.goal - @user.weigh_ins.last.weight)
+
+    @days_remaining_to_goal = ((@user.goal_date - DateTime.now).to_i)
+
+    if (@days_remaining_to_goal < (@pounds_to_go / @avg_difference))
+      @on_track_icon = "X"
+      @goal_projection_status = "OFF&nbsp;TRACK".html_safe;
+    else  
+      @on_track_icon = ":)"
+      @goal_projection_status = "ON&nbsp;TRACK".html_safe
+    end
+
+    @finish_date = ((DateTime.now+(@pounds_to_go/@avg_difference).to_i))
+    @finish_estimate = ((@finish_date - DateTime.now).to_i)
   end
 
   def search
