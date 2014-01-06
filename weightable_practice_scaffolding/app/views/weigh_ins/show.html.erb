@@ -1,48 +1,79 @@
-<h1>Weigh-In Detail Page</h1>
-
-<div class="weighinWrapper">
-    <span class="name"><%= @weigh_in.user.name %>
-    <span class="time">posted this weigh_in <%= time_ago_in_words(@weigh_in.created_at) %> ago and his id is <%= @weigh_in.user.id %> and the weigh_in_id is <%=@weigh_in.id%></span>
-    <span></span>
-    <p> <%= @weigh_in.weight %> </p>
-    <p> <%= @weigh_in.status %> </p>
+<!-- ROW 1 -->
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-2">
+    <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-circle" />
+  </div>
+  <div class="col-md-4">
+    <h3><%= @weigh_in.user.name %>'s Weigh In</h3> <h3><%= time_ago_in_words(@weigh_in.created_at) %> ago</h3>
+  </div>
+  <div class="col-md-4"></div> 
+  <div class="col-md-1"></div>
 </div>
 
-<%= button_to "Yeehaw!", wi_yeehaw_path(:user_id=> "#{current_user.id}", :weigh_in_id=> "#{params[:id]}" )%>
+<!-- ROW 2 -->
+<div class="row">
+  <div class="col-md-1"></div>
+    <div class="col-md-10 weigh-in-detail-container">
+      <h1>176 lbs</h1>
+      <p>Eatin' all that spaghetti</p>
+        <div class="button-yeehaw-container">
+          <div class="yeehaw-button-container">
+            <!-- Button from Ben -->
+            
+              <span class="yeehaw-text"><small>click to leave a yeehaw!</small></span>
+          </div>
+          <div class="yeehaw-people-container">
+            <div class="yeehaw-people">
+              <% if @weigh_in.wi_yeehaws %>
+                <%= @weigh_in.wi_yeehaws.first.user.name %>
+              <% end %>
+            </div>
+            <div class="gave-yeehaw">gave a YEEHAW!</div>
+          </div>         
+        </div>
+      </div>
+    </div>
+  <div class="col-md-1"></div>
+</div>
 
-<p> <%= @wi_yeehaws %> </p>
-
-<h2>Comments section:</h2>
-
-<div id="createComment" >
-  <h3>Post a comment</h3>
-    <p>
-      <%= form_for [@user, @weigh_in, @comment] do |f| %>
-        <%= f.label :body %>
-        <%= f.text_area :body %><br />
-
-        <%= f.submit "Post comment!" %>
+<!-- ROW 3 -->
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 post-comment-container">
+    <div class="comments-feed">
+      <% @weigh_in.comments.each do |comment| %>
+        <div>
+          <img class="img-circle" src=<%= comment.user.profile_pic_url(:sq_thumb) %> />
+          <p class="comment-body"><%= comment.body %></p>
+          <%if (current_user == @weigh_in.user)||(comment.user == current_user) %>
+          by <%= link_to "#{comment.user.name}", user_path(comment.user) %> <%= link_to "Remove Comment", user_weigh_in_comment_path(:weigh_in_id => comment.weigh_in.id, :id => comment.id), method: :delete %>
+          <% end %>
+        </div>
+        <br>
       <% end %>
-    </p>
+    </div>
+    <div id="create-comment" >
+      <%= form_for [@user, @weigh_in, @comment], :url=> user_weigh_in_comments_path(:user_id=> current_user.id, :weigh_in_id=> @weigh_in.id) do |f| %>
+        <div class="row">
+          <div class="col-xs-3">
+             <img class="img-circle" src=<%= current_user.profile_pic_url(:sq_thumb) %> />
+          </div>
+          <div class="col-xs-8">
+            <%= f.text_area :body, :class=>"form-control ", :required => true %><br />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 ">
+            <%= f.submit "Comment!", :class=>"btn btn-info wi_comment_btn pull-right" %>
+          </div>
+      <% end %>
+          <div class="col-xs-6">
+            <%= button_to "Yeehaw!", wi_yeehaw_path(:user_id=> current_user.id, :weigh_in_id=> @weigh_in.id ), :class=>"btn btn-success wi_comment_btn pull-left" %>
+
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
 </div>
-
-	
-<div>
-	<div>
-		<% @weigh_in.comments.each do |comment| %>
-			<div>
-  			<%= comment.body %>
-  			Comment ID: <%= comment.id%>
-  			<img src=<%= comment.user.profile_pic_url(:thumb) %> />
-
-  			<%if (current_user == @weigh_in.user)||(comment.user == current_user) %>
-  			by: <%= comment.user.name %> <%= link_to "Remove Comment", user_weigh_in_comment_path(:weigh_in_id => comment.weigh_in.id, :id => comment.id), method: :delete %>
-  			<% end %>
-			</div>
-			<br>
-		<% end %>
-	</div>
-</div>
-
-
-

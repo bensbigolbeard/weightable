@@ -1,3 +1,25 @@
 // Place all the styles related to the WeighIns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.weigh-in-detail-container {
+  background-color: white;
+  border: 2px solid #c1bcb8;
+  margin: 0 auto;
+}
+
+.post-comment-container {
+  background-color: #dbd7d6;
+  border: 2px solid #c1bcb8;
+  margin: 0 auto;
+}
+
+.yeehaw-button-weighin {
+  background-color: #4ec67c;
+  border: 2px solid #4ca16c;
+  border-radius: 0 !important;
+  height: 65px;
+  margin-left:2px;
+  margin-right:2px;
+  cursor: pointer;
+}
