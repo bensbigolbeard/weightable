@@ -103,6 +103,14 @@ button.navbar-toggle {
 }
  
 .footer {
-  height: 300px;
+  padding:10px 15px;
+  height: 200px;
   background-color: #283742;
+  color:white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+div.home-sm-txt label{
+  font-weight: normal !important;
 }

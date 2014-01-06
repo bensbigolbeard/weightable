@@ -1,76 +1,75 @@
 <!-- Ultimately planning on linking to these fonts in /assets/fonts -->
-<div class="row", id="home-pg-bg">
-<div class="col-md-12">
-  <h1 id='header'>Lose weight the <span id="handwriting"><u>Gus Chiggins</u></span> way.</h1>
-</div>
-<!-- Underline graphic under "Gus Chiggins" will get weird with scaling for mobile, will need to look into this further
- <img id='underline' src="/index/underline.png"/> -->
+<div class="row main-pad" id="home-pg-bg">
 
-<div class="gus col-md-5">
-  <img class='pic' src="/index/gus_chiggins.png"/>
-    <p>Gus Chiggins<br />
-      Weightable Founder & CEO
-    </p> 
-
-  <h3>Weightable is:</h3>
-    <ul>
-      <li class="fa fa-check list"> Results Oriented</li><br />
-      <li class="fa fa-check list"> Socially Connected</li><br />
-      <li class="fa fa-check list"> Accountability Focused</li><br />
-    </ul>
-</div>
-
-<div class="col-md-2">
-</div>
-
-<div class="user col-md-5">
-  <div class="login">
-    <h3>Log in to get started.</h3>
-      <div class="login_form">
-        <%= form_for("user", :url => user_session_path) do |f| %>
-          <div><%= f.label :email %><br />
-          <%= f.text_field :email, :autofocus => true %></div>
-
-          <div><%= f.label :password %><br />
-          <%= f.password_field :password %></div>
-          
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %><br />
-
-          <%= f.submit 'Sign in', class: "sign-in-button" %>
-
-          <%= link_to "Forgot your password?", new_password_path('user') %>
-        <% end %>
-      </div>
-
-    <h3>New to Weightable?</h3>
-    <!-- Sign in with Facebook -->
-    <%= link_to(image_tag("/index/fb.png", :alt => "Sign-in with Facebook", :class => "newToWeightable"), user_omniauth_authorize_path(:facebook)) %>
-    or
-    <%= link_to(image_tag("/index/register.png", :alt => "Create a Weightable Account", :class => "newToWeightable"), new_user_registration_path) %>
+  <div class="col-xs-6">
   </div>
-</div>
 
-<div class="breaker">
-</div>
+  <div class="col-xs-6">
 
-<div class="col-md-12">
-  <h1>What Real People Are Saying</h1>
-</div>
-<div class="testimonial col-md-4">
-<img class="testimonial_picture" src="/index/testimonial-left.png" />
-  <p class="testimonial_text">“Gus Chiggins and his Weightable system helped keep me accountable to my New Year’s Resolution.”
-  </p>
-</div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 class="home-header">FEEL THE BURN</h1>
+      </div>
+    </div>
 
-<div class="testimonial col-md-4">
-<img class="testimonial_picture" src="/index/testimonial-middle.png" />
-  <p class="testimonial_text">“As a personal trainer, Gus Chiggins’ Weightable app is a way for me to help my clients meet their goals.”</p>
-</div>
+    <div class="row">
+      <div class="col-xs-9">
+        <h3 class="home-sub">Reach your weight goals with performance stats and a little friendly competition</h3>
+      </div>
+    </div>
 
-<div class="testimonial col-md-4">
-<img class="testimonial_picture" src="/index/testimonial-right.png" />
-  <p class="testimonial_text">“With his patent-pending Weightable social network, Gus Chiggins has revolutionized weightloss first hand.”</p>
+    <div class="row">
+      <div class="user col-xs-5 col-md-4">
+        <div class="login">
+          <h4 class="login-text">LOGIN</strong></h3>
+           
+          <!-- Sign in with Facebook -->
+          <div class="center-div">
+            <%= link_to user_omniauth_authorize_path(:facebook) do %>
+              <div class="facebook-btn">
+                <%= fa_icon "facebook" %><p class="newToWeightable login-text">FACEBOOK</p>
+              </div>
+            <% end %>
+          </div>
+          <p class="login-text">OR</p>
+          <div class="login_form">
+            <%= form_for("user", :url => user_session_path) do |f| %>
+              <div class='home-sm-txt'><%= f.label "email", :email %><br />
+                <%= f.text_field :email, :autofocus => true %>
+              </div>
+
+              <div class='home-sm-txt pass-pad'><%= f.label :password, "password" %><br />
+                <%= f.password_field :password %>
+              </div>
+              <div class='home-sm-txt'>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, "remember me" %><br />
+              </div class="home-sm-txt">
+              <div class="center-div">
+                <%= link_to user_session_path do %>
+                  <div class="sign-in-btn">
+                    <p class="login-text sign-in">SIGN IN</p>
+                  </div>
+                <% end %>
+              </div>
+              <%= link_to "forgot password?", new_password_path('user'), :class=>"text-muted small" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-1 mid-margin">
+        <div class="vert-rule"></div>
+      </div>
+      <div class="col-xs-5 col-md-4 new-mem-vert-pos">
+        <div class="login">
+          <h4 class="login-text">NEW MEMBER?</h4>
+          <p>Weightable is 100% free.</p>
+          <%= button_to "REGISTER", new_user_registration_path, :class => "btn btn-orange login-text" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 </div>
 
@@ -78,18 +77,11 @@
 
 <br>
 
-<% if user_signed_in? %>
-Signed in as <%= current_user.name %>. Not you?
-<%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
-<% end %>
-
 <script type="text/javascript">
   $(document).on('ready', function(){
-    $("#home-pg-bg").closest("html").css({
-      'background': "url('assets/homepage_background.jpg') no-repeat",
-      "width": "100%",
-      "height": "100%",
-      "background-color": "transparent"
-    });
+    $("#home-pg-bg").closest("main").css({
+          'background-color': "#141920",
+          "height": "800px"}
+    );
   });
 </script>

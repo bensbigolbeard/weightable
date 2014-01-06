@@ -2,11 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#home-pg-bg 
+#home-pg-bg { 
+  background-image: url('weightable_background2.jpg');
+  background-repeat: no-repeat;
+}
 
-.bg {
-  background-image: url('homepage_background.jpg');
-  width:100%;
+@media(max-width:991px){
+  #home-pg-bg { 
+  background-size: cover;
+  width: 100%;
+  }
+
+}
+
+  @media(min-width:992px){
+  #home-pg-bg { 
+    background-size: contain;
+    scale: 88%;
+  }
+
+}
+
+.main-pad{
+  padding-bottom:100px;
 }
 
 td {
@@ -28,6 +46,7 @@ td {
 h1 {
   font-family: 'Open Sans', sans-serif;
   font-size: 2.5em;
+  font-weight: 300; 
 }
 
 h3 {
@@ -35,9 +54,84 @@ h3 {
   font-size: 2em;
 }
 
-.gus {
-  width: 50%;
+h1.home-header {
+  margin-top: 40px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3.2em;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.05em
+}
+
+h3.home-sub {
+  margin-top:0;
+  margin-bottom: 25px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2.2em;
+  font-weight: 300;
+  color: white;
+  letter-spacing: -0.05em
+}
+
+.login {
   text-align: center;
+  color: white;
+
+}
+
+.login-text {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+.facebook-btn{
+  height: 40px;
+  width: 80%;
+  color: white;
+  background: #446792;
+  line-height: 40px;
+  margin: 15px 0 7px 10%;
+}
+
+.sign-in-btn{
+  height: 40px;
+  width: 70%;
+  color: white;
+  background: #1e8495;
+  margin: 15px 0 7px 15%;
+  .sign-in {
+  line-height: 40px;
+
+  }
+}
+
+.home-sm-txt{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  text-align: left;
+}
+
+.pass-pad {
+  padding-top: 10px;
+}
+
+.sign-in-pad {
+  padding-top: 30px;
+}
+
+.vert-rule{
+  margin-top: 40px;
+  width:3px;
+  height:300px;
+  background: rgba(255,255,255,.3);
+}
+
+.new-mem-vert-pos {
+  padding-top: 120px;
+}
+
+.mid-margin{
+  margin:0 auto;
 }
 
 .pic {
@@ -56,8 +150,7 @@ h3 {
 
 .newToWeightable {
   display: inline;
-  margin-top: 20px;
-
+  padding-left: 10px;
 }
 
 .breaker {
