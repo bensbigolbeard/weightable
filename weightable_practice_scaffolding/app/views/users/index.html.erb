@@ -34,29 +34,23 @@
           <p class="login-text">OR</p>
           <div class="login_form">
             <%= form_for("user", :url => user_session_path) do |f| %>
-              <div class='home-sm-txt'><%= f.label "email", :email %><br />
-                <%= f.text_field :email, :autofocus => true %>
+              <div class='home-sm-txt left-pad'><%= f.label "email", :email %><br />
+                <%= f.text_field :email, :autofocus => true, :class=>"left-pad" %>
               </div>
 
-              <div class='home-sm-txt pass-pad'><%= f.label :password, "password" %><br />
-                <%= f.password_field :password %>
+              <div class='home-sm-txt pass-pad left-pad'><%= f.label :password, "password" %><br />
+                <%= f.password_field :password, :class=>"left-pad" %>
               </div>
-              <div class='home-sm-txt'>
-              <%= f.check_box :remember_me %>
+              <div class='home-sm-txt left-pad'>
+              <%= f.check_box :remember_me, :class=>"left-pad" %>
               <%= f.label :remember_me, "remember me" %><br />
-              </div class="home-sm-txt">
-              <div class="center-div">
-                <%= link_to user_session_path do %>
-                  <div class="sign-in-btn">
-                    <p class="login-text sign-in">SIGN IN</p>
-                  </div>
-                <% end %>
+              </div class="center-div">
+                <%= button_to "SIGN IN", user_session_path, :class=>"btn sign-in-btn" %>
               </div>
               <%= link_to "forgot password?", new_password_path('user'), :class=>"text-muted small" %>
             <% end %>
           </div>
         </div>
-      </div>
       <div class="col-xs-1 mid-margin">
         <div class="vert-rule"></div>
       </div>

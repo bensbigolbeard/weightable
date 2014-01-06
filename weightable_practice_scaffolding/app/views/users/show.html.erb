@@ -16,17 +16,21 @@
   <div class="col-xs-10 col-xs-offset-4 col-sm-4 neg-margin about-me"> 
     <h1 class="username"><%= @user.name.split.map(&:capitalize).join(' ') %></h1> <br>
     <h3 class="inline-text">goal <strong><%= @user.goal %> lbs</strong></h3>
-    <a href="<%= edit_user_path(@user)%>" class="edit-goal-pad small text-muted"><%= fa_icon "pencil 2x" %> EDIT GOAL</a> <br>
+    <% if @user == current_user %>
+      <a href="<%= edit_user_path(@user)%>" class="edit-goal-pad small text-muted"><%= fa_icon "pencil 2x" %> EDIT PROFILE</a> <br>
+    <%end%>
     <div class="weighin-friend-text">
       <span><%= @user.weigh_ins.size %> weigh-ins |</span> 
       <span class="spacing"> <%= @user.friends.size %> friends</span> 
     </div><br>
 
+  <% if @user == current_user %>
     <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
       <%= render "form_edit_weigh_in" %>
     <% else %>
       <%= render "form_create_weigh_in" %>
     <%end%>
+  <%end%>
   </div>
 </div>
 
@@ -89,8 +93,8 @@
           <div class="col-xs-12 bmi-height">
             <h4 class="green-box-headers">BODY MASS INDEX (BMI)</h4>
             <div class="dashboard-data-container">
-            <div class="dashboard-data bmi-index"><strong><%= @bmi %></strong></div>
-              <div class="data-subheader"><strong><%= @record_weight_status %></strong></div>
+            <div class="dashboard-data bmi-index"><%= @bmi %></div>
+              <div class="data-subheader"><%= @record_weight_status %></div>
             </div> 
           </div>
         </div>
@@ -98,11 +102,11 @@
       </div>
 
       <div class="col-xs-12 col-sm-6">
-        <div class="row dash-element">
+        <div class="row dash-element goal-proj">
           <div class="col-xs-12">
-            <h4 class="green-box-headers">GOAL PROJECTION</h4>
+            <h4 class="green-box-headers goal-proj">GOAL PROJECTION</h4>
             <div class="dashboard-data-container">
-              <div class="dashboard-data goal-projection-status"><strong><%=@goal_projection_status%></strong></div>
+              <div class="dashboard-data goal-projection-status"><%=@goal_projection_status%></div>
               <div class="data-subheader">finish on: <%=@finish_date.strftime("%b %-d")%></div>
             </div>
           </div>
@@ -115,7 +119,7 @@
             <div class="dashboard-data-container">
               <div class="goal-projection-status">
                 <i class="fa fa-trophy record-weight-trophy"></i>
-                <span class="dashboard-data"><strong><%= @record_weight %></strong></span>
+                <span class="dashboard-data"><%= @record_weight %></span>
                 <span class="record-weight">lbs</span>
               </div>
             </div>
