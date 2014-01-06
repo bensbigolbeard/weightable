@@ -328,19 +328,10 @@ h3.home-sub {
   font-family: "Open Sans";
   font-weight: light;
   text-align: center;
+  margin-bottom: 25px;
 }
 
-@media(max-width:991px){
-  .green-box-headers.goal-proj {
-    margin-bottom: 25px;
-  }
-}
 
-@media(max-width:767px){
-  canvas#dashboardChart {
-    margin-top: 0;
-  }
-}
 @media(max-width:767px){
   .dash-element.goal-proj {
     height: 145px;
@@ -391,20 +382,18 @@ h3.home-sub {
 }
 
 .goal-projection-status,.bmi-index {
-  margin: 45px 0 20px 0;
+  margin: 55px 0 20px 0;
   letter-spacing: .9
 }
 
 @media(max-width:991px){
   .dashboard-data.goal-projection-status {
-    margin-top: 55px;
     font-size: 30px !important ;
   }
 }
 
 @media(max-width:767px){
   .dashboard-data.goal-projection-status {
-    margin-top: 45px;
     font-size: 40px !important ;
   }
 }
