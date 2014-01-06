@@ -1,6 +1,14 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#home-pg-bg 
+
+.bg {
+  background-image: url('homepage_background.jpg');
+  width:100%;
+}
+
 td {
   padding-right: 15px;
   padding-left: 15px;

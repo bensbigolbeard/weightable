@@ -1,5 +1,5 @@
 <!-- Ultimately planning on linking to these fonts in /assets/fonts -->
-
+<div class="row", id="home-pg-bg">
 <div class="col-md-12">
   <h1 id='header'>Lose weight the <span id="handwriting"><u>Gus Chiggins</u></span> way.</h1>
 </div>
@@ -72,6 +72,7 @@
 <img class="testimonial_picture" src="/index/testimonial-right.png" />
   <p class="testimonial_text">“With his patent-pending Weightable social network, Gus Chiggins has revolutionized weightloss first hand.”</p>
 </div>
+</div>
 
   
 
@@ -81,3 +82,14 @@
 Signed in as <%= current_user.name %>. Not you?
 <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
 <% end %>
+
+<script type="text/javascript">
+  $(document).on('ready', function(){
+    $("#home-pg-bg").closest("html").css({
+      'background': "url('assets/homepage_background.jpg') no-repeat",
+      "width": "100%",
+      "height": "100%",
+      "background-color": "transparent"
+    });
+  });
+</script>
