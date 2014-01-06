@@ -329,17 +329,24 @@ h3.home-sub {
   font-weight: light;
   text-align: center;
 }
-@media(max-width:767px){
+
+@media(max-width:991px){
   .green-box-headers.goal-proj {
-    font-size: 1.5em;
+    margin-bottom: 25px;
   }
 }
 
-  @media(max-width:991px){
+@media(max-width:767px){
+  canvas#dashboardChart {
+    margin-top: 0;
+  }
+}
+@media(max-width:767px){
   .dash-element.goal-proj {
     height: 145px;
   }
 }
+
 
 .record-weight {
   font-size: 30px;
@@ -386,6 +393,20 @@ h3.home-sub {
 .goal-projection-status,.bmi-index {
   margin: 45px 0 20px 0;
   letter-spacing: .9
+}
+
+@media(max-width:991px){
+  .dashboard-data.goal-projection-status {
+    margin-top: 55px;
+    font-size: 30px !important ;
+  }
+}
+
+@media(max-width:767px){
+  .dashboard-data.goal-projection-status {
+    margin-top: 45px;
+    font-size: 40px !important ;
+  }
 }
 /* Right content */
 
