@@ -96,23 +96,24 @@ class UsersController < ApplicationController
     #sets array for array of differences
     @array_of_differences = @weights.each_cons(2).map { |a,b| b-a }
   
-    @avg_difference = ((@array_of_differences.reduce(:+) / @array_of_differences.length))
-
-    # This should return a negative number
-    @pounds_to_go = (@user.goal - @user.weigh_ins.last.weight)
-
-    @days_remaining_to_goal = ((@user.goal_date - DateTime.now).to_i)
-
-    if (@days_remaining_to_goal < (@pounds_to_go / @avg_difference))
-      @on_track_icon = "X"
-      @goal_projection_status = "OFF&nbsp;TRACK".html_safe;
-    else  
-      @on_track_icon = ":)"
-      @goal_projection_status = "ON&nbsp;TRACK".html_safe
+    if @array_of_differences.size > 0
+      @avg_difference = ((@array_of_differences.reduce(:+) / @array_of_differences.length))
+      @pounds_to_go = (@user.goal - @user.weigh_ins.last.weight)
+      @days_remaining_to_goal = ((@user.goal_date - DateTime.now).to_i)
+      @finish_date = ((DateTime.now+(@pounds_to_go/@avg_difference).to_i)).strftime("%b %-d")
+      @finish_estimate = ((@finish_date - DateTime.now).to_i)
+      if (@days_remaining_to_goal < (@pounds_to_go / @avg_difference))
+        @on_track_icon = "X"
+        @goal_projection_status = "OFF&nbsp;TRACK".html_safe;
+      else  
+        @on_track_icon = ":)"
+        @goal_projection_status = "ON&nbsp;TRACK".html_safe
+      end
+    else
+      @goal_projection_status = "N/A"
+      @finish_date = "N/A"
+      @finish_estimate = "N/A"
     end
-
-    @finish_date = ((DateTime.now+(@pounds_to_go/@avg_difference).to_i))
-    @finish_estimate = ((@finish_date - DateTime.now).to_i)
   end
 
   def search
