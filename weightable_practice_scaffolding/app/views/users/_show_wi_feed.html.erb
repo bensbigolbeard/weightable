@@ -1,15 +1,40 @@
 <div class="">
-  <h1 class="your-weigh-ins">your weigh-ins</h1>
+  <h1 class="your-weigh-ins">Your Weigh-Ins</h1>
   <% counter = 0 %>
   <% @user.weigh_ins.first(4).each do |weight| %>
+    <% @weights.unshift(weight.weight) %>
+    <% @goal.unshift(@user.goal) %>
+    <% @dates.unshift((weight.created_at).strftime("%a")) %>
 
   <!-- Weigh-in stats -->
 
     <div class="row">
       <div class="col-sm-3">
-
+        <% if @user.weigh_ins.count < 2 %>
+          <div class="feed-circle-base-1 hidden-xs"></div>
+          <div class="feed-circle-base-2 hidden-xs"></div>
+          <div class="feed-circle-base-3 hidden-xs"></div>
         <div class="feed-circle hidden-xs"></div>
         <div class="feed-timeline-caboose-<%= counter %> hidden-xs"></div>
+        <% elsif @user.weigh_ins.count < 3 && weight != @user.weigh_ins.first %>
+          <div class="feed-circle-base-1 hidden-xs"></div>
+          <div class="feed-circle-base-3 hidden-xs"></div>
+          <div class="feed-circle hidden-xs"></div>
+           <div class="feed-timeline-caboose-1 hidden-xs"></div>
+           <div class="feed-timeline-caboose-2 hidden-xs"></div>
+        <% elsif @user.weigh_ins.count == 3 && @user.weigh_ins.first(2).exclude?(weight) %>
+          <div class="feed-circle-base-3 hidden-xs"></div>
+        <div class="feed-circle hidden-xs"></div>
+        <div class="feed-timeline-caboose-2 hidden-xs"></div>
+        <div class="feed-timeline-caboose-3 flip hidden-xs"></div>
+        <% else %>
+         <div class="feed-circle hidden-xs"></div>
+         <% if counter > 0 %>
+          <div class="feed-timeline-caboose-<%= counter %> hidden-xs"></div>
+         <% end %>
+        <% end %>
+
+
       </div>
       <div class="col-sm-9">
         <div class="profile-weigh-ins"> 
