@@ -95,13 +95,19 @@ class UsersController < ApplicationController
     
     #sets array for array of differences
     @array_of_differences = @weights.each_cons(2).map { |a,b| b-a }
-  
-    @avg_difference = ((@array_of_differences.reduce(:+) / @array_of_differences.length))
+    
+    if @user.weigh_ins.count > 1
+      @avg_difference = ((@array_of_differences.reduce(:+) / @array_of_differences.length))
+    else
+      @avg_difference = 1
+    end
 
     # This should return a negative number
     @pounds_to_go = (@user.goal - @user.weigh_ins.last.weight)
 
-    @days_remaining_to_goal = ((@user.goal_date - DateTime.now).to_i)
+    if @user.goal_date
+      @days_remaining_to_goal = ((@user.goal_date - DateTime.now).to_i)
+    end
 
     if (@days_remaining_to_goal < (@pounds_to_go / @avg_difference))
       @on_track_icon = "X"

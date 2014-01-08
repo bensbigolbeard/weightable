@@ -6,6 +6,10 @@ WeightablePracticeScaffolding::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   root "users#index"
   
+  devise_scope :user do
+    post "account/create" => "users/accounts#create"
+  end
+  
   get "/users/all" => "users#all_users", as: "all_users"
   get "/feed" => "users#feed", as: "feed"
   get "/friends" => "users#friends", as: "friends"
@@ -16,9 +20,6 @@ WeightablePracticeScaffolding::Application.routes.draw do
   end
 
 
-  devise_scope :user do
-    post "account/create" => "users/accounts#create"
-  end
   
   post "/user" => "friendships#create", as: "friendships"
   delete "/user" => "friendships#destroy", as: "destroy_friendships"

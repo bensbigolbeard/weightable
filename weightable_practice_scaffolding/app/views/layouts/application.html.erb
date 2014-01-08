@@ -39,6 +39,7 @@
 <% if current_user && current_user.weigh_ins.count == 0 %>
   <%= render 'initial_info_modal' %>
 <script type='text/javascript'>
+  $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
   $(document).on('ready', function(e){
     $('#myModal').modal();
   });
