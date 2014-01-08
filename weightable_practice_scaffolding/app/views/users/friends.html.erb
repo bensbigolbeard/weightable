@@ -1,7 +1,7 @@
 <h1 class="friends_header"><%= @user.friendships.count %> friends</h1>
 <div class="row>"
 
-<% user_content do %> 
+<%= user_content do %> 
   <% @user.friendships.each do |friendship| %>
     <% @friend_id_loop = friendship.friend.id %>
     <!-- Creates bootstrap column -->
