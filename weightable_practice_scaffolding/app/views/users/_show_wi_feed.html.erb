@@ -1,4 +1,20 @@
-<div class="">
+<!-- Timeline sections for 1-4 weigh ins -->
+
+<div class="feed-timeline hidden-xs"></div>
+<% if @user.weigh_ins.count < 2 %>
+  <div class="feed-circle-base1 hidden-xs"></div>
+  <div class="feed-circle-base2 hidden-xs"></div>
+  <div class="feed-circle-base3 hidden-xs"></div>
+  <div class="feed-timeline extra hidden-xs"></div>
+<% elsif @user.weigh_ins.count < 3 %>
+  <div class="feed-circle-base2 hidden-xs"></div>
+  <div class="feed-circle-base3 hidden-xs"></div>
+<% elsif @user.weigh_ins.count == 3 %>
+  <div class="feed-circle-base3 hidden-xs"></div>
+<% end %>
+
+<!-- begin weigh-in speech bubbles -->
+<div>
   <h1 class="your-weigh-ins">Your Weigh-Ins</h1>
   <% counter = 0 %>
   <% @user.weigh_ins.first(4).each do |weight| %>

@@ -1,15 +1,42 @@
-<table>
-  <tbody>
+<%= user_content do %>
     <% @results.each do |user| %>
-      <tr>
-        <td><%= user.profile_pic %></td>
-        <td><%= link_to "#{user.name}", user_path(user.id) %></td>
-        <% if current_user.friends.include?(User.find(user.id)) %>
-        <td><%= button_to 'Remove friend', destroy_friendships_path( id: user.id), method: :delete %></td>
-        <% else %>
-        <td><%= button_to 'Add friend', friendships_path( friend_id: user), method: :post %></td>
-        <% end %>
-      </tr>
+      <% @user_id_loop = user.id %>
+          <!-- Creates bootstrap column -->
+          <div class="friend_card col-md-3">
+            
+            <div class="friend_card_inner_border">
+              <!-- Generates friend's profile image -->
+              <img class="friend_page_pic" src=<%= user.profile_pic_url(:sq_medium) %> />
+            
+              <!-- Creates link to friend's show page and capitalizes each letter in multiple names -->
+              <h1 class="friend_name"><%= link_to "#{user.name.split.map(&:capitalize).join(' ')}", user_path(user.id) %></h1>
+
+              <!-- Shows friend's goal weight -->
+              <p class="friend_goal_info">goal <strong><%= user.goal %> lbs</strong></p>
+
+              <!-- Shows number of friend's friends and number of friend's weigh ins -->
+              <p class="friend_profile_info"><strong><%= user.friendships.count %></strong> friends | <strong><%= user.weigh_ins.count %></strong> weigh-ins </p>
+
+              <div class="center-div">
+                <% if current_user.friends.include?(User.find(user.id)) %>
+                <td><%= button_to 'Remove friend', destroy_friendships_path( id: user.id), method: :delete, :class=>"btn btn-orange" %></td>
+                <% else %>
+
+                <td><%= button_to "Add friend", friendships_path( friend_id: user), method: :post, :class=>"btn btn-blue" %></td>
+                <% end %>
+              </div>
+
+              <!-- Green progress bar section -->
+              <div class="friend_progress_bar_base"></div>
+                <p class="friend_progress_text"><strong><%= friend_progress(@user_id_loop).round %>%</strong> to goal!</p>  
+                
+                <!-- Shows progress toward friend's weigh loss goal -->
+                <div class="friend_progress_bar_white_bar"></div>
+                <div class="prog-bar-base-small"></div>
+                <div class="prog-bar-overlay-small" style="width:<%= friend_progress(@user_id_loop) %>%"></div>
+             
+              </div>  
+          <!-- Closes bootstrap column -->
+          </div> 
     <% end %>
-  </tbody>
-</table>
+    <% end %>

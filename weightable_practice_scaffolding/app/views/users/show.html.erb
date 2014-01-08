@@ -16,7 +16,7 @@
   <div class="col-xs-10 col-xs-offset-4 col-sm-4 neg-margin about-me"> 
     <h1 class="username"><%= @user.name.split.map(&:capitalize).join(' ') %></h1> <br>
     <h3 class="inline-text">goal <strong><%= @user.goal %> lbs</strong></h3>
-    <% if @user == current_user %>
+    <%= current_user_content do %>
       <a href="<%= edit_user_path(@user)%>" class="edit-goal-pad small text-muted"><%= fa_icon "pencil 2x" %> EDIT PROFILE</a> <br>
     <%end%>
     <div class="weighin-friend-text">
@@ -24,7 +24,7 @@
       <span class="spacing"> <%= @user.friends.size %> friends</span> 
     </div><br>
 
-  <% if @user == current_user %>
+  <%= current_user_content do %>
     <% if @user.weigh_ins.first.created_at + 24*60*60 > Time.now %>
       <%= render "form_edit_weigh_in" %>
     <% else %>
@@ -131,19 +131,8 @@
 
 <!-- Renders User timeline -->
   <div class="col-xs-8 col-xs-offset-2 col-sm-5 col-sm-offset-0 col-md-5">
-    <div class="feed-timeline hidden-xs"></div>
-    <% if @user.weigh_ins.count < 2 %>
-      <div class="feed-circle-base1 hidden-xs"></div>
-      <div class="feed-circle-base2 hidden-xs"></div>
-      <div class="feed-circle-base3 hidden-xs"></div>
-      <div class="feed-timeline extra hidden-xs"></div>
-    <% elsif @user.weigh_ins.count < 3 %>
-      <div class="feed-circle-base2 hidden-xs"></div>
-      <div class="feed-circle-base3 hidden-xs"></div>
-    <% elsif @user.weigh_ins.count == 3 %>
-      <div class="feed-circle-base3 hidden-xs"></div>
-    <% end %>
-      <%= render 'show_wi_feed' %>  
+    
+    <%= render 'show_wi_feed' %>  
     </div>
   </div>
 </div>

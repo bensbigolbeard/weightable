@@ -1,6 +1,6 @@
 <h1 class="friends_header">All Users</h1>
 
-<% if current_user %> 
+<%= user_content do %> 
   <% @users.each do |user| %>
     <% @user_id_loop = user.id %>
     <!-- Creates bootstrap column -->
