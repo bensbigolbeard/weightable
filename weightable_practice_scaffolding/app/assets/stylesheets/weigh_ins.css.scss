@@ -1,3 +1,19 @@
 // Place all the styles related to the WeighIns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.weigh-ins{
+  border-radius: 25px;
+  border: 2px solid #dddddd;
+  background-color: white;
+  padding-left: 20px;
+}
+
+.center-element{
+  margin: 20px auto;
+  float:none;
+}
+
+.yeehaw-btn-pad {
+  margin: 25px;
+}

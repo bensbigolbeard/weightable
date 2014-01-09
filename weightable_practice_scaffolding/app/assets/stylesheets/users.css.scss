@@ -187,11 +187,18 @@ h3.home-sub {
 
 .profile-pic {
 
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    border: 8px solid #fff;
-    box-shadow: 0 0 0 1px #beb9b5; 
+  height: 200px;
+  width: 200px;
+  border: 8px solid #fff;
+  box-shadow: 0 0 0 1px #beb9b5; 
+}
+
+.comment-prof-pic{
+  border: 2px solid gray;
+}
+
+.round-pic{
+  border-radius: 50%;
 }
 
 .profile-pad {

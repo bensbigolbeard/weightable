@@ -1,47 +1,106 @@
-<h1>Weigh-In Detail Page</h1>
-
-<div class="weighinWrapper">
-    <span class="name"><%= @weigh_in.user.name %>
-    <span class="time">posted this weigh_in <%= time_ago_in_words(@weigh_in.created_at) %> ago and his id is <%= @weigh_in.user.id %> and the weigh_in_id is <%=@weigh_in.id%></span>
-    <span></span>
-    <p> <%= @weigh_in.weight %> </p>
-    <p> <%= @weigh_in.status %> </p>
+<div class="row profile-pad">
+  <div class="col-xs-11 col-xs-offset-1">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <% if @user.profile_pic_url %>
+          <img class="profile-pic clearfix round-pic" src=<%= @user.profile_pic_url(:sq_medium) %> />
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-8 col-md-9">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1 class="name"><%= @weigh_in.user.name %></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h4 class="time"><%= @weigh_in.created_at.strftime("%I:%M%p") %></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= button_to "Yeehaw!", wi_yeehaw_path(:user_id=> "#{current_user.id}", :weigh_in_id=> "#{params[:id]}" )%>
-
-<p> <%= @wi_yeehaws %> </p>
-
-<h2>Comments section:</h2>
-
-<div id="createComment" >
-  <h3>Post a comment</h3>
-    <p>
-      <%= form_for [@user, @weigh_in, @comment] do |f| %>
-        <%= f.label :body %>
-        <%= f.text_area :body %><br />
-
-        <%= f.submit "Post comment!" %>
-      <% end %>
-    </p>
+<div class="row">
+  <div class="weigh-ins col-sm-10 col-md-8 center-element">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class=""><%= @weigh_in.weight %> lbs</h3>
+        <p class="text-muted time">posted <%= time_ago_in_words(@weigh_in.created_at) %> ago</p>
+        <h5><%= @weigh_in.status %></h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <%= link_to wi_yeehaw_path(:user_id=> "#{current_user.id}", :weigh_in_id=> "#{params[:id]}" ), :method=> :post do %>
+          <div class="yeehaws-panel yeehaw-btn-pad">
+            <div class="row ">
+              <div class="col-xs-2" href="/friends">
+                <%= fa_icon "thumbs-up 2x" %>
+              </div>
+              <div class="col-xs-10">
+                <p class="yeehaw-text"><strong><%= @wi_yeehaws.count %> YEEHAWS!</strong></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-6">
+        <% if @wi_yeehaws.count>0 %>
+          <span class="yeehaw-text"><small>from <%= link_to "#{User.find(@wi_yeehaws.last.user_id).name}", user_path(@wi_yeehaws.last.user_id) %>
+          <% if @wi_yeehaws.count>1%>
+           and <%= @wi_yeehaws.count-1 %> other(s)</small></p>
+          <% end %>
+        <% elsif @wi_yeehaws.count==0 && @user!=current_user%>
+          <span class="yeehaw-text"><small>click to leave a yeehaw!</small></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-
-	
-<div>
-	<div>
-		<% @weigh_in.comments.each do |comment| %>
-			<div>
-  			<%= comment.body %>
-  			Comment ID: <%= comment.id%>
-  			<img src=<%= comment.user.profile_pic_url(:thumb) %> />
-
-  			<%if (current_user == @weigh_in.user)||(comment.user == current_user) %>
-  			by: <%= comment.user.name %> <%= link_to "Remove Comment", user_weigh_in_comment_path(:weigh_in_id => comment.weigh_in.id, :id => comment.id), method: :delete %>
-  			<% end %>
-			</div>
-			<br>
-		<% end %>
-	</div>
+<div class="row">
+  <div class="col-xs-11 col-sm-8 col-md-7 comments-panel center-element">
+    <!-- Comments -->
+    <div class="row">
+      <div class="col-xs-12 ">
+        <div class="com-panel-body panel-body">
+          <% @weigh_in.comments.last(3).each do |comment| %>
+            <div class="row">
+              <div class="col-xs-3 col-md-3">
+                <%= link_to image_tag(comment.user.profile_pic_url(:sq_thumb), :class=>"round-pic comment-prof-pic"), user_path(comment.user.id) %> 
+              </div>
+              <div class="col-lg-9">  
+                <span><strong><%= link_to "#{comment.user.name}", user_path(comment.user.id) %></strong></span>
+                <span><%= comment.body %></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <hr>
+              </div>
+            </div>
+          <% end %>
+          <div id="createComment" >
+            <%= form_for [@user, @weigh_in, @comment], :url=> user_weigh_in_comments_path(:weigh_in_id=> params[:id]) do |f| %>
+              <div class="row">
+                <div class="col-xs-3">
+                   <img class="round-pic comment-prof-pic" src=<%= current_user.profile_pic_url(:sq_thumb) %> />
+                </div>
+                <div class="col-xs-8">
+                  <%= f.text_area :body, :class=>"form-control ", :required => true %><br />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 ">
+                  <%= f.submit "Comment!", :class=>"btn btn-info wi_comment_btn pull-right" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
