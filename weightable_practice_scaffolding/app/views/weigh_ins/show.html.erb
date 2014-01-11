@@ -31,28 +31,32 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-6">
+      <div class="col-xs-6 col-xs-offset-1">
         <%= link_to wi_yeehaw_path(:user_id=> "#{current_user.id}", :weigh_in_id=> "#{params[:id]}" ), :method=> :post do %>
           <div class="yeehaws-panel yeehaw-btn-pad">
             <div class="row ">
-              <div class="col-xs-2" href="/friends">
-                <%= fa_icon "thumbs-up 2x" %>
+              <div class="col-xs-3 " href="/friends">
+                <div class="padding-thumbs-up"><%= fa_icon " thumbs-up 2x " %></div>
               </div>
-              <div class="col-xs-10">
-                <p class="yeehaw-text"><strong><%= @wi_yeehaws.count %> YEEHAWS!</strong></p>
+              <div class="col-xs-9">
+                <h3 class="yeehaw-text-format"><strong><%= @wi_yeehaws.count %> YEEHAWS!</strong></h3>
               </div>
             </div>
           </div>
         <% end %>
       </div>
-      <div class="col-xs-6">
+      <div class="col-xs-5 neg-margin">
         <% if @wi_yeehaws.count>0 %>
-          <span class="yeehaw-text"><small>from <%= link_to "#{User.find(@wi_yeehaws.last.user_id).name}", user_path(@wi_yeehaws.last.user_id) %>
+          <div>
+            <span><%= link_to "#{User.find(@wi_yeehaws.last.user_id).name}", user_path(@wi_yeehaws.last.user_id), :class=>"yh_text" %></span>
+            <p class="yh_text">gave a YEEHAW!</p>
+          </div>
           <% if @wi_yeehaws.count>1%>
-           and <%= @wi_yeehaws.count-1 %> other(s)</small></p>
+           <span>and <%= @wi_yeehaws.count-1 %> other(s)</span>
+           <p class="yh_text">gave a YEEHAW!</p>
           <% end %>
         <% elsif @wi_yeehaws.count==0 && @user!=current_user%>
-          <span class="yeehaw-text"><small>click to leave a yeehaw!</small></span>
+          <span class="yh_text"><small>click to leave a yeehaw!</small></span>
         <% end %>
       </div>
     </div>

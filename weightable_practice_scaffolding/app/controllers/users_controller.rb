@@ -101,7 +101,7 @@ class UsersController < ApplicationController
       @pounds_to_go = (@user.goal - @user.weigh_ins.last.weight)
       @days_remaining_to_goal = ((@user.goal_date - DateTime.now).to_i)
       @finish_date = ((DateTime.now+(@pounds_to_go/@avg_difference).to_i)).strftime("%b %-d")
-      @finish_estimate = ((@finish_date - DateTime.now).to_i)
+      @finish_estimate = ((@finish_date.to_datetime - DateTime.now).to_i)
       if (@days_remaining_to_goal < (@pounds_to_go / @avg_difference))
         @on_track_icon = "X"
         @goal_projection_status = "OFF&nbsp;TRACK".html_safe;
