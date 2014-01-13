@@ -709,3 +709,84 @@ p.friend_progress_text {
   margin-top: -33px;
 
 }
+
+// Feed styling
+
+.feed-row {
+  background-color:white;
+  margin: 10px 0;
+  padding: 10px 0;
+  outline: 1px solid #e3e3e3;
+  outline-offset: -6px; 
+}
+
+.feed-name {
+  font-size: 1.2em;
+}
+
+.feed-bubble {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 2px solid #dddddd;
+  margin-top: 15px;
+  background-color: white;
+  padding-top: 15px;
+  height: 100px;
+  // &:before {
+  //   right: 100%;
+  //   border: solid transparent;
+  //   content: " ";
+  //   height: 0;
+  //   width: 0;
+  //   position: absolute;
+  //   pointer-events: none;
+  //   border-right-color: #dddddd;
+  //   border-width: 10px;
+  //   top: 10px;
+  //   margin: 45px -15px 0 0
+  // }
+  // &:after {
+  //   right: 100%;
+  //   border: solid transparent;
+  //   content: " ";
+  //   height: 0;
+  //   width: 0;
+  //   position: absolute;
+  //   pointer-events: none;
+  //   border-right-color: white;
+  //   border-width: 10px;
+  //   top: 10px;
+  //   margin: 45px -18px 0 0
+  // }
+}
+
+.feed-bar-base-small {
+  position: absolute;
+  width: 93%;
+  height:20px;
+  background-color: #4ec67c;
+  // margin-top: -50px;
+}
+
+.feed-bar-overlay-small {
+  position: absolute;
+  height:20px;
+  // margin-top: -50px;
+  background-color: white;
+  opacity: .5;
+}
+
+p.feed_progress_text {
+  padding-top: 5px;
+  color: #333333;
+  font-family: "Open Sans";
+  text-align: center;
+  // margin-bottom: -33px;
+
+}
+
+.feed-friend {
+  margin-top: 30px;
+  text-align: center;
+}

@@ -64,6 +64,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def feed_progressbar(counter, user_id)
+  recent_weigh_ins = User.find(user_id).weigh_ins.first(5)
+  recent_weight = recent_weigh_ins[counter].weight
+
+  original_weight = self.weigh_ins.last.weight
+    @progress = 100 - ((recent_weight - self.goal)/(original_weight - self.goal).to_f*100)
+    if @progress >= 100
+      @progress = 100 
+    elsif @progress <= 0
+      @progress = 0
+    else
+      @progress
+    end
+  end
+
   def record_weight
     #Calculate lowest weigh in, aka record weight
     weigh_ins.minimum("weight").round(2).to_i

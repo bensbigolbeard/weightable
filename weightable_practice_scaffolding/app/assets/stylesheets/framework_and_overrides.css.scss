@@ -98,7 +98,6 @@ button.navbar-toggle {
   margin-top:23px;
 }
 
-
 //Rounds the left-hand corners of search bar
 .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child), .input-group .form-control:not(:first-child):not(:last-child) {
   border-radius: 4px 0 0 4px;
@@ -106,11 +105,13 @@ button.navbar-toggle {
  
 .footer {
   padding:10px 15px;
-  height: 200px;
   background-color: #283742;
   color:white;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
 }
 
 div.home-sm-txt label{

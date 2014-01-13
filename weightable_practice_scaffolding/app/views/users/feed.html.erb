@@ -1,28 +1,47 @@
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-2">
-    <table>
-      <tbody>
+  <div class="col-sm-10 col-sm-offset-1">
+    
+
         <%= user_content do %> 
-          <% counter = 0 %>
-            <% while counter < 4 %>
+          <% @counter = 0 %>
+            <% while @counter < 4 %>
               <% @user.friendships.each do |friendship| %>
-                <% if counter < friendship.friend.weigh_ins.count %>
-                  <tr>
-                    <td><%= friendship.friend.name %></td>
-                    <td>Pounds to go:<%= (friendship.friend.weigh_ins[counter].weight - friendship.friend.goal) %></td>
-                    <% if friendship.friend.weigh_ins.count > 1 %>
-                      <td>Progress since first check-in:<%= ((friendship.friend.weigh_ins[counter-1].weight.to_f / friendship.friend.weigh_ins[counter].weight.to_f) * 100 - 100).round(2) %>%</td>
-                    <% end %>
-                    <td>Progress toward goal:<%= ((friendship.friend.weigh_ins[counter].weight.to_f / friendship.friend.goal.to_f) * 100 - 100).round(2) %>%</td>
-                    <td><%= friendship.friend.weigh_ins[counter].status %></td>
-                  </tr>
+                <% if @counter < friendship.friend.weigh_ins.count %>
+                  <div class='row'>
+                    <div class="col-xs-2 col-sm-3 feed-friend">
+                      <%= link_to image_tag(friendship.friend.profile_pic_url(:sq_thumb), :class => "round-pic"), user_path(friendship.friend.id) %> 
+                    <!-- </div> -->
+                    <!-- <div class='col-sm-2'> -->
+                      <%= link_to friendship.friend.name, user_path(friendship.friend.id), :class => "feed-name" %>
+                    </div>
+                    <div class ="feed-bubble">
+                      <div class="col-xs-3 col-sm-3">
+                        <%= (friendship.friend.weigh_ins[@counter].weight - friendship.friend.goal) %> Pounds to Go
+                        <br>
+                        <br>
+                        <p><%= link_to friendship.friend.weigh_ins[@counter].status.truncate(25), user_weigh_in_path(:user_id => friendship.friend.id, :id => friendship.friend.weigh_ins[@counter]) %></p>
+                      </div>
+                      <div class="col-xs-4 col-sm-4">
+                        <!-- Green progress bar section -->
+                          <p class="feed_progress_text"><strong><%= friendship.friend.feed_progressbar(@counter, friendship.friend.id).round %>%</strong> to goal!</p>  
+                          
+                          <!-- Shows progress toward friend's weigh loss goal -->
+                          <div class="feed-bar-base-small"></div>
+                          <div class="feed-bar-overlay-small" style="width:<%= friendship.friend.feed_progressbar(@counter, friendship.friend.id) %>%"></div>
+                        
+                      </div>
+                      <div class="col-xs-2 col-sm-2">
+                        <h4 class="time"><%= friendship.friend.weigh_ins[@counter].created_at.strftime("%I:%M%p") %></h4>
+                      </div>
+                    </div>
+                  </div>
                 <% end %>
               <% end %>
-            <% counter+=1 %>
+            <% @counter+=1 %>
           <% end %>
         <% end %>
-      </tbody>
-    </table>
+      </div>
+    </div>
   </div>
 </div>
 

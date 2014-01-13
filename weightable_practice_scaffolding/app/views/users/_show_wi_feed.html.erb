@@ -100,7 +100,7 @@
             <% weight.comments.last(3).each do |comment| %>
               <div class="row">
                 <div class="col-xs-3 col-md-3">
-                  <%= link_to image_tag(comment.user.profile_pic_url(:sq_thumb)), user_path(comment.user.id) %> 
+                  <%= link_to image_tag(comment.user.profile_pic_url(:sq_thumb), :class =>"round-pic"), user_path(comment.user.id) %> 
                 </div>
                 <div class="col-lg-9">  
                   <span><strong><%= link_to "#{comment.user.name}", user_path(comment.user.id) %></strong></span>
@@ -121,7 +121,7 @@
               <%= form_for [@user, @weigh_in, @comment], :url=> user_weigh_in_comments_path(:user_id=> current_user.id, :weigh_in_id=> weight.id) do |f| %>
                 <div class="row">
                   <div class="col-xs-3">
-                     <img src=<%= current_user.profile_pic_url(:sq_thumb) %> />
+                     <img class="round-pic" src=<%= current_user.profile_pic_url(:sq_thumb) %> />
                   </div>
                   <div class="col-xs-8">
                     <%= f.text_area :body, :class=>"form-control ", :required => true %><br />
