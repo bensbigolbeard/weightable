@@ -31,7 +31,7 @@
                         
                       </div>
                       <div class="col-xs-2 col-sm-2">
-                        <h4 class="time"><%= friendship.friend.weigh_ins[@counter].created_at.strftime("%I:%M%p") %></h4>
+                        <p class="time"><%= time_ago_in_words(friendship.friend.weigh_ins[@counter].created_at) %> ago</p>
                       </div>
                     </div>
                   </div>
