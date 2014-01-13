@@ -42,7 +42,7 @@
     <div class="row">
       <div class="col-xs-9 col-xs-offset-1 prog-bar-con">
         <div class="prog-bar-base"></div>
-        <div class="prog-bar-overlay" style="width:<%= @progress %>%"></div>
+        <div class="prog-bar-overlay" style="width:<%= @user.progressbar %>%"></div>
       </div>
       <div class="col-sm-2">
         <div class="goal-date-con">
@@ -57,7 +57,7 @@
       <div class="col-xs-4">
       </div>  
       <div class="col-xs-4">
-        <p id="progress-label"><strong><%=@progress.round(2)%>%</strong> to goal! </p>
+        <p id="progress-label"><strong><%=@user.progressbar.round(2)%>%</strong> to goal! </p>
       </div>  
       <div class="col-xs-4">
       </div>  
@@ -78,6 +78,7 @@
     </div>
 
 
+<!-- Green -->
 <!-- Displays user's BMI from users_controller and rounds to nearest two digit decimal place -->
     <div class="row green-dashboard">
       <div class="col-xs-12 col-sm-6">
@@ -93,8 +94,8 @@
           <div class="col-xs-12 bmi-height">
             <h4 class="green-box-headers">BODY MASS INDEX (BMI)</h4>
             <div class="dashboard-data-container">
-            <div class="dashboard-data bmi-index"><%= @bmi %></div>
-              <div class="data-subheader"><%= @record_weight_status %></div>
+            <div class="dashboard-data bmi-index"><%= @user.bmi %></div>
+              <div class="data-subheader"><%= @user.bmi_status %></div>
             </div> 
           </div>
         </div>
@@ -119,7 +120,7 @@
             <div class="dashboard-data-container">
               <div class="goal-projection-status">
                 <i class="fa fa-trophy record-weight-trophy"></i>
-                <span class="dashboard-data"><%= @record_weight %></span>
+                <span class="dashboard-data"><%= @user.record_weight %></span>
                 <span class="record-weight">lbs</span>
               </div>
             </div>
@@ -278,6 +279,6 @@
 
 <script>
 $( "#progressbar" ).progressbar({
-  value: <%=@progress%>
+  value: <%=@user.progressbar%>
 });
 </script>
