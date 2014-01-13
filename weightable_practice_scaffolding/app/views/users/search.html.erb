@@ -28,12 +28,12 @@
 
         <!-- Green progress bar section -->
         <div class="friend_progress_bar_base"></div>
-          <p class="friend_progress_text"><strong><%= friend_progress(user.id).round %>%</strong> to goal!</p>  
+          <p class="friend_progress_text"><strong><%= user.progressbar.round %>%</strong> to goal!</p>  
           
           <!-- Shows progress toward friend's weigh loss goal -->
           <div class="friend_progress_bar_white_bar"></div>
           <div class="prog-bar-base-small"></div>
-          <div class="prog-bar-overlay-small" style="width:<%= friend_progress(user.id) %>%"></div>
+          <div class="prog-bar-overlay-small" style="width:<%= user.progressbar %>%"></div>
        
         </div>  
       </div>  
