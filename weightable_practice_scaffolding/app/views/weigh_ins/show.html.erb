@@ -69,7 +69,7 @@
       <div class="col-xs-12 ">
         <div class="com-panel-body panel-body">
           <% @weigh_in.comments.last(3).each do |comment| %>
-            <div class="row">
+            <div class="row vert-center">
               <div class="col-xs-3 col-md-3">
                 <%= link_to image_tag(comment.user.profile_pic_url(:sq_thumb), :class=>"round-pic comment-prof-pic"), user_path(comment.user.id) %> 
               </div>
@@ -90,13 +90,11 @@
                 <div class="col-xs-3">
                    <img class="round-pic comment-prof-pic" src=<%= current_user.profile_pic_url(:sq_thumb) %> />
                 </div>
-                <div class="col-xs-8">
+                <div class="col-xs-6">
                   <%= f.text_area :body, :class=>"form-control ", :required => true %><br />
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6 ">
-                  <%= f.submit "Comment!", :class=>"btn btn-info wi_comment_btn pull-right" %>
+                <div class="col-xs-3 ">
+                  <%= f.submit "Comment!", :class=>"btn btn-info wi-pg-comment-btn" %>
                 </div>
               </div>
             <% end %>

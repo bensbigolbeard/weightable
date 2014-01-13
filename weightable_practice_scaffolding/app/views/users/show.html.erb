@@ -2,11 +2,11 @@
 
 <script src="Chart.js"></script>
 
-<div class="row profile-pad">
+<div class="row profile-pad ">
 <!-- Profile Pic Section --!>
   <div class="col-xs-11 col-xs-offset-1 col-sm-4 col-sm-offset-1 col-md-3 no-horiz-pad">
     <% if @user.profile_pic_url %>
-      <img class="profile-pic clearfix" src=<%= @user.profile_pic_url(:sq_medium) %> />
+      <img class="profile-pic round-pic clearfix" src=<%= @user.profile_pic_url(:sq_medium) %> />
     <% else %>
       <%= render "form_set_profile_pic" %>
     <% end %>
