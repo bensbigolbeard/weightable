@@ -1,40 +1,37 @@
 <h1 class="friends_header"><%= @user.friendships.count %> friends</h1>
-<div class="row>"
+<div class="row">
+  <%= user_content do %> 
+    <% @user.friendships.each do |friendship| %>
+      <% @friend_id_loop = friendship.friend.id %>
+      <!-- Creates bootstrap column -->
+      <div class="friend_card col-md-3">
+        
+          <!-- Generates friend's profile image -->
+          <img class="friend_page_pic" src=<%= friendship.friend.profile_pic_url(:sq_medium) %> />
+        
+          <!-- Creates link to friend's show page and capitalizes each letter in multiple names -->
+          <h1 class="friend_name"><%= link_to "#{friendship.friend.name.split.map(&:capitalize).join(' ')}", user_path(friendship.friend.id) %></h1>
 
-<%= user_content do %> 
-  <% @user.friendships.each do |friendship| %>
-    <% @friend_id_loop = friendship.friend.id %>
-    <!-- Creates bootstrap column -->
-    <div class="friend_card col-md-3">
-      
-      <div class="friend_card_inner_border">
-        <!-- Generates friend's profile image -->
-        <img class="friend_page_pic" src=<%= friendship.friend.profile_pic_url(:sq_medium) %> />
-      
-        <!-- Creates link to friend's show page and capitalizes each letter in multiple names -->
-        <h1 class="friend_name"><%= link_to "#{friendship.friend.name.split.map(&:capitalize).join(' ')}", user_path(friendship.friend.id) %></h1>
+          <!-- Shows friend's goal weight -->
+          <p class="friend_goal_info">goal <strong><%= friendship.friend.goal %> lbs</strong></p>
 
-        <!-- Shows friend's goal weight -->
-        <p class="friend_goal_info">goal <strong><%= friendship.friend.goal %> lbs</strong></p>
+          <!-- Shows number of friend's friends and number of friend's weigh ins -->
+          <p class="friend_profile_info"><strong><%= friendship.friend.friendships.count %></strong> friends | <strong><%= friendship.friend.weigh_ins.count %></strong> weigh-ins </p>
 
-        <!-- Shows number of friend's friends and number of friend's weigh ins -->
-        <p class="friend_profile_info"><strong><%= friendship.friend.friendships.count %></strong> friends | <strong><%= friendship.friend.weigh_ins.count %></strong> weigh-ins </p>
+          <div class="center-div"><%= button_to 'Remove friend', destroy_friendships_path( id: @friend_id_loop), method: :delete, :class=>"btn btn-orange" %></div>
 
-        <div class="center-div"><%= button_to 'Remove friend', destroy_friendships_path( id: @friend_id_loop), method: :delete, :class=>"btn btn-orange" %></div>
-
-        <!-- Green progress bar section -->
-        <div class="friend_progress_bar_base"></div>
-          <p class="friend_progress_text"><strong><%= friendship.friend.progressbar.round %>%</strong> to goal!</p>  
-          
-          <!-- Shows progress toward friend's weigh loss goal -->
-          <div class="prog-bar-base-small"></div>
-          <div class="prog-bar-overlay-small" style="width:<%= friendship.friend.progressbar %>%"></div>
-       
-        </div>  
-    <!-- Closes bootstrap column -->
-    </div> 
+          <!-- Green progress bar section -->
+          <div class="friend_progress_bar_base"></div>
+            <p class="friend_progress_text"><strong><%= friendship.friend.progressbar.round %>%</strong> to goal!</p>  
+            
+            <!-- Shows progress toward friend's weigh loss goal -->
+            <div class="prog-bar-base-small"></div>
+            <div class="prog-bar-overlay-small" style="width:<%= friendship.friend.progressbar %>%"></div>
+           
+      <!-- Closes bootstrap column -->
+      </div> 
+    <% end %>
   <% end %>
-<% end %>
 </div>
 <!-- End of row 1 -->
 <div class="row">

@@ -601,13 +601,15 @@ h1.your-weigh-ins {
   border: 1px solid #b0b0b0;
   border-bottom: none;
   overflow:hidden;
+  outline: 1px solid #e3e3e3;
+  outline-offset: -6px; 
 }
 
-.friend_card_inner_border {
-  border: 1px solid #e3e3e3;
-  height: 375;
-  border-bottom:none;
-}
+// .friend_card_inner_border {
+//   border: 1px solid #e3e3e3;
+//   height: 375;
+//   border-bottom:none;
+// }
 
 .btn-orange {
   background-color: #e75735;
@@ -687,8 +689,10 @@ h1.your-weigh-ins {
   background-color: #46bc72;
   border: 2px solid #5e9870;
   margin-top: 18px;
-  width: 325px;
+  // no idea why this works but it does
+  width: 110%;
   margin-left: -12px;
+  position:inherit;
 }
 
 .friend_progress_bar_offwhite {
@@ -707,7 +711,7 @@ p.friend_progress_text {
   font-family: "Open Sans";
   text-align: center;
   margin-top: -33px;
-
+  position:inherit;
 }
 
 // Feed styling
