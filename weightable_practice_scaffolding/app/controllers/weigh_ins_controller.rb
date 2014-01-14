@@ -1,7 +1,7 @@
 class WeighInsController < ApplicationController
 
 	def show
-	  @user = current_user
+	  @user = User.find(params[:user_id])
 	  @weigh_in = WeighIn.find(params[:id])
 	  @weigh_ins = @user.weigh_ins
 	  @comment = Comment.new
@@ -41,7 +41,7 @@ class WeighInsController < ApplicationController
 	  @weigh_in.update(weigh_in_params)
 	  if @weigh_in.update(weigh_in_params)
 	  	flash[:notice] = "You have updated your weigh-in for today!"
-	  	redirect_to user_path(params[:user_id])
+	  	redirect_to :back
 	  else 
 	  	render 'new'
 	  end
