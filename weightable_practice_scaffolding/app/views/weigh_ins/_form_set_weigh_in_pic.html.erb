@@ -1,25 +1,41 @@
-<div class="no-image-wrapper">
-  <%= form_for [@user, @weigh_in], method: :patch do |f| %>
-    <% if @weigh_in.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@weigh_in.errors.count, "error") %> prohibited this weigh_in from being saved:</h2>
-
-        <ul>
-        <% @weigh_in.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
+<div class="row">
+  <div class="col-xs-6 col-sm-7 col-md-5 col-lg-4">
+    <div class="panel-group" id="accordion-pic">
+      <div class="wi-btn" data-toggle="collapse" data-parent="#accordion-pic" href="#pic">
+        <div class="panel-heading">
+          <strong><p>Upload a Picture</p></strong>
+        </div>
       </div>
-    <% end %>
-
-    <div class="field">
-
-      <%= f.label :pic_url %><br>
-      <%= f.file_field :pic_url %><br><br>
-
     </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+
+    <div id="pic" class="panel-collapse collapse">
+      <div class="wi-panel panel-body">      
+        <div class="no-image-wrapper">
+          <%= form_for [@user, @weigh_in], method: :patch do |f| %>
+            <% if @weigh_in.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@weigh_in.errors.count, "error") %> prohibited this weigh_in from being saved:</h2>
+
+                <ul>
+                <% @weigh_in.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="field">
+
+              <%= f.label :pic_url %><br>
+              <%= f.file_field :pic_url %><br><br>
+
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>  
+  </div>
 </div>

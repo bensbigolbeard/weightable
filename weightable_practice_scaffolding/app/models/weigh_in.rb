@@ -6,7 +6,7 @@ class WeighIn < ActiveRecord::Base
   has_many :wi_yeehaws
 
   #Carrierwave
-  mount_uploader :pic_url, ImageUploader
+  mount_uploader :pic_url, WeighInImageUploader
 
   # scope :recent, :limit => 25, :order => 'created_at DESC'
 
