@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-10 col-sm-11 col-md-8">
+  <div class="col-xs-10 col-sm-11 col-md-9 col-lg-8">
     <div class="panel-group" id="accordion-wi">
       <div class="wi-btn" data-toggle="collapse" data-parent="#accordion-wi" href="#wi">
         <div class="panel-heading">
@@ -10,14 +10,14 @@
 
     <div id="wi" class="panel-collapse collapse">
       <div class="wi-panel panel-body">      
-        <%= form_for [@user, @weigh_in] do |f| %>
+        <%= form_for [@user, @weigh_in_update], :method=> :patch do |f| %>
           <div class="row">
             <div class="col-xs-12">
               <%= f.label :weight, :class=>"sr-only" %>
-              <%= f.text_field :weight, :class=>"form-control", :placeholder=>"Weight" %><br />
+              <%= f.text_field :weight, :class=>"form-control", :value=>@weigh_in_update.weight %><br />
 
               <%= f.label :status, :class=>"sr-only" %>
-              <%= f.text_field :status, :class=>"form-control", :placeholder=>"Status" %><br />
+              <%= f.text_field :status, :class=>"form-control", :value=>@weigh_in_update.status %><br />
             </div>
           </div>
           <div class="row">

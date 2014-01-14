@@ -37,6 +37,7 @@ class UsersController < ApplicationController
     @users = User.all
     @weigh_in = WeighIn.new
     @comment = Comment.new
+    @weigh_in_update = @user.weigh_ins.first
     @weights = []
     @dates = []
     @goal = []
