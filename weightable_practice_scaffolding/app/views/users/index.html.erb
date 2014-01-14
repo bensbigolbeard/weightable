@@ -35,11 +35,11 @@
           <div class="login_form">
             <%= form_for("user", :url => user_session_path) do |f| %>
               <div class='home-sm-txt left-pad'><%= f.label "email", :email %><br />
-                <%= f.text_field :email, :autofocus => true, :class=>"left-pad" %>
+                <%= f.text_field :email, :autofocus => true, :class=>"left-pad width-100" %>
               </div>
 
               <div class='home-sm-txt pass-pad left-pad'><%= f.label :password, "password" %><br />
-                <%= f.password_field :password, :class=>"left-pad" %>
+                <%= f.password_field :password, :class=>"left-pad width-100" %>
               </div>
               <div class='home-sm-txt left-pad'>
               <%= f.check_box :remember_me, :class=>"left-pad" %>
