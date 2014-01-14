@@ -52,15 +52,17 @@
 
 
       </div>
-      <div class="col-sm-9">
-        <div class="profile-weigh-ins"> 
-          <h3 class=""><%= link_to "#{weight.weight} lbs", user_weigh_in_path(@user, weight), method: :get %></h3>
-          <p></small>
-            <span class="text-muted time">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
-          </small></p>
-          <h5><%= weight.status %></h5>
+        <div class="col-sm-9">
+      <%= link_to user_weigh_in_path(@user, weight), :class=>"no-text-dec" do %>
+          <div class="profile-weigh-ins"> 
+            <h3 class="no-text-dec"><%= weight.weight %> lbs</h3>
+            <p></small>
+              <span class="text-muted time no-text-dec">posted <%= time_ago_in_words(weight.created_at) %> ago</span>
+            </small></p>
+            <h5 class="no-text-dec"><%= weight.status %></h5>
+          </div>
+      <% end %>  
         </div>
-      </div>
     </div>
 
   <!-- Yeehaws -->

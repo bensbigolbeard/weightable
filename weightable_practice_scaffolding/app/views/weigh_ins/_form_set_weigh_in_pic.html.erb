@@ -1,0 +1,25 @@
+<div class="no-image-wrapper">
+  <%= form_for [@user, @weigh_in], method: :patch do |f| %>
+    <% if @weigh_in.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@weigh_in.errors.count, "error") %> prohibited this weigh_in from being saved:</h2>
+
+        <ul>
+        <% @weigh_in.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+
+      <%= f.label :pic_url %><br>
+      <%= f.file_field :pic_url %><br><br>
+
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

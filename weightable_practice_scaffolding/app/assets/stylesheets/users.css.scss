@@ -588,6 +588,12 @@ h1.your-weigh-ins {
   left:82.5%;
 }
 
+.no-text-dec {
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  };
+}
 
 /* Friends page */
 
