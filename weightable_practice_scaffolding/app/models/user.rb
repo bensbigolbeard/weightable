@@ -86,7 +86,8 @@ class User < ActiveRecord::Base
 
   def bmi
     # BMI is calculated by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
-    @bmi = ((self.weigh_ins.last.weight/(((self.height_in_feet*12)+self.height_in_inches)**2))*703).round(2)
+
+    @bmi = ((self.weigh_ins.first.weight/(((self.height_in_feet*12)+self.height_in_inches)**2))*703).round(2)
   end
 
   def bmi_status
